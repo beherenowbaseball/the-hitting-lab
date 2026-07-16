@@ -229,8 +229,8 @@ export default function Home() {
       {/* ── HERO ────────────────────────────────────────────── */}
       <section className="relative w-full overflow-hidden" style={{ minHeight: "100svh" }}>
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/manus-storage/JantzenRedSoxSTProPicaroundthecorner_fedf7297.jpg')" }}
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: "url('/manus-storage/JantzenRedSoxSTProPicaroundthecorner_fedf7297.jpg')", backgroundPosition: "20% 15%" }}
         />
         <div
           className="absolute inset-0"
