@@ -18,6 +18,8 @@ export default function EmailGate({ onUnlock }: Props) {
 
   const isValid = firstName.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
+  const GHL_WEBHOOK = "https://services.leadconnectorhq.com/hooks/UtNl0ujIXlsH5AXSkQYf/webhook-trigger/948f86f0-14b1-475c-a92d-f38771abd33e";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValid) {
@@ -27,12 +29,25 @@ export default function EmailGate({ onUnlock }: Props) {
     setLoading(true);
     setError("");
 
+    // Fire GHL webhook — fire-and-forget, don't block unlock on response
+    try {
+      await fetch(GHL_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: firstName.trim(),
+          email: email.trim(),
+          source: "The Hitting Lab — Drill Library Gate",
+          tags: ["hitting-lab-lead"],
+        }),
+      });
+    } catch (_) {
+      // Silently ignore network errors — still unlock the library
+    }
+
     // Store in localStorage so they don't see the gate again
     localStorage.setItem("thl_unlocked", "1");
     localStorage.setItem("thl_name", firstName.trim());
-
-    // Small delay for UX feel
-    await new Promise((r) => setTimeout(r, 600));
 
     setLoading(false);
     onUnlock();
