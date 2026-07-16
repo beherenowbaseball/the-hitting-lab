@@ -230,7 +230,7 @@ export default function Home() {
       <section className="relative w-full overflow-hidden" style={{ minHeight: "100svh" }}>
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/manus-storage/hero-bg_1f3f5135.jpg')" }}
+          style={{ backgroundImage: "url('/manus-storage/hero-jantzen_ef90a9d3.jpg')" }}
         />
         <div
           className="absolute inset-0"
