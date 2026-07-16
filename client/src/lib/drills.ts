@@ -3,14 +3,20 @@ export interface Drill {
   name: string;
   slug: string;
   category: "standard" | "waterbag";
-  villain: string; // the flaw it fixes
-  tagline: string; // one-line description
+  villain: string;
+  tagline: string;
   whatItIs: string;
   whyWeDoit: string;
   howToRunIt: string;
   coachingCues: string;
   videoUrl: string;
+  thumbnailUrl: string;
   storyAngle: string;
+}
+
+// YouTube thumbnail helper — hqdefault gives the best quality that's always available
+function yt(videoId: string): string {
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 }
 
 export const drills: Drill[] = [
@@ -26,6 +32,7 @@ export const drills: Drill[] = [
     howToRunIt: "Have a partner get on your back piggyback-style. Start in your normal stance. Take your stride forward. Feel where your weight naturally lands — that's your real hitting position.",
     coachingCues: "Don't try to 'stay back.' Let the weight pull you forward. Notice how much longer and more aggressive your stride is compared to your normal swing.",
     videoUrl: "https://www.youtube.com/watch?v=XZErWca31uM",
+    thumbnailUrl: yt("XZErWca31uM"),
     storyAngle: "The hitter who had the 'perfect' stride — and why it was secretly destroying his power.",
   },
   {
@@ -40,6 +47,7 @@ export const drills: Drill[] = [
     howToRunIt: "Grab a wiffle bat and bucket of wiffle balls. Tosser throws slow, high arcs. Batter swings continuously without resetting feet — pure momentum, no mechanics.",
     coachingCues: "Forget you play baseball. Pretend you're Ken Griffey Jr. Hit pull-side homers only. Don't stop to reset. Let your feet be free.",
     videoUrl: "https://www.youtube.com/watch?v=NC9QB1HTmnc",
+    thumbnailUrl: yt("NC9QB1HTmnc"),
     storyAngle: "The hitter who was taught to 'push it the other way' — and why that cue turned him into a ground ball machine.",
   },
   {
@@ -54,6 +62,7 @@ export const drills: Drill[] = [
     howToRunIt: "Normal stance. As the pitch comes, initiate a hard shuffle forward. Swing for maximum distance. Keep reps low (5-6 max) to maintain full intent.",
     coachingCues: "Pretend you only have one pitch. Pretend this is an Olympic event. Shuffle hard. Hit this ball as far as you possibly can.",
     videoUrl: "https://www.youtube.com/watch?v=ZE4uxo0QoUQ",
+    thumbnailUrl: yt("ZE4uxo0QoUQ"),
     storyAngle: "The over-coached hitter who forgot what it felt like to just swing.",
   },
   {
@@ -68,6 +77,7 @@ export const drills: Drill[] = [
     howToRunIt: "Standard front toss setup. Focus entirely on making contact out front. Allow the brain to be quieter — just get to your strong spots.",
     coachingCues: "Allow your brain to be a little quieter. Focus on getting to your strong spots. Power comes from catching the ball out front, not from a big load.",
     videoUrl: "https://www.youtube.com/watch?v=AlAWSztSbL8",
+    thumbnailUrl: yt("AlAWSztSbL8"),
     storyAngle: "The hitter who kept loading harder trying to hit for more power — and kept getting weaker.",
   },
   {
@@ -82,6 +92,7 @@ export const drills: Drill[] = [
     howToRunIt: "Toss the ball slightly in front of you at contact height. Swing through it. Focus on making clean contact and developing your own timing.",
     coachingCues: "Toss it to yourself. Own your practice. You don't need anyone else to get better.",
     videoUrl: "https://www.youtube.com/watch?v=B-D7MQzGlnk",
+    thumbnailUrl: yt("B-D7MQzGlnk"),
     storyAngle: "The hitter who only worked hard when a coach was watching.",
   },
   {
@@ -96,6 +107,7 @@ export const drills: Drill[] = [
     howToRunIt: "Remove the bottom hand from the bat. Hit with top hand only. Focus on driving the barrel through the zone aggressively.",
     coachingCues: "Your top hand should be driving, not following. Feel it accelerate the barrel. That's the hand that creates bat speed.",
     videoUrl: "https://www.youtube.com/watch?v=8wK78H_4YNc",
+    thumbnailUrl: yt("8wK78H_4YNc"),
     storyAngle: "The hitter with great mechanics and no bat speed — because one hand was asleep.",
   },
   {
@@ -110,6 +122,7 @@ export const drills: Drill[] = [
     howToRunIt: "Start in your stance. Initiate a small recoil backward, then explode forward into your swing. The recoil creates elastic energy that makes you faster, not slower.",
     coachingCues: "Don't start earlier. Recoil and explode. The energy you store going back is what makes you fast going forward.",
     videoUrl: "https://www.youtube.com/watch?v=CKQ0lI8gKXg",
+    thumbnailUrl: yt("CKQ0lI8gKXg"),
     storyAngle: "The hitter who kept being told to 'start sooner' — and kept getting later.",
   },
   {
@@ -124,6 +137,7 @@ export const drills: Drill[] = [
     howToRunIt: "Take your normal swing. After contact, step back with your front foot. Feel how your posture must stay tall to execute this correctly.",
     coachingCues: "Stay tall. Don't lunge. Your posture through contact determines your power at contact.",
     videoUrl: "https://www.youtube.com/watch?v=B-akFoWwmpk",
+    thumbnailUrl: yt("B-akFoWwmpk"),
     storyAngle: "The hitter who looked great in slow motion but fell apart at full speed.",
   },
   {
@@ -138,6 +152,7 @@ export const drills: Drill[] = [
     howToRunIt: "Tosser throws immediately after each swing. Hitter must be ready. No pausing. No resetting. Pure continuous movement.",
     coachingCues: "No thinking. Just react. The ball is coming whether you're ready or not. Trust your body.",
     videoUrl: "https://www.youtube.com/watch?v=imPA0mOn8F4",
+    thumbnailUrl: yt("imPA0mOn8F4"),
     storyAngle: "The hitter who was great in slow practice and terrible in fast games.",
   },
   {
@@ -152,6 +167,7 @@ export const drills: Drill[] = [
     howToRunIt: "Slowly trace the barrel through the hitting zone, feeling the correct path. Then execute full swings maintaining that path.",
     coachingCues: "Feel the barrel staying in the zone. Don't cast. Stay connected. Longer barrel path means more consistent contact.",
     videoUrl: "https://www.youtube.com/watch?v=sUErvr0qLtw",
+    thumbnailUrl: yt("sUErvr0qLtw"),
     storyAngle: "The hitter with a beautiful swing who couldn't make consistent contact.",
   },
   {
@@ -166,6 +182,7 @@ export const drills: Drill[] = [
     howToRunIt: "Exaggerate hip rotation and lower half drive. Feel the ground. Push off hard. Let the upper body follow the lower body's lead.",
     coachingCues: "The power starts at your feet. Push the ground away. Your hips lead. Your hands follow.",
     videoUrl: "https://www.youtube.com/watch?v=hJs3F8OR9Jo",
+    thumbnailUrl: yt("hJs3F8OR9Jo"),
     storyAngle: "The hitter who had great arm strength and no power — because his legs were spectators.",
   },
   {
@@ -180,6 +197,7 @@ export const drills: Drill[] = [
     howToRunIt: "Start with an exaggerated bat drop — barrel pointing almost straight down. Then fire through the zone. Feel the difference in barrel path.",
     coachingCues: "Drop it. Then fire. Feel the barrel staying inside. That's the path that creates power.",
     videoUrl: "https://www.youtube.com/watch?v=_s9aHueL65I",
+    thumbnailUrl: yt("_s9aHueL65I"),
     storyAngle: "The hitter who kept rolling over on inside pitches no matter how much he practiced.",
   },
   {
@@ -194,6 +212,7 @@ export const drills: Drill[] = [
     howToRunIt: "Focus on driving the back hip through the zone. Imagine turning a corner — not spinning in a circle. Feel the difference in direction.",
     coachingCues: "Turn through it, not around it. Drive the hip. Stay on the ball. Don't spin.",
     videoUrl: "https://www.youtube.com/watch?v=w-gDrqNYeHU",
+    thumbnailUrl: yt("w-gDrqNYeHU"),
     storyAngle: "The hitter who had great hip rotation and no power — because he was spinning, not driving.",
   },
   {
@@ -208,6 +227,7 @@ export const drills: Drill[] = [
     howToRunIt: "Remove the top hand. Hit with bottom hand only. Focus on guiding the barrel through the zone rather than pulling it.",
     coachingCues: "Guide, don't pull. Your bottom hand sets the path. Your top hand provides the power. They have different jobs.",
     videoUrl: "https://www.youtube.com/watch?v=R1qgjfjHOUE",
+    thumbnailUrl: yt("R1qgjfjHOUE"),
     storyAngle: "The hitter whose dominant hand was sabotaging his swing without either of them knowing it.",
   },
   {
@@ -222,6 +242,7 @@ export const drills: Drill[] = [
     howToRunIt: "Apply the step-back technique to inside, outside, high, and low pitches. Feel how posture must adapt but never collapse.",
     coachingCues: "Same posture. Different location. Your spine angle doesn't change based on where the pitch is.",
     videoUrl: "https://www.youtube.com/watch?v=Ku9TrLL3pRk",
+    thumbnailUrl: yt("Ku9TrLL3pRk"),
     storyAngle: "The hitter who looked great on middle pitches and fell apart everywhere else.",
   },
   {
@@ -236,6 +257,7 @@ export const drills: Drill[] = [
     howToRunIt: "Watch the pitcher's hand. The moment the ball leaves the hand, begin your load. Not before. Not after. At release.",
     coachingCues: "Watch the hand. Start at release. Your body moves when the ball moves. Not before.",
     videoUrl: "https://www.youtube.com/watch?v=XJ2KphcvSw4",
+    thumbnailUrl: yt("XJ2KphcvSw4"),
     storyAngle: "The hitter who was always early or always late — never on time.",
   },
   {
@@ -250,6 +272,7 @@ export const drills: Drill[] = [
     howToRunIt: "Take swings with zero internal dialogue. No swing thoughts. No cues. Just see the ball and swing. If a thought enters, let it pass.",
     coachingCues: "No thoughts. No cues. Just see it and hit it. Your body already knows how to do this.",
     videoUrl: "https://www.youtube.com/watch?v=z5GCHdtezA0",
+    thumbnailUrl: yt("z5GCHdtezA0"),
     storyAngle: "The hitter who couldn't take a single swing without narrating it to himself.",
   },
   {
@@ -264,6 +287,7 @@ export const drills: Drill[] = [
     howToRunIt: "Think about throwing the bat through the zone. Loose arms. Free swing. Chuck it. Feel the natural acceleration.",
     coachingCues: "Throw it. Loose arms. Free it up. That looseness is where your bat speed lives.",
     videoUrl: "https://youtu.be/ZcmiKqGekc4",
+    thumbnailUrl: yt("ZcmiKqGekc4"),
     storyAngle: "The hitter with perfect mechanics and no bat speed — because he was too tight.",
   },
   {
@@ -278,6 +302,7 @@ export const drills: Drill[] = [
     howToRunIt: "Hold a hockey stick with hands split apart. Execute swings focusing on the correct sequencing of each hand through the zone.",
     coachingCues: "Feel the sequence. Bottom hand first. Top hand through. They have different jobs and different timing.",
     videoUrl: "https://youtu.be/pzBwNFNnm9M",
+    thumbnailUrl: yt("pzBwNFNnm9M"),
     storyAngle: "The hitter whose hands looked connected but were secretly fighting each other.",
   },
   {
@@ -292,6 +317,7 @@ export const drills: Drill[] = [
     howToRunIt: "Focus on the barrel hooking inside the ball before extension. Feel the difference between casting and staying inside.",
     coachingCues: "Hook it inside first. Then extend. Inside-out is the path. Casting is the enemy.",
     videoUrl: "https://youtu.be/T-JZvL4r9fc",
+    thumbnailUrl: yt("T-JZvL4r9fc"),
     storyAngle: "The hitter who kept being told to 'stay inside' but never understood what that meant.",
   },
   {
@@ -306,6 +332,7 @@ export const drills: Drill[] = [
     howToRunIt: "Focus on driving the knob toward the front knee as you initiate the swing. Feel how this shortens the path and speeds up the barrel.",
     coachingCues: "Knob to knee. Short path. Direct delivery. The shortest distance between two points is a straight line.",
     videoUrl: "https://youtu.be/lWblISE-TsM",
+    thumbnailUrl: yt("lWblISE-TsM"),
     storyAngle: "The hitter who was always a little late — because his path to the ball was twice as long as it needed to be.",
   },
   {
@@ -320,6 +347,7 @@ export const drills: Drill[] = [
     howToRunIt: "Watch the pitcher's release point. Your goal: be fully loaded and ready the moment the ball leaves the hand. Attack from there.",
     coachingCues: "Ready at release. Not before. Not after. At release. Attack from your ready position.",
     videoUrl: "https://youtu.be/6gdISAqOkUo",
+    thumbnailUrl: yt("6gdISAqOkUo"),
     storyAngle: "The hitter who was always reacting to pitches instead of attacking them.",
   },
   {
@@ -334,11 +362,12 @@ export const drills: Drill[] = [
     howToRunIt: "Hold the water bag. Rip it from right to left, then left to right. Focus on explosive hip rotation driving each movement.",
     coachingCues: "Hips first. Arms follow. Explosive rotation. Feel the water shift — that's your power transferring.",
     videoUrl: "https://www.youtube.com/watch?v=J41XBcz_zUk",
+    thumbnailUrl: yt("J41XBcz_zUk"),
     storyAngle: "The hitter who was strong on one side and had no idea the other side was holding him back.",
   },
   {
     id: 24,
-    name: "Water Bag Rotational Flow Drill",
+    name: "Water Bag Rotational Flow",
     slug: "water-bag-rotational-flow-drill",
     category: "waterbag",
     villain: "Choppy, disconnected rotational mechanics",
@@ -348,11 +377,12 @@ export const drills: Drill[] = [
     howToRunIt: "Hold the water bag. Focus on smooth, continuous rotation — no stopping, no jerking. Let the water's momentum guide the flow.",
     coachingCues: "Smooth. Connected. Let the water flow. Your rotation should feel like one continuous movement, not three separate ones.",
     videoUrl: "https://www.youtube.com/watch?v=LU3xXjK7sQc",
+    thumbnailUrl: yt("LU3xXjK7sQc"),
     storyAngle: "The hitter who worked hard on rotation and still had no power — because his mechanics were choppy.",
   },
   {
     id: 25,
-    name: "Water Bag Rotational Activation Drill",
+    name: "Water Bag Rotational Activation",
     slug: "water-bag-rotational-activation-drill",
     category: "waterbag",
     villain: "Dormant rotational muscles that don't fire in games",
@@ -362,6 +392,7 @@ export const drills: Drill[] = [
     howToRunIt: "Use the water bag to perform controlled rotational movements, progressively increasing intensity. Focus on feeling the muscles activate and engage.",
     coachingCues: "Feel it wake up. Start slow. Build intensity. By the time you're done, your rotation should feel alive.",
     videoUrl: "https://www.youtube.com/watch?v=w62NShmFpBI",
+    thumbnailUrl: yt("w62NShmFpBI"),
     storyAngle: "The hitter who warmed up his arms but never warmed up the muscles that actually create his power.",
   },
   {
@@ -376,6 +407,7 @@ export const drills: Drill[] = [
     howToRunIt: "Shuffle laterally, staying tall. At the end of the shuffle, rip the water bag explosively. Maintain your height throughout.",
     coachingCues: "Stay tall. Don't collapse. Power from a tall position. The shuffle creates momentum. The rip converts it.",
     videoUrl: "https://www.youtube.com/watch?v=-Qa-_4DPTag",
+    thumbnailUrl: yt("-Qa-_4DPTag"),
     storyAngle: "The hitter who was powerful in isolation but lost it all when he had to move.",
   },
   {
@@ -390,6 +422,7 @@ export const drills: Drill[] = [
     howToRunIt: "Start in motion. Add the rotational swing. Feel how dynamic movement can enhance rather than disrupt power generation.",
     coachingCues: "Move and swing. Don't stop to hit. The movement feeds the swing. Let it.",
     videoUrl: "https://www.youtube.com/watch?v=0ToA6FaPYtM",
+    thumbnailUrl: yt("0ToA6FaPYtM"),
     storyAngle: "The hitter who looked great in the cage and fell apart when the pitcher made him move.",
   },
   {
@@ -404,6 +437,7 @@ export const drills: Drill[] = [
     howToRunIt: "Hold the water bag. Toss it explosively. If you're using only your arms, it won't go far. Let your legs and hips drive it.",
     coachingCues: "Legs. Hips. Arms. In that order. If your arms are working first, you're doing it wrong.",
     videoUrl: "https://www.youtube.com/watch?v=XC97SsMtEGM",
+    thumbnailUrl: yt("XC97SsMtEGM"),
     storyAngle: "The hitter who had strong arms and no power — because his arms were doing all the work.",
   },
   {
@@ -418,6 +452,7 @@ export const drills: Drill[] = [
     howToRunIt: "Shuffle forward aggressively. At the peak of your momentum, toss the water bag explosively. Let the shuffle feed the toss.",
     coachingCues: "Shuffle hard. Toss harder. The momentum from the shuffle becomes the power in the toss. Don't fight it — use it.",
     videoUrl: "https://www.youtube.com/watch?v=v5319qHDmsY",
+    thumbnailUrl: yt("v5319qHDmsY"),
     storyAngle: "The hitter who trained power in isolation but couldn't access it when he had to move.",
   },
   {
@@ -432,6 +467,7 @@ export const drills: Drill[] = [
     howToRunIt: "Work through all nine zones — high/middle/low, inside/middle/outside. Each zone requires a slightly different body position. Train them all.",
     coachingCues: "Nine zones. Nine different body positions. Same power. Consistency is the goal.",
     videoUrl: "https://www.youtube.com/watch?v=fK8KANl5-TQ",
+    thumbnailUrl: yt("fK8KANl5-TQ"),
     storyAngle: "The hitter who was a monster on middle-middle and helpless everywhere else.",
   },
   {
@@ -446,6 +482,7 @@ export const drills: Drill[] = [
     howToRunIt: "Swing the water bag in a lasso motion. Feel the looseness. Feel the speed. That looseness is what you want in your swing.",
     coachingCues: "Loose. Free. Fast. Tight arms are slow arms. Let the lasso teach you what loose feels like.",
     videoUrl: "https://www.youtube.com/watch?v=g23SZr8fmzE",
+    thumbnailUrl: yt("g23SZr8fmzE"),
     storyAngle: "The hitter who trained hard every day and never got faster — because he was training tightness.",
   },
   {
@@ -460,6 +497,7 @@ export const drills: Drill[] = [
     howToRunIt: "Focus on feeling the lower body initiate and the upper body follow as one connected movement. The water bag provides feedback on whether you're connected.",
     coachingCues: "Lower body leads. Upper body follows. Connected. One movement. If you feel disconnected, you are disconnected.",
     videoUrl: "https://www.youtube.com/watch?v=z3ujjB5FCaw",
+    thumbnailUrl: yt("z3ujjB5FCaw"),
     storyAngle: "The hitter who had a powerful lower half and a powerful upper half — that never talked to each other.",
   },
 ];

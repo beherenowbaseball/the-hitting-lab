@@ -1,42 +1,91 @@
 /* ============================================================
-   THE DRILL LAB — Home Page
+   THE HITTING LAB — Home Page
+   Brand: Be The Best Baseball
    Design: Sports Illustrated meets The Players Tribune
    StoryBrand: Problem → Guide → Plan → CTA
-   Style: White/off-white long-read, black as chapter breaks,
-          Playfair italic editorial voice, SI red accent,
-          sharp cards, magazine archive pacing
+   Key features:
+   - Auto-scrolling drill carousel (pauses on touch/hover)
+   - YouTube thumbnails as drill card images
+   - Fully mobile-optimized
    ============================================================ */
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { drills, standardDrills, waterbagDrills } from "@/lib/drills";
 import DrillCard from "@/components/DrillCard";
 import DrillModal from "@/components/DrillModal";
 import type { Drill } from "@/lib/drills";
+
+const CARD_WIDTH_MOBILE = 260;
+const CARD_WIDTH_DESKTOP = 320;
+const CARD_GAP = 1;
+const SCROLL_SPEED = 0.6; // px per frame
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<"all" | "standard" | "waterbag">("all");
   const [selectedDrill, setSelectedDrill] = useState<Drill | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const drillsRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const animFrameRef = useRef<number>(0);
+  const posRef = useRef(0);
+  const drillsRef = useRef<HTMLDivElement>(null);
 
   const filteredDrills =
     activeFilter === "all" ? drills :
     activeFilter === "standard" ? standardDrills :
     waterbagDrills;
 
+  // Duplicate drills for seamless infinite scroll
+  const carouselDrills = [...filteredDrills, ...filteredDrills, ...filteredDrills];
+
   const scrollToDrills = () => {
     drillsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  // Nav scroll effect
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Auto-scroll carousel
+  const getCardWidth = useCallback(() => {
+    return window.innerWidth < 640 ? CARD_WIDTH_MOBILE + CARD_GAP : CARD_WIDTH_DESKTOP + CARD_GAP;
+  }, []);
+
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const totalSingleWidth = filteredDrills.length * getCardWidth();
+
+    const animate = () => {
+      if (!isPaused) {
+        posRef.current += SCROLL_SPEED;
+        // Reset when we've scrolled one full set
+        if (posRef.current >= totalSingleWidth) {
+          posRef.current = 0;
+        }
+        if (el) el.scrollLeft = posRef.current;
+      }
+      animFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animFrameRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animFrameRef.current);
+  }, [isPaused, filteredDrills.length, getCardWidth]);
+
+  // Reset scroll position when filter changes
+  useEffect(() => {
+    posRef.current = 0;
+    if (carouselRef.current) carouselRef.current.scrollLeft = 0;
+  }, [activeFilter]);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
 
       {/* ── NAV ─────────────────────────────────────────────── */}
       <nav
@@ -47,116 +96,117 @@ export default function Home() {
           borderBottom: scrolled ? "1px solid oklch(0.88 0.005 80)" : "none",
         }}
       >
-        <div className="container flex items-center justify-between h-14 md:h-16">
-          {/* Masthead — distinctive editorial wordmark */}
-          <a href="/" className="flex items-center gap-3 no-underline group">
-            {/* Distinctive mark: bold geometric D with a diagonal slash */}
+        <div className="container flex items-center justify-between" style={{ height: "56px" }}>
+          {/* Masthead */}
+          <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
             <div
-              className="relative flex items-center justify-center"
               style={{
-                width: "28px",
-                height: "28px",
+                width: "26px",
+                height: "26px",
                 backgroundColor: scrolled ? "oklch(0.42 0.18 25)" : "white",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 transition: "background-color 0.3s",
+                flexShrink: 0,
               }}
             >
-              <span
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontWeight: 700,
-                  fontSize: "1rem",
-                  color: scrolled ? "white" : "oklch(0.42 0.18 25)",
-                  lineHeight: 1,
-                  letterSpacing: "-0.02em",
-                  transition: "color 0.3s",
-                }}
-              >
-                D
-              </span>
+              <span style={{
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                color: scrolled ? "white" : "oklch(0.42 0.18 25)",
+                lineHeight: 1,
+                transition: "color 0.3s",
+              }}>H</span>
             </div>
             <div>
-              <span
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontWeight: 700,
-                  fontSize: "0.85rem",
-                  color: scrolled ? "oklch(0.12 0.005 65)" : "white",
-                  letterSpacing: "0.02em",
-                  display: "block",
-                  lineHeight: 1.1,
-                  transition: "color 0.3s",
-                }}
-              >
-                THE DRILL LAB
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 400,
-                  fontSize: "0.55rem",
-                  color: scrolled ? "oklch(0.52 0.01 65)" : "rgba(255,255,255,0.6)",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  display: "block",
-                  transition: "color 0.3s",
-                }}
-              >
-                Hitting Program
-              </span>
+              <div style={{
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 700,
+                fontSize: "0.8rem",
+                color: scrolled ? "oklch(0.12 0.005 65)" : "white",
+                letterSpacing: "0.03em",
+                lineHeight: 1.1,
+                transition: "color 0.3s",
+              }}>THE HITTING LAB</div>
+              <div style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 400,
+                fontSize: "0.5rem",
+                color: scrolled ? "oklch(0.55 0.01 65)" : "rgba(255,255,255,0.55)",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                transition: "color 0.3s",
+              }}>Be The Best Baseball</div>
             </div>
           </a>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
-            {[
-              { label: "Drills", action: scrollToDrills },
-              { label: "About", action: () => {} },
-              { label: "Work With Me", action: () => alert("Feature coming soon — connect your booking link here.") },
-            ].map(({ label, action }) => (
+            {["Drills", "About", "Work With Me"].map((label) => (
               <button
                 key={label}
-                onClick={action}
-                className="text-xs font-semibold tracking-widest uppercase transition-colors duration-200 hover:opacity-60"
+                onClick={() => {
+                  if (label === "Drills") scrollToDrills();
+                  else if (label === "Work With Me") alert("Feature coming soon — connect your booking link here.");
+                }}
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  color: scrolled ? "oklch(0.12 0.005 65)" : "rgba(255,255,255,0.85)",
+                  fontSize: "0.65rem",
+                  fontWeight: 600,
                   letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: scrolled ? "oklch(0.12 0.005 65)" : "rgba(255,255,255,0.85)",
                   background: "none",
                   border: "none",
+                  cursor: "pointer",
+                  transition: "opacity 0.2s",
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.5")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
                 {label}
               </button>
             ))}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden"
             onClick={() => setMenuOpen(!menuOpen)}
-            style={{ color: scrolled ? "oklch(0.12 0.005 65)" : "white", background: "none", border: "none" }}
+            style={{ background: "none", border: "none", padding: "8px", color: scrolled ? "oklch(0.12 0.005 65)" : "white" }}
+            aria-label="Menu"
           >
-            <div className="w-5 space-y-1.5">
-              <span className="block h-px bg-current transition-all duration-200"
-                style={{ transform: menuOpen ? "rotate(45deg) translate(3px, 3px)" : "none" }} />
-              <span className="block h-px bg-current transition-all duration-200"
-                style={{ opacity: menuOpen ? 0 : 1 }} />
-              <span className="block h-px bg-current transition-all duration-200"
-                style={{ transform: menuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none" }} />
+            <div style={{ width: "20px", display: "flex", flexDirection: "column", gap: "5px" }}>
+              <span style={{ display: "block", height: "1.5px", backgroundColor: "currentColor", transition: "all 0.2s", transform: menuOpen ? "rotate(45deg) translate(4px, 4px)" : "none" }} />
+              <span style={{ display: "block", height: "1.5px", backgroundColor: "currentColor", transition: "all 0.2s", opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ display: "block", height: "1.5px", backgroundColor: "currentColor", transition: "all 0.2s", transform: menuOpen ? "rotate(-45deg) translate(4px, -4px)" : "none" }} />
             </div>
           </button>
         </div>
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden bg-white border-t border-border py-5">
-            <div className="container flex flex-col gap-5">
+          <div style={{ backgroundColor: "white", borderTop: "1px solid oklch(0.88 0.005 80)", padding: "1.25rem 0" }}>
+            <div className="container" style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               {["Drills", "About", "Work With Me"].map((item) => (
                 <button
                   key={item}
-                  onClick={() => { setMenuOpen(false); if (item === "Drills") scrollToDrills(); }}
-                  className="text-left text-xs font-semibold tracking-widest uppercase text-foreground"
-                  style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.12em", background: "none", border: "none" }}
+                  onClick={() => { setMenuOpen(false); if (item === "Drills") scrollToDrills(); else if (item === "Work With Me") alert("Feature coming soon — connect your booking link here."); }}
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "0.65rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "oklch(0.12 0.005 65)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    textAlign: "left",
+                    padding: 0,
+                  }}
                 >
                   {item}
                 </button>
@@ -169,78 +219,66 @@ export default function Home() {
       {/* ── HERO ────────────────────────────────────────────── */}
       <section className="relative w-full overflow-hidden" style={{ minHeight: "100svh" }}>
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/manus-storage/hero-bg_1f3f5135.jpg')" }}
         />
         <div
           className="absolute inset-0"
-          style={{
-            background: "linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 45%, rgba(8,8,8,0.1) 100%)"
-          }}
+          style={{ background: "linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.15) 100%)" }}
         />
-
-        <div className="relative z-10 flex flex-col justify-end h-full" style={{ minHeight: "100svh", paddingBottom: "6rem" }}>
+        <div className="relative z-10 flex flex-col justify-end" style={{ minHeight: "100svh", paddingBottom: "5rem" }}>
           <div className="container">
-            <div className="max-w-3xl">
-              <p
-                className="mb-5"
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "0.65rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "oklch(0.72 0.12 25)",
-                }}
-              >
-                The Drill Lab — 32 Drills. 32 Flaws. One Program.
+            <div style={{ maxWidth: "640px" }}>
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.6rem",
+                fontWeight: 600,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "oklch(0.72 0.12 25)",
+                marginBottom: "1.25rem",
+              }}>
+                The Hitting Lab — Be The Best Baseball
               </p>
-
-              <h1
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                  fontSize: "clamp(2.4rem, 6vw, 5rem)",
-                  lineHeight: 1.06,
-                  color: "white",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                Overthinking mechanics
-                <br />is an epidemic.
+              <h1 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+                fontSize: "clamp(2.2rem, 7vw, 4.5rem)",
+                lineHeight: 1.06,
+                color: "white",
+                marginBottom: "1.25rem",
+              }}>
+                Overthinking mechanics<br />is an epidemic.
               </h1>
-
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "clamp(1rem, 1.8vw, 1.15rem)",
-                  fontWeight: 300,
-                  lineHeight: 1.65,
-                  color: "rgba(255,255,255,0.72)",
-                  maxWidth: "32rem",
-                  marginBottom: "2.5rem",
-                }}
-              >
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
+                fontWeight: 300,
+                lineHeight: 1.7,
+                color: "rgba(255,255,255,0.68)",
+                maxWidth: "30rem",
+                marginBottom: "2rem",
+              }}>
                 These 32 drills will teach you how to turn your brain off
                 and unlock your natural swing.
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }} className="sm:flex-row">
                 <button
                   onClick={scrollToDrills}
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.72rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.12em",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.14em",
                     textTransform: "uppercase",
                     backgroundColor: "oklch(0.42 0.18 25)",
                     color: "white",
                     border: "none",
-                    padding: "1rem 2rem",
+                    padding: "0.9rem 1.75rem",
                     cursor: "pointer",
                     transition: "opacity 0.2s",
+                    width: "fit-content",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
                   onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
@@ -250,16 +288,17 @@ export default function Home() {
                 <button
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.72rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.12em",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.14em",
                     textTransform: "uppercase",
                     backgroundColor: "transparent",
                     color: "white",
-                    border: "1px solid rgba(255,255,255,0.35)",
-                    padding: "1rem 2rem",
+                    border: "1px solid rgba(255,255,255,0.3)",
+                    padding: "0.9rem 1.75rem",
                     cursor: "pointer",
                     transition: "background-color 0.2s",
+                    width: "fit-content",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)")}
                   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
@@ -271,343 +310,187 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-50">
-          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.58rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "white" }}>Scroll</span>
-          <div className="w-px h-8" style={{ background: "linear-gradient(to bottom, white, transparent)" }} />
+        {/* Scroll cue */}
+        <div style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", opacity: 0.4 }}>
+          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "white" }}>Scroll</span>
+          <div style={{ width: "1px", height: "28px", background: "linear-gradient(to bottom, white, transparent)" }} />
         </div>
       </section>
 
-      {/* ── PROBLEM (chapter break — black) ─────────────────── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "oklch(0.10 0.005 65)" }}>
+      {/* ── PROBLEM (black chapter break) ───────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "5rem 0" }}>
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.65rem",
-                fontWeight: 600,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "oklch(0.72 0.12 25)",
-                marginBottom: "1.5rem",
-              }}
-            >
+          <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1.25rem" }}>
               The Problem
             </p>
-            <h2
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-                fontSize: "clamp(1.8rem, 4vw, 3rem)",
-                color: "white",
-                lineHeight: 1.15,
-                marginBottom: "1.5rem",
-              }}
-            >
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.6rem)", color: "white", lineHeight: 1.15, marginBottom: "1.25rem" }}>
               Great in practice.<br />Freezes in games.
             </h2>
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "1rem",
-                fontWeight: 300,
-                lineHeight: 1.75,
-                color: "rgba(255,255,255,0.55)",
-              }}
-            >
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.5)" }}>
               Most hitting instruction creates mechanical, overthinking hitters. Kids who look
               beautiful in the cage and fall apart when the game speeds up. They've been taught
               to think about their swing — when the real skill is learning to stop thinking.
-              Every drill in this program was built to fix exactly that.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── GUIDE (white — long read) ────────────────────────── */}
-      <section className="py-24 md:py-32 border-b border-border">
+      {/* ── GUIDE (white long read) ──────────────────────────── */}
+      <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
+          <div className="grid md:grid-cols-2" style={{ gap: "3rem", alignItems: "start" }}>
             <div>
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "0.65rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "oklch(0.42 0.18 25)",
-                  marginBottom: "1.5rem",
-                }}
-              >
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem" }}>
                 The Guide
               </p>
-              <h2
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontWeight: 700,
-                  fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-                  color: "oklch(0.12 0.005 65)",
-                  lineHeight: 1.15,
-                  marginBottom: "1.5rem",
-                }}
-              >
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.15, marginBottom: "1.25rem" }}>
                 I don't just show you the drill.
               </h2>
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "1rem",
-                  fontWeight: 300,
-                  lineHeight: 1.8,
-                  color: "oklch(0.35 0.01 65)",
-                  marginBottom: "1.25rem",
-                }}
-              >
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "1rem" }}>
                 I show you the moment I realized most coaches — including me, for years — were
                 teaching this completely wrong. Every drill in this program came from a specific
                 hitter, a specific flaw, and a specific moment of discovery.
               </p>
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "1rem",
-                  fontWeight: 300,
-                  lineHeight: 1.8,
-                  color: "oklch(0.35 0.01 65)",
-                  marginBottom: "2.5rem",
-                }}
-              >
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "2rem" }}>
                 The goal isn't to give you more to think about. It's to give your body what it
                 needs to stop thinking — and start hitting.
               </p>
               <button
                 onClick={scrollToDrills}
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "0.72rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "oklch(0.42 0.18 25)",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "5px",
-                }}
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", background: "none", border: "none", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "5px" }}
               >
                 See All 32 Drills →
               </button>
             </div>
-
-            {/* Pull quote — editorial callout */}
-            <div
-              style={{
-                backgroundColor: "oklch(0.96 0.005 80)",
-                padding: "3rem",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "5rem",
-                  lineHeight: 0.8,
-                  color: "oklch(0.85 0.005 80)",
-                  fontStyle: "italic",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                "
-              </div>
-              <blockquote
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                  fontSize: "clamp(1.25rem, 2.5vw, 1.7rem)",
-                  color: "oklch(0.12 0.005 65)",
-                  lineHeight: 1.4,
-                  marginBottom: "1.5rem",
-                }}
-              >
+            {/* Pull quote */}
+            <div style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "2.5rem" }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "4rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "1.25rem" }}>"</div>
+              <blockquote style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.45, marginBottom: "1.25rem" }}>
                 Your body already knows how to hit. Most coaching just gets in the way.
               </blockquote>
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "0.65rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "oklch(0.52 0.01 65)",
-                }}
-              >
-                — The Drill Lab
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.52 0.01 65)" }}>
+                — The Hitting Lab
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── DRILL LIBRARY (magazine archive) ────────────────── */}
-      <section ref={drillsRef} className="py-24 md:py-32">
-        <div className="container">
-          {/* Section header — editorial */}
-          <div className="mb-16">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
-              <div>
-                <p
+      {/* ── AUTO-SCROLLING DRILL CAROUSEL ───────────────────── */}
+      <section ref={drillsRef} style={{ padding: "5rem 0" }}>
+        <div className="container" style={{ marginBottom: "2rem" }}>
+          {/* Header */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "1.5rem" }}>
+            <div>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.5rem" }}>
+                The Program
+              </p>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.1 }}>
+                32 Drills. 32 Flaws.
+              </h2>
+            </div>
+            {/* Filter tabs */}
+            <div style={{ display: "flex", border: "1px solid oklch(0.88 0.005 80)", width: "fit-content" }}>
+              {(["all", "standard", "waterbag"] as const).map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setActiveFilter(f)}
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.65rem",
+                    fontSize: "0.6rem",
                     fontWeight: 600,
-                    letterSpacing: "0.18em",
+                    letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "oklch(0.42 0.18 25)",
-                    marginBottom: "0.75rem",
+                    padding: "0.55rem 1rem",
+                    backgroundColor: activeFilter === f ? "oklch(0.12 0.005 65)" : "transparent",
+                    color: activeFilter === f ? "white" : "oklch(0.52 0.01 65)",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "all 0.15s",
                   }}
                 >
-                  The Program
-                </p>
-                <h2
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontWeight: 700,
-                    fontSize: "clamp(2rem, 4vw, 3rem)",
-                    color: "oklch(0.12 0.005 65)",
-                    lineHeight: 1.1,
-                  }}
-                >
-                  32 Drills. 32 Flaws.
-                </h2>
-              </div>
-
-              {/* Filter tabs */}
-              <div
-                className="flex gap-0"
-                style={{ border: "1px solid oklch(0.88 0.005 80)" }}
-              >
-                {(["all", "standard", "waterbag"] as const).map((f) => (
-                  <button
-                    key={f}
-                    onClick={() => setActiveFilter(f)}
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: "0.65rem",
-                      fontWeight: 600,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      padding: "0.6rem 1.25rem",
-                      backgroundColor: activeFilter === f ? "oklch(0.12 0.005 65)" : "transparent",
-                      color: activeFilter === f ? "white" : "oklch(0.52 0.01 65)",
-                      border: "none",
-                      cursor: "pointer",
-                      transition: "all 0.15s",
-                    }}
-                  >
-                    {f === "all" ? "All 32" : f === "standard" ? "Standard" : "Water Bag"}
-                  </button>
-                ))}
-              </div>
+                  {f === "all" ? "All 32" : f === "standard" ? "Standard" : "Water Bag"}
+                </button>
+              ))}
             </div>
-
-            {/* Horizontal rule */}
-            <div style={{ height: "1px", backgroundColor: "oklch(0.88 0.005 80)" }} />
           </div>
+          <div style={{ height: "1px", backgroundColor: "oklch(0.88 0.005 80)" }} />
+        </div>
 
-          {/* Drill grid — magazine archive style with gap for breathing room */}
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            style={{ gap: "1px", backgroundColor: "oklch(0.88 0.005 80)" }}
-          >
-            {filteredDrills.map((drill) => (
-              <DrillCard
-                key={drill.id}
-                drill={drill}
-                onClick={() => setSelectedDrill(drill)}
-              />
-            ))}
-          </div>
+        {/* Touch instruction hint */}
+        <div className="container" style={{ marginBottom: "1rem" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "oklch(0.65 0.008 65)", letterSpacing: "0.05em" }}>
+            Hold to pause · Tap any drill to watch the video
+          </p>
+        </div>
 
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.72rem",
-              color: "oklch(0.65 0.008 65)",
-              textAlign: "center",
-              marginTop: "2rem",
-            }}
-          >
-            Showing {filteredDrills.length} of {drills.length} drills
+        {/* Carousel — full width, no container padding */}
+        <div
+          ref={carouselRef}
+          style={{
+            display: "flex",
+            gap: `${CARD_GAP}px`,
+            overflowX: "scroll",
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+            cursor: "grab",
+            userSelect: "none",
+            paddingLeft: "max(1rem, calc((100vw - 1280px) / 2 + 1rem))",
+            paddingRight: "max(1rem, calc((100vw - 1280px) / 2 + 1rem))",
+            paddingBottom: "1rem",
+          }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setTimeout(() => setIsPaused(false), 1500)}
+        >
+          {carouselDrills.map((drill, idx) => (
+            <div
+              key={`${drill.id}-${idx}`}
+              style={{
+                minWidth: `${CARD_WIDTH_MOBILE}px`,
+                width: `${CARD_WIDTH_MOBILE}px`,
+                flexShrink: 0,
+              }}
+              className="sm:min-w-[320px] sm:w-[320px]"
+            >
+              <DrillCard drill={drill} onClick={() => setSelectedDrill(drill)} />
+            </div>
+          ))}
+        </div>
+
+        {/* Hide scrollbar */}
+        <style>{`
+          div::-webkit-scrollbar { display: none; }
+        `}</style>
+
+        <div className="container" style={{ marginTop: "1.5rem" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "oklch(0.65 0.008 65)", textAlign: "center" }}>
+            Showing {filteredDrills.length} drills
           </p>
         </div>
       </section>
 
-      {/* ── SERIES CALLOUT (off-white — editorial break) ─────── */}
-      <section
-        className="py-24 md:py-32"
-        style={{ backgroundColor: "oklch(0.96 0.005 80)" }}
-      >
+      {/* ── SERIES CALLOUT (off-white) ───────────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "5rem 0" }}>
         <div className="container">
-          <div className="max-w-xl mx-auto text-center">
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.65rem",
-                fontWeight: 600,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "oklch(0.42 0.18 25)",
-                marginBottom: "1.5rem",
-              }}
-            >
+          <div style={{ maxWidth: "520px", margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1.25rem" }}>
               The Instagram Series
             </p>
-            <h2
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-                fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                color: "oklch(0.12 0.005 65)",
-                lineHeight: 1.2,
-                marginBottom: "1.5rem",
-              }}
-            >
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.5rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "1.25rem" }}>
               One drill. One flaw.<br />One fix.
             </h2>
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "1rem",
-                fontWeight: 300,
-                lineHeight: 1.75,
-                color: "oklch(0.35 0.01 65)",
-                marginBottom: "2.5rem",
-              }}
-            >
-              Every drill in this program has a story behind it. A specific hitter. A specific
-              moment. A specific bad cue that was quietly destroying their swing. Follow the
-              series on Instagram to see the story behind each one.
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "2rem" }}>
+              Every drill in this program has a story behind it. Follow the series on Instagram
+              to see the story behind each one — what it is, why we do it, and the moment it changed everything.
             </p>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "oklch(0.42 0.18 25)",
-                textDecoration: "underline",
-                textUnderlineOffset: "5px",
-              }}
+              style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", textDecoration: "underline", textUnderlineOffset: "5px" }}
             >
               Follow on Instagram →
             </a>
@@ -615,119 +498,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA (black chapter break) ────────────────────────── */}
-      <section
-        className="py-28 md:py-40"
-        style={{ backgroundColor: "oklch(0.10 0.005 65)" }}
-      >
+      {/* ── CTA (black) ─────────────────────────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "6rem 0" }}>
         <div className="container">
-          <div className="max-w-xl mx-auto text-center">
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.65rem",
-                fontWeight: 600,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "oklch(0.72 0.12 25)",
-                marginBottom: "1.5rem",
-              }}
-            >
+          <div style={{ maxWidth: "520px", margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1.25rem" }}>
               Work With Me
             </p>
-            <h2
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-                fontSize: "clamp(1.8rem, 4vw, 3rem)",
-                color: "white",
-                lineHeight: 1.2,
-                marginBottom: "1.5rem",
-              }}
-            >
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.8rem)", color: "white", lineHeight: 1.2, marginBottom: "1.25rem" }}>
               Ready to work together?<br />Here's how.
             </h2>
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "1rem",
-                fontWeight: 300,
-                lineHeight: 1.75,
-                color: "rgba(255,255,255,0.5)",
-                marginBottom: "2.5rem",
-              }}
-            >
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.45)", marginBottom: "2rem" }}>
               If you've made it through these drills and you're thinking "I need this for my
-              kid" — let's talk. I offer a free swing audit to start. No pitch. No pressure.
+              kid" — let's talk. Book a free strategy session. No pitch. No pressure.
               Just an honest look at what's happening and what we can fix.
             </p>
             <button
               style={{
                 fontFamily: "'Inter', sans-serif",
-                fontSize: "0.72rem",
-                fontWeight: 600,
-                letterSpacing: "0.12em",
+                fontSize: "0.65rem",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 backgroundColor: "oklch(0.42 0.18 25)",
                 color: "white",
                 border: "none",
-                padding: "1.1rem 2.5rem",
+                padding: "1rem 2.25rem",
                 cursor: "pointer",
                 transition: "opacity 0.2s",
+                width: "100%",
+                maxWidth: "320px",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               onClick={() => alert("Feature coming soon — connect your booking link here.")}
             >
-              Book a Free Swing Audit →
+              Book a Free Strategy Session →
             </button>
           </div>
         </div>
       </section>
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer
-        className="py-10"
-        style={{
-          borderTop: "1px solid oklch(0.20 0.005 65)",
-          backgroundColor: "oklch(0.10 0.005 65)",
-        }}
-      >
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5">
-            <div
-              style={{
-                width: "20px",
-                height: "20px",
-                backgroundColor: "oklch(0.42 0.18 25)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.75rem", color: "white" }}>D</span>
+      <footer style={{ backgroundColor: "oklch(0.10 0.005 65)", borderTop: "1px solid oklch(0.18 0.005 65)", padding: "2rem 0" }}>
+        <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }} >
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ width: "18px", height: "18px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.65rem", color: "white" }}>H</span>
             </div>
-            <span
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontWeight: 700,
-                fontSize: "0.75rem",
-                color: "rgba(255,255,255,0.4)",
-                letterSpacing: "0.05em",
-              }}
-            >
-              THE DRILL LAB
-            </span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>THE HITTING LAB</span>
           </div>
-          <span
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.72rem",
-              color: "rgba(255,255,255,0.2)",
-            }}
-          >
-            © {new Date().getFullYear()} The Drill Lab. All rights reserved.
+          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.18)" }}>
+            © {new Date().getFullYear()} Be The Best Baseball. All rights reserved.
           </span>
         </div>
       </footer>
