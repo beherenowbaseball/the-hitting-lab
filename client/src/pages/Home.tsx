@@ -574,9 +574,21 @@ export default function Home() {
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1.25rem" }}>
               Work With Me
             </p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.8rem)", color: "white", lineHeight: 1.2, marginBottom: "1.25rem" }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.8rem)", color: "white", lineHeight: 1.2, marginBottom: "2rem" }}>
               Ready to work together?<br />Here's how.
             </h2>
+
+            {/* VSL Video */}
+            <div style={{ position: "relative", paddingBottom: "56.25%", marginBottom: "2rem", backgroundColor: "#000" }}>
+              <iframe
+                src="https://www.youtube.com/embed/j4X1SbLVQMk?rel=0&modestbranding=1"
+                title="Be The Best Baseball — Stop Overthinking Your Swing"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+              />
+            </div>
+
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.45)", marginBottom: "2rem" }}>
               If you've made it through these drills and you're thinking "I need this for my
               kid" — let's talk. Book a free strategy session. No pitch. No pressure.
