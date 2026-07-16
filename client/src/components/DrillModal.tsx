@@ -273,7 +273,7 @@ export default function DrillModal({ drill, onClose }: Props) {
                 cursor: "pointer",
                 width: "100%",
               }}
-              onClick={() => alert("Feature coming soon — connect your booking link here.")}
+              onClick={() => window.open('https://api.leadconnectorhq.com/widget/bookings/jantzen', '_blank')}
             >
               Book a Free Strategy Session →
             </button>

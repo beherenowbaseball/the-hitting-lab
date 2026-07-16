@@ -13,6 +13,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { drills, standardDrills, waterbagDrills } from "@/lib/drills";
 import DrillCard from "@/components/DrillCard";
 import DrillModal from "@/components/DrillModal";
+import VSLModal from "@/components/VSLModal";
+import EmailGate from "@/components/EmailGate";
 import type { Drill } from "@/lib/drills";
 
 const CARD_WIDTH_MOBILE = 260;
@@ -26,6 +28,8 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [showVSL, setShowVSL] = useState(false);
+  const [showGate, setShowGate] = useState(() => !localStorage.getItem("thl_unlocked"));
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const animFrameRef = useRef<number>(0);
@@ -149,7 +153,7 @@ export default function Home() {
                 key={label}
                 onClick={() => {
                   if (label === "Drills") scrollToDrills();
-                  else if (label === "Work With Me") alert("Feature coming soon — connect your booking link here.");
+                  else if (label === "Work With Me") window.open('https://api.leadconnectorhq.com/widget/bookings/jantzen', '_blank');
                 }}
                 style={{
                   fontFamily: "'Inter', sans-serif",
@@ -193,7 +197,7 @@ export default function Home() {
               {["Drills", "About", "Work With Me"].map((item) => (
                 <button
                   key={item}
-                  onClick={() => { setMenuOpen(false); if (item === "Drills") scrollToDrills(); else if (item === "Work With Me") alert("Feature coming soon — connect your booking link here."); }}
+                  onClick={() => { setMenuOpen(false); if (item === "Drills") scrollToDrills(); else if (item === "Work With Me") window.open('https://api.leadconnectorhq.com/widget/bookings/jantzen', '_blank'); }}
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "0.65rem",
@@ -302,7 +306,7 @@ export default function Home() {
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)")}
                   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-                  onClick={() => alert("Feature coming soon — add your coaching video URL here.")}
+                  onClick={() => setShowVSL(true)}
                 >
                   Watch the Video
                 </button>
@@ -487,7 +491,7 @@ export default function Home() {
               to see the story behind each one — what it is, why we do it, and the moment it changed everything.
             </p>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/jantzenwitte"
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", textDecoration: "underline", textUnderlineOffset: "5px" }}
@@ -531,7 +535,7 @@ export default function Home() {
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              onClick={() => alert("Feature coming soon — connect your booking link here.")}
+              onClick={() => window.open('https://api.leadconnectorhq.com/widget/bookings/jantzen', '_blank')}
             >
               Book a Free Strategy Session →
             </button>
@@ -558,6 +562,8 @@ export default function Home() {
       {selectedDrill && (
         <DrillModal drill={selectedDrill} onClose={() => setSelectedDrill(null)} />
       )}
+      {showVSL && <VSLModal onClose={() => setShowVSL(false)} />}
+      {showGate && <EmailGate onUnlock={() => setShowGate(false)} />}
     </div>
   );
 }
