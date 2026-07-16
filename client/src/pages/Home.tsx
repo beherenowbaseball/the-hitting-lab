@@ -380,7 +380,7 @@ export default function Home() {
                 Your body already knows how to hit. Most coaching just gets in the way.
               </blockquote>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.52 0.01 65)" }}>
-                — The Hitting Lab
+                — Jantzen Witte
               </p>
             </div>
           </div>
