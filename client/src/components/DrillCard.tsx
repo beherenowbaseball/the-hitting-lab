@@ -1,6 +1,6 @@
 /* ============================================================
    DrillCard — editorial card using real YouTube thumbnails
-   Shows the coach's face in every card
+   Supports locked state for the soft email gate
    ============================================================ */
 
 import type { Drill } from "@/lib/drills";
@@ -8,16 +8,26 @@ import type { Drill } from "@/lib/drills";
 interface Props {
   drill: Drill;
   onClick: () => void;
+  locked?: boolean;
+  onUnlockClick?: () => void;
 }
 
-export default function DrillCard({ drill, onClick }: Props) {
+export default function DrillCard({ drill, onClick, locked = false, onUnlockClick }: Props) {
   const numStr = String(drill.id).padStart(2, "0");
+
+  const handleClick = () => {
+    if (locked) {
+      onUnlockClick?.();
+    } else {
+      onClick();
+    }
+  };
 
   return (
     <article
       className="bg-white group cursor-pointer overflow-hidden"
-      onClick={onClick}
-      style={{ transition: "box-shadow 0.2s ease" }}
+      onClick={handleClick}
+      style={{ transition: "box-shadow 0.2s ease", position: "relative" }}
       onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12)")}
       onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
     >
@@ -28,29 +38,49 @@ export default function DrillCard({ drill, onClick }: Props) {
           alt={drill.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
+          style={{ filter: locked ? "blur(4px) brightness(0.5)" : "none", transition: "filter 0.2s" }}
         />
-        {/* Play button overlay */}
-        <div
-          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
-        >
+
+        {/* Locked overlay */}
+        {locked ? (
           <div
-            style={{
-              width: "44px",
-              height: "44px",
-              backgroundColor: "oklch(0.42 0.18 25)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+            className="absolute inset-0 flex flex-col items-center justify-center"
+            style={{ backgroundColor: "rgba(0,0,0,0.35)" }}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
-              <path d="M4 2l10 6-10 6V2z" />
+            {/* Lock icon */}
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: "6px", opacity: 0.9 }}>
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
+            <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.85)" }}>
+              Unlock Free
+            </span>
           </div>
-        </div>
+        ) : (
+          /* Play button overlay */
+          <div
+            className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
+          >
+            <div
+              style={{
+                width: "44px",
+                height: "44px",
+                backgroundColor: "oklch(0.42 0.18 25)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
+                <path d="M4 2l10 6-10 6V2z" />
+              </svg>
+            </div>
+          </div>
+        )}
+
         {/* Waterbag badge */}
-        {drill.category === "waterbag" && (
+        {drill.category === "waterbag" && !locked && (
           <div
             className="absolute top-2 right-2 px-2 py-0.5"
             style={{
@@ -69,7 +99,7 @@ export default function DrillCard({ drill, onClick }: Props) {
       </div>
 
       {/* Text content */}
-      <div className="p-4">
+      <div className="p-4" style={{ filter: locked ? "blur(2px)" : "none", userSelect: locked ? "none" : "auto" }}>
         <p
           style={{
             fontFamily: "'Inter', sans-serif",
@@ -110,24 +140,10 @@ export default function DrillCard({ drill, onClick }: Props) {
           {drill.tagline}
         </p>
         <div className="flex items-start gap-1.5">
-          <span
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              color: "oklch(0.65 0.008 65)",
-              fontSize: "0.65rem",
-              flexShrink: 0,
-            }}
-          >
+          <span style={{ fontFamily: "'Inter', sans-serif", color: "oklch(0.65 0.008 65)", fontSize: "0.65rem", flexShrink: 0 }}>
             Fixes:
           </span>
-          <span
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              color: "oklch(0.42 0.18 25)",
-              fontSize: "0.65rem",
-              fontWeight: 500,
-            }}
-          >
+          <span style={{ fontFamily: "'Inter', sans-serif", color: "oklch(0.42 0.18 25)", fontSize: "0.65rem", fontWeight: 500 }}>
             {drill.villain}
           </span>
         </div>

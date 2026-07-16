@@ -29,7 +29,13 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [showVSL, setShowVSL] = useState(false);
-  const [showGate, setShowGate] = useState(() => !localStorage.getItem("thl_unlocked"));
+  const [isUnlocked, setIsUnlocked] = useState(() => !!localStorage.getItem("thl_unlocked"));
+  const [showGate, setShowGate] = useState(false);
+
+  const handleUnlock = () => {
+    setIsUnlocked(true);
+    setShowGate(false);
+  };
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const animFrameRef = useRef<number>(0);
@@ -449,19 +455,78 @@ export default function Home() {
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setTimeout(() => setIsPaused(false), 1500)}
         >
-          {carouselDrills.map((drill, idx) => (
-            <div
-              key={`${drill.id}-${idx}`}
-              style={{
-                minWidth: `${CARD_WIDTH_MOBILE}px`,
-                width: `${CARD_WIDTH_MOBILE}px`,
-                flexShrink: 0,
-              }}
-              className="sm:min-w-[320px] sm:w-[320px]"
-            >
-              <DrillCard drill={drill} onClick={() => setSelectedDrill(drill)} />
-            </div>
-          ))}
+          {carouselDrills.map((drill, idx) => {
+            // Each "copy" of the list — figure out position within one set
+            const posInSet = idx % filteredDrills.length;
+            const FREE_COUNT = 5;
+            const locked = !isUnlocked && posInSet >= FREE_COUNT;
+            return (
+              <div
+                key={`${drill.id}-${idx}`}
+                style={{
+                  minWidth: `${CARD_WIDTH_MOBILE}px`,
+                  width: `${CARD_WIDTH_MOBILE}px`,
+                  flexShrink: 0,
+                  position: "relative",
+                }}
+                className="sm:min-w-[320px] sm:w-[320px]"
+              >
+                {/* Inline unlock prompt card — appears right after drill 5 */}
+                {!isUnlocked && posInSet === FREE_COUNT && idx < filteredDrills.length && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      zIndex: 10,
+                      backgroundColor: "oklch(0.10 0.005 65)",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "1.5rem",
+                      textAlign: "center",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => setShowGate(true)}
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: "1rem", opacity: 0.7 }}>
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "1rem", color: "white", lineHeight: 1.4, marginBottom: "0.75rem" }}>
+                      You've seen 5 of {filteredDrills.length}.
+                    </p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 300, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: "1.25rem" }}>
+                      Enter your email to unlock<br />the full library — free.
+                    </p>
+                    <button
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: "0.6rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                        backgroundColor: "oklch(0.42 0.18 25)",
+                        color: "white",
+                        border: "none",
+                        padding: "0.75rem 1.25rem",
+                        cursor: "pointer",
+                        width: "100%",
+                      }}
+                    >
+                      Unlock All 32 →
+                    </button>
+                  </div>
+                )}
+                <DrillCard
+                  drill={drill}
+                  onClick={() => setSelectedDrill(drill)}
+                  locked={locked}
+                  onUnlockClick={() => setShowGate(true)}
+                />
+              </div>
+            );
+          })}
         </div>
 
         {/* Hide scrollbar */}
@@ -563,7 +628,7 @@ export default function Home() {
         <DrillModal drill={selectedDrill} onClose={() => setSelectedDrill(null)} />
       )}
       {showVSL && <VSLModal onClose={() => setShowVSL(false)} />}
-      {showGate && <EmailGate onUnlock={() => setShowGate(false)} />}
+      {showGate && <EmailGate onUnlock={handleUnlock} />}
     </div>
   );
 }
