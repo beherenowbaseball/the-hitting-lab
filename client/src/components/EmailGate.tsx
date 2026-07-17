@@ -71,7 +71,7 @@ export default function EmailGate({ onUnlock }: Props) {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "url('/manus-storage/JantzenRedSoxSTProPicaroundthecorner_fedf7297.jpg')",
+          backgroundImage: "url('/hero-jantzen.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: 0.12,
