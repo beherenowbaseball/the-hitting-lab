@@ -1,6 +1,6 @@
 /* ============================================================
    THE HITTING LAB — Home Page
-   Brand: Be The Best Baseball
+   Brand: Jantzen Witte
    Design: Sports Illustrated meets The Players Tribune
    StoryBrand: Problem → Guide → Plan → CTA
    Key features:
@@ -148,7 +148,7 @@ export default function Home() {
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 transition: "color 0.3s",
-              }}>Be The Best Baseball</div>
+              }}>Jantzen Witte</div>
             </div>
           </a>
 
@@ -234,11 +234,11 @@ export default function Home() {
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.15) 100%)" }}
+          style={{ background: "linear-gradient(to right, rgba(8,8,8,0.05) 0%, rgba(8,8,8,0.05) 40%, rgba(8,8,8,0.75) 60%, rgba(8,8,8,0.97) 100%), linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.3) 40%, rgba(8,8,8,0.0) 70%)" }}
         />
         <div className="relative z-10 flex flex-col justify-end" style={{ minHeight: "100svh", paddingBottom: "5rem" }}>
           <div className="container">
-            <div style={{ maxWidth: "640px" }}>
+            <div style={{ maxWidth: "640px", marginLeft: "auto" }}>
               <p style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "0.6rem",
@@ -248,7 +248,7 @@ export default function Home() {
                 color: "oklch(0.72 0.12 25)",
                 marginBottom: "1.25rem",
               }}>
-                The Hitting Lab — Be The Best Baseball
+                The Hitting Lab — Jantzen Witte
               </p>
               <h1 style={{
                 fontFamily: "'Playfair Display', serif",
@@ -582,7 +582,7 @@ export default function Home() {
             <div style={{ position: "relative", paddingBottom: "56.25%", marginBottom: "2rem", backgroundColor: "#000" }}>
               <iframe
                 src="https://www.youtube.com/embed/j4X1SbLVQMk?rel=0&modestbranding=1"
-                title="Be The Best Baseball — Stop Overthinking Your Swing"
+                title="Jantzen Witte — Stop Overthinking Your Swing"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
@@ -630,7 +630,7 @@ export default function Home() {
             <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>THE HITTING LAB</span>
           </div>
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.18)" }}>
-            © {new Date().getFullYear()} Be The Best Baseball. All rights reserved.
+            © {new Date().getFullYear()} Jantzen Witte. All rights reserved.
           </span>
         </div>
       </footer>
