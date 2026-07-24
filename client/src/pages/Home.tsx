@@ -368,54 +368,11 @@ export default function Home() {
               The Problem
             </p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.6rem)", color: "white", lineHeight: 1.15, marginBottom: "1.25rem" }}>
-              Great in practice.<br />Freezes in games.
+              You're not consistent<br />for an entire season.
             </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.5)" }}>
-              Most hitting instruction creates mechanical, overthinking hitters. Kids who look
-              beautiful in the cage and fall apart when the game speeds up. They've been taught
-              to think about their swing — when the real skill is learning to stop thinking.
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.65)" }}>
+              The reason isn't your talent. It's that you've been chasing whatever drill you saw on Instagram last week instead of having a real plan — built by someone who has actually played where you want to go.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── GUIDE (white long read) ──────────────────────────── */}
-      <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
-        <div className="container">
-          <div className="grid md:grid-cols-2" style={{ gap: "3rem", alignItems: "start" }}>
-            <div>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem" }}>
-                The Guide
-              </p>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.15, marginBottom: "1.25rem" }}>
-                I don't just show you the drill.
-              </h2>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "1rem" }}>
-                I show you the moment I realized most coaches — including me, for years — were
-                teaching this completely wrong. Every drill in this program came from a specific
-                hitter, a specific flaw, and a specific moment of discovery.
-              </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "2rem" }}>
-                The goal isn't to give you more to think about. It's to give your body what it
-                needs to stop thinking — and start hitting.
-              </p>
-              <button
-                onClick={scrollToDrills}
-                style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", background: "none", border: "none", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "5px" }}
-              >
-                See All 32 Drills →
-              </button>
-            </div>
-            {/* Pull quote */}
-            <div style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "2.5rem" }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "4rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "1.25rem" }}>"</div>
-              <blockquote style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.45, marginBottom: "1.25rem" }}>
-                Your body already knows how to hit. Most coaching just gets in the way.
-              </blockquote>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.52 0.01 65)" }}>
-                — Jantzen Witte
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -430,7 +387,7 @@ export default function Home() {
                 The Program
               </p>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.1 }}>
-                32 Drills. 32 Flaws.
+                32 Drills. Designed to bring out your natural swing.
               </h2>
             </div>
             {/* Filter tabs */}
@@ -605,7 +562,7 @@ export default function Home() {
         <div className="container">
           <div style={{ maxWidth: "820px", margin: "0 auto" }}>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.15, marginBottom: "2.5rem", textAlign: "center" }}>
-              The 90 Day Athlete Accelerator is for serious players only.
+              These drills are built for talented players who are ready to stop thinking about mechanics every swing they take.
             </h2>
             <div className="grid md:grid-cols-2" style={{ gap: "2rem" }}>
               <div style={{ borderTop: "3px solid oklch(0.42 0.18 25)", paddingTop: "1.5rem" }}>
