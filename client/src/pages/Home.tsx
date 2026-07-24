@@ -230,7 +230,7 @@ export default function Home() {
       <section className="relative w-full overflow-hidden" style={{ minHeight: "100svh" }}>
         <div
           className="absolute inset-0 bg-cover"
-          style={{ backgroundImage: "url('/hero-jantzen.jpg')", backgroundPosition: "20% 15%" }}
+          style={{ backgroundImage: "url('/hero-jantzen.jpg')", backgroundPosition: "center top", backgroundSize: "cover" }}
         />
         <div
           className="absolute inset-0"
@@ -353,10 +353,13 @@ export default function Home() {
                 Trying every drill I saw on Instagram. Every new video created a new problem. I had more to think about, not less. I had to learn how to simplify.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "1rem" }}>
-                These 32 drills were the start — they helped me turn off my brain and let my natural swing come out. I spent 12 years in professional baseball, drafted by the Boston Red Sox, and I still had to unlearn everything I thought I knew.
+                These 32 drills were the start — they helped me turn off my brain and let my natural swing come out.
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 600, lineHeight: 1.8, color: "oklch(0.12 0.005 65)", marginBottom: "0.5rem" }}>
+                12 years. 5 organizations. 1 College World Series. 1 major league season.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)" }}>
-                That's why I built The Hitting Lab.
+                And I still had to unlearn everything. That's why I built The Hitting Lab.
               </p>
             </div>
             <div style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "2.5rem" }}>
