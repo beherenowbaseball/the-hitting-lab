@@ -383,7 +383,7 @@ export default function Home() {
               The Problem
             </p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.6rem)", color: "white", lineHeight: 1.15, marginBottom: "1.25rem" }}>
-              You're not consistent<br />for an entire season.
+              You're not consistent. And you need to be.
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.65)" }}>
               The reason isn't your talent. It's that you've been chasing whatever drill you saw on Instagram last week instead of having a real plan — built by someone who has actually played where you want to go.
@@ -543,32 +543,6 @@ export default function Home() {
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "oklch(0.65 0.008 65)", textAlign: "center" }}>
             Showing {filteredDrills.length} drills
           </p>
-        </div>
-      </section>
-
-      {/* ── SERIES CALLOUT (off-white) ───────────────────────── */}
-      <section style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "5rem 0" }}>
-        <div className="container">
-          <div style={{ maxWidth: "520px", margin: "0 auto", textAlign: "center" }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1.25rem" }}>
-              The Instagram Series
-            </p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.5rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "1.25rem" }}>
-              One drill. One flaw.<br />One fix.
-            </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "2rem" }}>
-              Every drill in this program has a story behind it. Follow the series on Instagram
-              to see the story behind each one — what it is, why we do it, and the moment it changed everything.
-            </p>
-            <a
-              href="https://instagram.com/jantzenwitte"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", textDecoration: "underline", textUnderlineOffset: "5px" }}
-            >
-              Follow on Instagram →
-            </a>
-          </div>
         </div>
       </section>
 
