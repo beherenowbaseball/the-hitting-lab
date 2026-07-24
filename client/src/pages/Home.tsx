@@ -234,7 +234,7 @@ export default function Home() {
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, rgba(8,8,8,0.05) 0%, rgba(8,8,8,0.05) 40%, rgba(8,8,8,0.75) 60%, rgba(8,8,8,0.97) 100%), linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.3) 40%, rgba(8,8,8,0.0) 70%)" }}
+          style={{ background: "linear-gradient(to right, rgba(8,8,8,0.45) 0%, rgba(8,8,8,0.55) 35%, rgba(8,8,8,0.82) 60%, rgba(8,8,8,0.97) 100%), linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 40%, rgba(8,8,8,0.15) 70%)" }}
         />
         <div className="relative z-10 flex flex-col justify-end" style={{ minHeight: "100svh", paddingBottom: "5rem" }}>
           <div className="container">
@@ -266,7 +266,7 @@ export default function Home() {
                 fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
                 fontWeight: 300,
                 lineHeight: 1.7,
-                color: "rgba(255,255,255,0.68)",
+                color: "rgba(255,255,255,0.92)",
                 maxWidth: "30rem",
                 marginBottom: "2rem",
               }}>
