@@ -259,7 +259,7 @@ export default function Home() {
                 color: "white",
                 marginBottom: "1.25rem",
               }}>
-                Overcoaching and social media have turned your natural swing into a mechanics experiment.
+                Overcoaching and social media have made you a worse hitter.
               </h1>
               <p style={{
                 fontFamily: "'Inter', sans-serif",
@@ -270,7 +270,7 @@ export default function Home() {
                 maxWidth: "30rem",
                 marginBottom: "2rem",
               }}>
-                These 32 drills will teach you how to stop overthinking mechanics, swing like a kid again, and add 5 MPH to your exit velo — without having to think about mechanics each swing.
+                Stop overthinking. Swing naturally.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }} className="sm:flex-row">
                 <button
@@ -315,6 +315,18 @@ export default function Home() {
                 >
                   Watch the Video
                 </button>
+              </div>
+              {/* Transitional CTA — for the buyer who's already sold */}
+              <div style={{ marginTop: "1.75rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", fontWeight: 300, color: "rgba(255,255,255,0.55)", marginBottom: "0.6rem" }}>
+                  Want us to watch your swings and build a plan around your specific flaws?
+                </p>
+                <a
+                  href="/apply"
+                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", textDecoration: "underline", textUnderlineOffset: "4px" }}
+                >
+                  Apply for a Strategy Session →
+                </a>
               </div>
             </div>
           </div>

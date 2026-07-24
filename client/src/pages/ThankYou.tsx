@@ -124,7 +124,7 @@ export default function ThankYou() {
                 {/* Short VSL embed */}
                 <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "#000" }}>
                   <iframe
-                    src="https://www.youtube.com/embed/j4X1SbLVQMk?rel=0&modestbranding=1"
+                    src="https://www.youtube.com/embed/3kOn_Nmbmpk?rel=0&modestbranding=1"
                     title="How The Hitting Lab Works — Jantzen Witte"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

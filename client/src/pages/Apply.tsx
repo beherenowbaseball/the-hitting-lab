@@ -142,7 +142,7 @@ export default function Apply() {
               onClick={handleVSLPlay}
             >
               <iframe
-                src="https://www.youtube.com/embed/j4X1SbLVQMk?rel=0&modestbranding=1"
+                src="https://www.youtube.com/embed/3kOn_Nmbmpk?rel=0&modestbranding=1"
                 title="The 90 Day Athlete Accelerator — Jantzen Witte"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
