@@ -5,6 +5,13 @@
    ============================================================ */
 
 import { useState } from "react";
+import { useLocation } from "wouter";
+
+declare global {
+  interface Window {
+    trackEvent?: (name: string, params?: Record<string, unknown>) => void;
+  }
+}
 
 interface Props {
   onUnlock: () => void;
@@ -15,6 +22,7 @@ export default function EmailGate({ onUnlock }: Props) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [, setLocation] = useLocation();
 
   const isValid = firstName.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
@@ -49,8 +57,16 @@ export default function EmailGate({ onUnlock }: Props) {
     localStorage.setItem("thl_unlocked", "1");
     localStorage.setItem("thl_name", firstName.trim());
 
+    // Fire GA4 email opt-in event
+    window.trackEvent?.("email_opt_in", {
+      method: "drill_gate",
+      first_name: firstName.trim(),
+    });
+
     setLoading(false);
     onUnlock();
+    // Redirect to VSL + application page
+    setLocation("/apply");
   };
 
   return (
@@ -121,7 +137,7 @@ export default function EmailGate({ onUnlock }: Props) {
             marginBottom: "0.75rem",
           }}
         >
-          Unlock the full<br />32-drill library.
+          Stop Guessing.<br />Start Hitting.
         </h2>
         <p
           style={{
@@ -133,8 +149,7 @@ export default function EmailGate({ onUnlock }: Props) {
             marginBottom: "1.75rem",
           }}
         >
-          Free access. No spam. Just the drills, the stories behind them,
-          and the one thing most coaches are getting wrong.
+          Enter your name and email to unlock the full 32-drill framework — the same system I used to survive 12 years in pro ball. Free. No spam.
         </p>
 
         {/* Form */}
@@ -249,7 +264,7 @@ export default function EmailGate({ onUnlock }: Props) {
             onMouseEnter={(e) => { if (!loading) e.currentTarget.style.opacity = "0.85"; }}
             onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
           >
-            {loading ? "Unlocking..." : "Unlock the Drill Library →"}
+            {loading ? "Unlocking..." : "Unlock the Free Framework →"}
           </button>
         </form>
 
