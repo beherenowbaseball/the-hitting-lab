@@ -144,59 +144,42 @@ export default function ThankYou() {
         </div>
       </section>
 
-      {/* ── 4. PRE-CALL HOMEWORK (hard assignment framing) ──── */}
+      {/* ── 4. WHAT TO DO NOW ───────────────────────────────── */}
       <section style={{ padding: "clamp(3rem, 8vw, 5rem) 0", backgroundColor: "#ffffff" }}>
         <div className="container">
-          <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "640px", margin: "0 auto" }}>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: crimsonLight, marginBottom: "1rem", textAlign: "center" }}>
-              Your Assignment
+              What To Do Now
             </p>
-            <h2 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", color: "#111111", lineHeight: 1.15, marginBottom: "0.5rem", textAlign: "center" }}>
-              Complete these 3 things before the call.
+            <h2 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", color: "#111111", lineHeight: 1.15, marginBottom: "2.5rem", textAlign: "center" }}>
+              3 things before the call.<br />
+              <span style={{ color: crimson }}>If you haven't done these, we'll reschedule.</span>
             </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.85rem", fontWeight: 400, color: crimson, textAlign: "center", marginBottom: "2.5rem", letterSpacing: "0.02em" }}>
-              If you haven't done these, we'll reschedule.
-            </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              {([
-                {
-                  number: "01",
-                  title: "Watch the video above",
-                  body: "It's short. It explains exactly how the 90 Day Athlete Accelerator works, who it's for, and what changes in 90 days. You'll get more out of the call if you've seen it.",
-                },
-                {
-                  number: "02",
-                  title: "Send us a game swing video",
-                  body: "Send us a video of you hitting — cage or game, doesn't matter. This lets us come to the call with specific feedback on your swing instead of starting from scratch.",
-                  link: "https://tally.so/r/lb5WQv",
-                  linkText: "Submit Your Swing Video →",
-                },
-                {
-                  number: "03",
-                  title: "Have a parent on the call",
-                  body: "We need the financially responsible party present. If a parent can't make it, reach out and we'll find a time that works for everyone. This isn't a sales call — it's a plan. But we need the right people in the room.",
-                },
-              ] as { number: string; title: string; body: string; link?: string; linkText?: string }[]).map(({ number, title, body, link, linkText }) => (
-                <div key={number} style={{ display: "flex", gap: "2rem", padding: "2rem 0", borderBottom: "1px solid #e8e4de", alignItems: "flex-start" }}>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(2rem, 5vw, 3rem)", color: crimson, lineHeight: 1, flexShrink: 0, width: "60px" }}>
-                    {number}
-                  </div>
-                  <div>
-                    <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1rem, 2.5vw, 1.2rem)", color: "#111111", marginBottom: "0.5rem", lineHeight: 1.2 }}>
-                      {title}
-                    </h3>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "#666666", margin: 0 }}>
-                      {body}
-                    </p>
-                    {link && (
-                      <a href={link} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: "1rem", fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", backgroundColor: crimson, color: "white", padding: "0.7rem 1.25rem", textDecoration: "none" }}>
-                        {linkText}
-                      </a>
-                    )}
-                  </div>
+              <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", borderBottom: "1px solid #e8e4de", alignItems: "center" }}>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>1</div>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.15rem)", fontWeight: 500, color: "#111111", margin: 0, lineHeight: 1.4 }}>
+                  Reply to the text we just sent you with <strong>YES</strong> to confirm your spot.
+                </p>
+              </div>
+              <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", borderBottom: "1px solid #e8e4de", alignItems: "center" }}>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>2</div>
+                <div>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.15rem)", fontWeight: 500, color: "#111111", margin: "0 0 0.75rem 0", lineHeight: 1.4 }}>
+                    Submit a video of you hitting so we can come prepared.
+                  </p>
+                  <a href="https://tally.so/r/lb5WQv" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", backgroundColor: crimson, color: "white", padding: "0.7rem 1.25rem", textDecoration: "none" }}>
+                    Submit Your Swing Video →
+                  </a>
                 </div>
-              ))}
+              </div>
+              <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", alignItems: "center" }}>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>3</div>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.15rem)", fontWeight: 500, color: "#111111", margin: 0, lineHeight: 1.4 }}>
+                  Make sure a parent is on the call with you.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -250,6 +233,24 @@ export default function ThankYou() {
                 { quote: "I feel a million times better than I did before. Honestly, it was a dark spot for me. Confidence wasn't there at all. But I just feel a million times better. And it's not only baseball — this has helped a lot with me.", name: "Teddy Stephenson", tag: "HS → University of the Holy Cross" },
                 { quote: "Got my feels back in one session.", name: "Brooks Burdine", tag: "Zero Offers → Air Force Academy (D1) + MLB Draft Letters" },
                 { quote: "His approach is spot on — he tailors the program to the individual. He takes the player's natural swing and adds small, incremental tweaks to get the most out of it. Buy in is 100%.", name: "Travis Foster", tag: "Parent · Ryan Foster's Dad" },
+                { quote: "My line drive percentage went from 41 to 57. Miss hit a ball and still got a double — Baseball's just more fun now.", name: "Saul Trevino", tag: "JUCO → Oklahoma Wesleyan University · .407 AVG / 1.140 OPS" },
+                { quote: "His aura is bigger. He knows where he's at and what he's doing. When he looks comfortable, he plays phenomenal.", name: "Alma Trevino", tag: "Parent · Saul's Mom" },
+                { quote: "Y'all have worked wonders with me. It just clicked. Batted .385 for the whole season, .550 in district, 39 hits.", name: "Hudson Sharp", tag: "High School · .385 Season · .550 in District · 39 Hits" },
+                { quote: "I'm doing the piggyback every day. I could just tell the balls come off harder — I could just see the difference. Four home runs in six games.", name: "Daunte Stuart", tag: "Indy Ball → Philadelphia Phillies · 4 HR in 6 Games" },
+                { quote: "My swing has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.", name: "Spencer Dailey", tag: "D3 P.O. → Upper Iowa University · +5 MPH Bat Speed" },
+                { quote: "I ended up hitting a distance PR and an exit velocity PR in the same day after a 30-minute call. I've gone from a scared hitter to crushing the ball to all sides of the field.", name: "Max Frazier", tag: "High School · 87 MPH EV PR Beat Day 1 of Week 2" },
+                { quote: "Completely changed my game. After working with Jantzen I had one of my best hitting seasons. He doesn't change you — he just makes you better.", name: "Benjamin Wallace", tag: "Player · 5★" },
+                { quote: "He takes the player's natural swing and adds small, incremental tweaks to get the most out of it versus trying to rebuild the entire swing entirely.", name: "Barney Wiley", tag: "Parent · 10 Years" },
+                { quote: "Has gave me a lot of confidence in my swing.", name: "Luke Hargis", tag: "High School Catcher" },
+                { quote: "Jantzen is one of the most encouraging, positive, and knowledgeable coaches I've ever worked with. He truly cares about the players he works with.", name: "Courtney Gregory", tag: "Parent" },
+                { quote: "Working with Jantzen has been a game changer. His knowledge of the game at the highest level really shows.", name: "Ethan Ketterer", tag: "High School · Liberty HS TX" },
+                { quote: "Jantzen has completely changed my approach to hitting. I feel so much more confident and relaxed at the plate.", name: "Graham TooGood", tag: "D2 · Jamestown" },
+                { quote: "Best hitting coach I've ever worked with. He simplifies everything and makes it make sense.", name: "Ryan Duffy", tag: "High School" },
+                { quote: "Jantzen helped me understand my swing in a way no other coach ever has. The improvement has been incredible.", name: "Anthony Della Rosa", tag: "High School" },
+                { quote: "The feedback is always specific and actionable. Never generic. Always exactly what I need to hear.", name: "Toufic", tag: "JUCO · 5★" },
+                { quote: "Jantzen helped me go from barely getting on base to being one of the best hitters on my team.", name: "Brady Greene", tag: "High School · 5★" },
+                { quote: "The improvement in the mindset of hitting has been amazing.", name: "Barney Wiley (2)", tag: "Parent · 10 Years" },
+                { quote: "Sam went from 91 to 94 exit velocity and added 4-6 MPH off flips in just 2 weeks.", name: "Sam Campin", tag: "College · Eastern University · 91 → 94 EV" },
               ].map(({ quote, name, tag }) => (
                 <div key={name} style={{ backgroundColor: "#fafaf8", padding: "2rem", border: "1px solid #e8e4de" }}>
                   <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "2rem", lineHeight: 0.8, color: crimson, marginBottom: "0.75rem" }}>&ldquo;</div>
