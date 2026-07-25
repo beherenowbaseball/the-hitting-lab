@@ -81,6 +81,14 @@ export default function EmailGate({ onUnlock }: Props) {
       webhook_ok: webhookOk,
     });
 
+    // Fire Meta Pixel Lead event
+    if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
+      (window as unknown as Record<string, (...args: unknown[]) => void>).fbq("track", "Lead", {
+        content_name: "32-Drill Framework",
+        content_category: "Baseball Hitting",
+      });
+    }
+
     setLoading(false);
     onUnlock();
     // Redirect to the post-opt-in drills page with welcome video

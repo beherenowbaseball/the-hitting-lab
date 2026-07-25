@@ -22,6 +22,13 @@ export default function ThankYou() {
   useEffect(() => {
     window.trackEvent?.("booking_confirmed", { page: "/thank-you" });
     window.scrollTo(0, 0);
+    // Fire Meta Pixel Schedule event — booking confirmed
+    if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
+      (window as unknown as Record<string, (...args: unknown[]) => void>).fbq("track", "Schedule", {
+        content_name: "Hitting Strategy Session",
+        content_category: "Baseball Coaching",
+      });
+    }
   }, []);
 
   return (
