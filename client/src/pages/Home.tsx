@@ -378,10 +378,19 @@ export default function Home() {
         }}>
           {[0, 1].map((copy) => (
             <div key={copy} style={{ display: "flex", alignItems: "center", gap: "0", flexShrink: 0 }}>
-              {[
-                { name: "Brady Lester", result: "D3 → NAIA → Ohio State University", stat: ".337 AVG · 10 HR · 49 RBI" },
-                { name: "Brooks Burdine", result: "Zero offers → D1 (Air Force Academy)", stat: "Starting Freshman" },
-                { name: "Dominic", result: "Cal → Arizona State (PAC 12)", stat: ".276 AVG · 10 HR" },
+              {              [
+                { name: "Parker Sobiesiak", result: "JUCO → 4-Year Scholarship", stat: ".209 → .421 AVG in Conference" },
+                { name: "Brady Lester", result: "NAIA → Ohio State University", stat: ".337 AVG · 10 HR · 49 RBI" },
+                { name: "Dom", result: "D1 Arizona State", stat: ".220/4 HR → .275/10 HR" },
+                { name: "Hudson Sharp", result: "High School", stat: ".385 Season · .550 District · 39 Hits" },
+                { name: "Saul Trevino", result: "JUCO → Transferring to Texas", stat: "Line Drive % 41% → 57%" },
+                { name: "Sam Campin", result: "JUCO", stat: "91 → 94 EV · +4-6 MPH" },
+                { name: "Ryan Foster", result: "D2, University of Jamestown", stat: "2 Hits → Barreling Every Game" },
+                { name: "Brooks Burdine", result: "Air Force Academy Scholarship", stat: "MLB Draft Letters" },
+                { name: "Tony Woodie", result: "P.O. → Single Season HR & RBI Record", stat: "3 HR → 8 HR" },
+                { name: "Max Fraizer", result: "High School", stat: "87 MPH EV PR → Beat It Week 2" },
+                { name: "Spencer Dailey", result: "D3 P.O. → 2-Way Player, Upper Iowa", stat: "+5 MPH Bat Speed" },
+                { name: "Teddy Stephenson", result: "HS → University of the Holy Cross", stat: "" },
               ].map(({ name, result, stat }) => (
                 <div key={name} style={{ display: "flex", alignItems: "center", gap: "2rem", padding: "0.85rem 2.5rem" }}>
                   <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>{name}</span>
