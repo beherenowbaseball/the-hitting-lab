@@ -333,7 +333,7 @@ export default function Apply() {
       <section style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "5rem 0" }}>
         <div className="container">
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem", textAlign: "center" }}>What They're Saying</p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>Every review. Unfiltered.</h2>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>What Our Players Say.</h2>
           <div className="grid md:grid-cols-3" style={{ gap: "1px", backgroundColor: "oklch(0.95 0.003 80)" }}>
             {[
               { quote: "I was so far down in the dumps and I found you as a resource. This is really life-changing. Finished .350 avg, .421 in conference, .468 OBP, .614 SLG. Earned a 4-year scholarship.", name: "Parker Sobiesiak", tag: "Player · JUCO → 4-Year Scholarship" },
