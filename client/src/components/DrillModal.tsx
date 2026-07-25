@@ -173,21 +173,6 @@ export default function DrillModal({ drill, onClose }: Props) {
             </span>
           </div>
 
-          {/* Story angle */}
-          <div className="mb-6">
-            <p
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontStyle: "italic",
-                fontSize: "1.05rem",
-                color: "oklch(0.25 0.005 65)",
-                lineHeight: 1.6,
-              }}
-            >
-              "{drill.storyAngle}"
-            </p>
-          </div>
-
           {/* Details grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             <div>
