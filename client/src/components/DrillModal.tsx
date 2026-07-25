@@ -64,7 +64,7 @@ export default function DrillModal({ drill, onClose }: Props) {
           ×
         </button>
 
-        {/* YouTube embed */}
+        {/* YouTube embed(s) */}
         <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "#000" }}>
           <iframe
             src={getYouTubeEmbedUrl(drill.videoUrl)}
@@ -80,6 +80,28 @@ export default function DrillModal({ drill, onClose }: Props) {
             }}
           />
         </div>
+        {drill.videoUrl2 && (
+          <div>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", padding: "0.75rem 1.5rem 0.25rem", backgroundColor: "#000" }}>
+              Also Watch
+            </p>
+            <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "#000" }}>
+              <iframe
+                src={getYouTubeEmbedUrl(drill.videoUrl2)}
+                title={`${drill.name} — Part 2`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0, left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* Content */}
         <div className="p-6 md:p-8">

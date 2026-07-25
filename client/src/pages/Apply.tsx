@@ -431,7 +431,7 @@ export default function Apply() {
               Apply for a Strategy Session
             </p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.8rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "1rem" }}>
-              If you've read this far,<br />you already know what to do.
+              Your window is closing.<br />Let's help you hit the ball harder, more often, with less effort — guaranteed.
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.45 0.01 65)", marginBottom: "1rem", maxWidth: "520px", margin: "0 auto 1rem" }}>
               This isn't a sales pitch. It's an honest look at what's happening with your swing and exactly what we need to do to fix it. No pressure. Just a plan.

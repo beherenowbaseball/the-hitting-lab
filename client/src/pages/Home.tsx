@@ -398,27 +398,27 @@ export default function Home() {
       {/* ── CREDIBILITY BRIDGE ───────────────────────────────── */}
       <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem", alignItems: "start" }}>
-            {/* LEFT — Photo stack */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem", alignItems: "stretch" }}>
+            {/* LEFT — Photo stack — stretches to match copy column height */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <div style={{ position: "relative" }}>
+              <div style={{ position: "relative", flex: "1 1 auto" }}>
                 <img
                   src="/jantzen-young.jpg"
                   alt="Young Jantzen Witte at Perfect Game tournament"
-                  style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top", maxHeight: "340px" }}
+                  style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", objectPosition: "top", minHeight: "280px" }}
                 />
                 <div style={{ position: "absolute", bottom: "0.75rem", left: "0.75rem", backgroundColor: "rgba(8,8,8,0.75)", padding: "0.4rem 0.75rem" }}>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", margin: 0 }}>Perfect Game Tournament · 2007</p>
                 </div>
               </div>
-              <div style={{ position: "relative" }}>
+              <div style={{ position: "relative", flex: "1 1 auto" }}>
                 <img
                   src="/jantzen-japan.jpg"
-                  alt="Jantzen Witte celebrating with Seibu Lions in Japan"
-                  style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top", maxHeight: "220px" }}
+                  alt="My first major league home run with the Seibu Lions"
+                  style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", objectPosition: "top", minHeight: "200px" }}
                 />
                 <div style={{ position: "absolute", bottom: "0.75rem", left: "0.75rem", backgroundColor: "rgba(8,8,8,0.75)", padding: "0.4rem 0.75rem" }}>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", margin: 0 }}>Seibu Lions · Nippon Professional Baseball</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", margin: 0 }}>My first major league home run · Seibu Lions</p>
                 </div>
               </div>
             </div>
@@ -725,7 +725,7 @@ export default function Home() {
               The 90 Day Athlete Accelerator
             </p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.8rem)", color: "white", lineHeight: 1.2, marginBottom: "2rem" }}>
-              Your window is closing.<br />Let's build your best swing.
+              Your window is closing.<br />Let's help you hit the ball harder, more often, with less effort — guaranteed.
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.45)", marginBottom: "1.5rem" }}>
               If you've made it this far, you already know something needs to change. Apply for a free strategy session. No pitch. No pressure. Just an honest look at what's happening with your swing and exactly what we need to do to fix it.

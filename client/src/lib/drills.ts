@@ -10,6 +10,7 @@ export interface Drill {
   howToRunIt: string;
   coachingCues: string;
   videoUrl: string;
+  videoUrl2?: string;
   thumbnailUrl: string;
   storyAngle: string;
 }
@@ -25,13 +26,14 @@ export const drills: Drill[] = [
     name: "Piggyback Drill",
     slug: "piggyback-drill",
     category: "standard",
-    villain: "The 'stay back' cue",
-    tagline: "Fixes the most common stride flaw in youth baseball",
+    villain: "Getting stuck back. Falling forward.",
+    tagline: "Helps you feel your launch position",
     whatItIs: "A partner gets on your back while you execute your forward stride, forcing your body to find its strongest, most balanced hitting position automatically.",
-    whyWeDoit: "The 'stay back' cue sounds right but quietly destroys power. This drill removes the option to go backward — your body is forced to find its strongest position without thinking.",
-    howToRunIt: "Have a partner get on your back piggyback-style. Start in your normal stance. Take your stride forward. Feel where your weight naturally lands — that's your real hitting position.",
-    coachingCues: "Don't try to 'stay back.' Let the weight pull you forward. Notice how much longer and more aggressive your stride is compared to your normal swing.",
+    whyWeDoit: "We want you to feel your launch position. Once you feel it, you start to notice when you're not getting to it. This also helps you clean up your load and might show you that you don't need to shift backwards in your load.",
+    howToRunIt: "Have a partner get on your back piggyback-style. Start in your normal stance. Take your stride forward. Feel where your weight naturally lands — that's your real launch position.",
+    coachingCues: "Counter rotate your shoulders as you move forward to help you feel like you're staying back as you're moving forward.",
     videoUrl: "https://www.youtube.com/watch?v=XZErWca31uM",
+    videoUrl2: "https://youtu.be/e2HPp_EMYls",
     thumbnailUrl: yt("XZErWca31uM"),
     storyAngle: "The hitter who had the 'perfect' stride — and why it was secretly destroying his power.",
   },
