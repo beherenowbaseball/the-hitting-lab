@@ -303,7 +303,7 @@ export default function Home() {
             }}>
               Stop overthinking. Swing naturally.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }} className="sm:flex-row">
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", width: "100%" }} className="sm:flex-row sm:w-auto">
               <button
                 onClick={() => {
                   if (isUnlocked) {
@@ -324,8 +324,9 @@ export default function Home() {
                   padding: "0.9rem 1.75rem",
                   cursor: "pointer",
                   transition: "opacity 0.2s",
-                  width: "fit-content",
+                  width: "100%",
                 }}
+                className="sm:w-auto"
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
@@ -344,8 +345,9 @@ export default function Home() {
                   padding: "0.9rem 1.75rem",
                   cursor: "pointer",
                   transition: "background-color 0.2s",
-                  width: "fit-content",
+                  width: "100%",
                 }}
+                className="sm:w-auto"
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)")}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
                   onClick={() => { window.trackEvent?.("watch_video_click", { location: "hero" }); window.location.href = "/apply"; }}
@@ -413,7 +415,7 @@ export default function Home() {
       {/* ── CREDIBILITY BRIDGE ───────────────────────────────── */}
       <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem", alignItems: "stretch" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "2rem", alignItems: "stretch" }}>
             {/* LEFT — Photo stack — stretches to match copy column height */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <div style={{ position: "relative", flex: "1 1 auto" }}>
@@ -472,7 +474,7 @@ export default function Home() {
       </section>
 
       {/* ── PROBLEM (black chapter break) ───────────────────── */}
-      <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "5rem 0" }}>
+      <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "clamp(3rem, 8vw, 5rem) 0" }}>
         <div className="container">
           <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1.25rem" }}>
@@ -643,7 +645,7 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIALS ─────────────────────────────────────── */}
-      <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "5rem 0" }}>
+      <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "clamp(3rem, 8vw, 5rem) 0" }}>
         <div className="container">
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1rem", textAlign: "center" }}>
             Real Results

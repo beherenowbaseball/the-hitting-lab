@@ -117,7 +117,7 @@ export default function DrillsUnlocked() {
       </nav>
 
       {/* ── Welcome Video + CTA ──────────────────────────────── */}
-      <section style={{ paddingTop: "72px", paddingBottom: "3rem", backgroundColor: "oklch(0.08 0.005 65)" }}>
+      <section style={{ paddingTop: "72px", paddingBottom: "clamp(1.5rem, 5vw, 3rem)", backgroundColor: "oklch(0.08 0.005 65)" }}>
         <div style={{ maxWidth: "760px", margin: "0 auto", padding: "2rem 1.5rem 0" }}>
 
           {/* Video */}
@@ -226,9 +226,9 @@ export default function DrillsUnlocked() {
         position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40,
         backgroundColor: "oklch(0.08 0.005 65)",
         borderTop: "1px solid oklch(0.2 0.005 65)",
-        padding: "0.75rem 1.5rem",
+        padding: "0.6rem 1rem",
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        gap: "1rem", flexWrap: "wrap",
+        gap: "0.5rem", flexWrap: "wrap",
       }}>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 300, color: "rgba(255,255,255,0.75)", margin: 0 }}>
           Want feedback on your swings as you work through the drills?

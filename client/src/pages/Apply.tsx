@@ -161,7 +161,7 @@ export default function Apply() {
             <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
               <a
                 href="#booking"
-                onClick={(e) => { e.preventDefault(); document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' }); (window as any).trackEvent?.('booking_click', { location: 'below_vsl' }); }}
+                onClick={(e) => { e.preventDefault(); const el = document.getElementById('booking'); if (el) { const y = el.getBoundingClientRect().top + window.scrollY - 20; window.scrollTo({ top: y, behavior: 'smooth' }); } (window as any).trackEvent?.('booking_click', { location: 'below_vsl' }); }}
                 style={{
                   display: "inline-block",
                   fontFamily: "'Inter', sans-serif",
@@ -404,6 +404,7 @@ export default function Apply() {
               { quote: "Got my feels back in one session.", name: "Brooks Burdine", tag: "Player · Air Force Academy Scholarship + MLB Draft Letters" },
               { quote: "I ended up hitting a distance PR and an exit velocity PR in the same day after a 30-minute call. I've gone from a pushy, scared hitter to more confident than ever, crushing the ball to all sides of the field.", name: "Max Fraizer", tag: "Player · 87 MPH EV → PR in Week 2" },
               { quote: "Working with Jantzen this year has been a blast! He transformed my swing in ways that didn't seem within my capabilities at first, but I trusted his process and the results speak for itself!", name: "Anthony Della Rosa", tag: "Player · High School" },
+              { quote: "I feel a million times better than I did before I went to school. Honestly, it was a dark spot for me. Confidence wasn't there at all. But I just feel a million times better. And it's not only baseball — this has helped a lot with me.", name: "Teddy Stephenson", tag: "Player · HS → University of the Holy Cross" },
               { quote: "Yeah dude best swings of my life just like you said.", name: "Toufic", tag: "Player · JUCO" },
               { quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. The podcast-style Zoom calls with pro players and coaches have been unreal. Witte's experience shows in everything he does.", name: "Brady Lester", tag: "Player · NAIA → Ohio State University" },
               { quote: "The big game changer for me is having a big league player/coach in my corner. In game so far I'm hitting .497 with 8 doubles, 4 HRs, and 24 RBIs in just 16 games.", name: "Alex Martinez", tag: "Player" },
@@ -458,7 +459,7 @@ export default function Apply() {
       </section>
 
       {/* ── BOOKING SECTION ─────────────────────────────────── */}
-      <section id="booking" style={{ padding: "5rem 0" }}>
+      <section id="booking" style={{ padding: "clamp(2.5rem, 8vw, 5rem) 0" }}>
         <div className="container">
           <div style={{ maxWidth: "760px", margin: "0 auto", textAlign: "center" }}>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1.25rem" }}>
@@ -478,7 +479,7 @@ export default function Apply() {
             <div
               style={{
                 border: "1px solid oklch(0.88 0.005 80)",
-                minHeight: "700px",
+                minHeight: "clamp(800px, 120vw, 900px)",
                 overflow: "hidden",
               }}
               onClick={handleBookingClick}
@@ -486,7 +487,7 @@ export default function Apply() {
               <iframe
                 src="https://api.leadconnectorhq.com/widget/bookings/jantzen"
                 title="Apply for a Strategy Session — Jantzen Witte"
-                style={{ width: "100%", height: "700px", border: "none" }}
+                style={{ width: "100%", height: "clamp(800px, 120vw, 900px)", border: "none" }}
                 scrolling="yes"
               />
             </div>
