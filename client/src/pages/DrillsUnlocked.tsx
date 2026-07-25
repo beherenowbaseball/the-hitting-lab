@@ -208,7 +208,7 @@ export default function DrillsUnlocked() {
                 }}
                 className="sm:min-w-[320px] sm:w-[320px]"
               >
-                <DrillCard drill={drill} index={idx % filteredDrills.length} onClick={() => setSelectedDrill(drill)} />
+                <DrillCard drill={drill} onClick={() => setSelectedDrill(drill)} />
               </div>
             ))}
           </div>
@@ -217,6 +217,37 @@ export default function DrillsUnlocked() {
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "1.5rem 1.5rem 0" }}>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "oklch(0.65 0.008 65)", textAlign: "center" }}>
             Showing {filteredDrills.length} drills
+          </p>
+        </div>
+      </section>
+
+      {/* ── Bottom CTA Section ─────────────────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.08 0.005 65)", padding: "clamp(3rem, 8vw, 5rem) 0", paddingBottom: "calc(clamp(3rem, 8vw, 5rem) + 60px)" }}>
+        <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 1.5rem", textAlign: "center" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1rem" }}>
+            Ready to go further?
+          </p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.5rem, 4vw, 2.2rem)", color: "white", lineHeight: 1.2, marginBottom: "1rem" }}>
+            Doing the drills will help.<br />Getting feedback will change everything.
+          </h2>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", marginBottom: "2rem" }}>
+            Want us to watch your swings, identify exactly what needs to change, and build a custom plan around your specific flaws?
+          </p>
+          <a
+            href="/apply"
+            onClick={() => (window as any).trackEvent?.("booking_click", { location: "drills_bottom" })}
+            style={{
+              display: "inline-block",
+              fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 700,
+              letterSpacing: "0.15em", textTransform: "uppercase",
+              backgroundColor: "oklch(0.42 0.18 25)", color: "white",
+              padding: "1rem 2.5rem", textDecoration: "none",
+            }}
+          >
+            Book a Strategy Session →
+          </a>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 300, color: "rgba(255,255,255,0.3)", letterSpacing: "0.05em", marginTop: "1rem" }}>
+            +5 MPH exit velocity guaranteed in 30 days — or we work with you for free.
           </p>
         </div>
       </section>

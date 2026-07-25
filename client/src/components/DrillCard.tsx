@@ -25,11 +25,9 @@ export default function DrillCard({ drill, onClick, locked = false, onUnlockClic
 
   return (
     <article
-      className="bg-white group cursor-pointer overflow-hidden"
+      className="bg-white group cursor-pointer overflow-hidden drill-card-hover"
       onClick={handleClick}
-      style={{ transition: "box-shadow 0.2s ease", position: "relative" }}
-      onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12)")}
-      onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
+      style={{ position: "relative" }}
     >
       {/* YouTube Thumbnail */}
       <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>

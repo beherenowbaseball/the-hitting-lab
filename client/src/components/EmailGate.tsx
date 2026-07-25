@@ -17,6 +17,12 @@ interface Props {
   onUnlock: () => void;
 }
 
+const GHL_WEBHOOK = "https://services.leadconnectorhq.com/hooks/UtNl0ujIXlsH5AXSkQYf/webhook-trigger/948f86f0-14b1-475c-a92d-f38771abd33e";
+
+function isValidEmail(v: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+}
+
 export default function EmailGate({ onUnlock }: Props) {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,22 +30,26 @@ export default function EmailGate({ onUnlock }: Props) {
   const [error, setError] = useState("");
   const [, setLocation] = useLocation();
 
-  const isValid = firstName.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-
-  const GHL_WEBHOOK = "https://services.leadconnectorhq.com/hooks/UtNl0ujIXlsH5AXSkQYf/webhook-trigger/948f86f0-14b1-475c-a92d-f38771abd33e";
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isValid) {
-      setError("Please enter your name and a valid email address.");
+
+    // Client-side validation
+    if (!firstName.trim()) {
+      setError("Please enter your first name.");
       return;
     }
+    if (!isValidEmail(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
     setLoading(true);
     setError("");
 
-    // Fire GHL webhook — fire-and-forget, don't block unlock on response
+    // POST to GHL webhook — check response status
+    let webhookOk = false;
     try {
-      await fetch(GHL_WEBHOOK, {
+      const res = await fetch(GHL_WEBHOOK, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -49,18 +59,26 @@ export default function EmailGate({ onUnlock }: Props) {
           tags: ["hitting-lab-lead"],
         }),
       });
-    } catch (_) {
-      // Silently ignore network errors — still unlock the library
+      webhookOk = res.ok;
+      if (!res.ok) {
+        // Log for debugging but don't block the user
+        console.warn("GHL webhook returned", res.status);
+      }
+    } catch (err) {
+      // Network error — still unlock so we never lose a lead
+      console.warn("GHL webhook network error:", err);
     }
 
-    // Store in localStorage so they don't see the gate again
+    // Always unlock regardless of webhook status — never lose a lead
     localStorage.setItem("thl_unlocked", "1");
     localStorage.setItem("thl_name", firstName.trim());
+    localStorage.setItem("thl_email", email.trim());
 
     // Fire GA4 email opt-in event
     window.trackEvent?.("email_opt_in", {
       method: "drill_gate",
       first_name: firstName.trim(),
+      webhook_ok: webhookOk,
     });
 
     setLoading(false);
@@ -117,7 +135,7 @@ export default function EmailGate({ onUnlock }: Props) {
               flexShrink: 0,
             }}
           >
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>H</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>B</span>
           </div>
           <div>
             <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "oklch(0.12 0.005 65)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</div>
@@ -153,7 +171,7 @@ export default function EmailGate({ onUnlock }: Props) {
         </p>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
           <div>
             <label
               htmlFor="gate-name"
@@ -172,10 +190,12 @@ export default function EmailGate({ onUnlock }: Props) {
             </label>
             <input
               id="gate-name"
+              name="firstName"
               type="text"
-              placeholder="Jantzen"
+              required
+              placeholder="Ryan"
               value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e) => { setFirstName(e.target.value); if (error) setError(""); }}
               autoComplete="given-name"
               style={{
                 width: "100%",
@@ -214,10 +234,12 @@ export default function EmailGate({ onUnlock }: Props) {
             </label>
             <input
               id="gate-email"
+              name="email"
               type="email"
+              required
               placeholder="you@email.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => { setEmail(e.target.value); if (error) setError(""); }}
               autoComplete="email"
               style={{
                 width: "100%",

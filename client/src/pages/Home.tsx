@@ -17,6 +17,19 @@ import VSLModal from "@/components/VSLModal";
 import EmailGate from "@/components/EmailGate";
 import type { Drill } from "@/lib/drills";
 
+// Lightweight scroll-reveal hook — no external deps
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } }),
+      { threshold: 0.12 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
 const CARD_WIDTH_MOBILE = 260;
 const CARD_WIDTH_DESKTOP = 320;
 const CARD_GAP = 1;
@@ -31,6 +44,8 @@ export default function Home() {
   const [showVSL, setShowVSL] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(() => !!localStorage.getItem("thl_unlocked"));
   const [showGate, setShowGate] = useState(false);
+
+  useReveal();
 
   const handleUnlock = () => {
     setIsUnlocked(true);
@@ -153,14 +168,11 @@ export default function Home() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {["Drills", "About", "Work With Me"].map((label) => (
+          <div className="hidden md:flex items-center gap-6">
+            {["Drills", "About"].map((label) => (
               <button
                 key={label}
-                onClick={() => {
-                  if (label === "Drills") scrollToDrills();
-                  else if (label === "Work With Me") window.location.href = '/apply';
-                }}
+                onClick={() => { if (label === "Drills") scrollToDrills(); }}
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: "0.65rem",
@@ -179,6 +191,27 @@ export default function Home() {
                 {label}
               </button>
             ))}
+            {/* Persistent Apply Now CTA */}
+            <a
+              href="/apply"
+              onClick={() => window.trackEvent?.("booking_click", { location: "nav" })}
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.6rem",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                backgroundColor: "oklch(0.42 0.18 25)",
+                color: "white",
+                padding: "0.55rem 1.1rem",
+                textDecoration: "none",
+                transition: "opacity 0.2s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            >
+              Apply Now →
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -417,7 +450,7 @@ export default function Home() {
       {/* ── CREDIBILITY BRIDGE ───────────────────────────────── */}
       <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "2rem", alignItems: "stretch" }}>
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "2rem", alignItems: "stretch" }}>
             {/* LEFT — Photo stack — stretches to match copy column height */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <div style={{ position: "relative", flex: "1 1 auto" }}>
@@ -563,7 +596,7 @@ export default function Home() {
           {carouselDrills.map((drill, idx) => {
             // Each "copy" of the list — figure out position within one set
             const posInSet = idx % filteredDrills.length;
-            const FREE_COUNT = 5;
+            const FREE_COUNT = 4;
             const locked = !isUnlocked && posInSet >= FREE_COUNT;
             return (
               <div
@@ -599,7 +632,7 @@ export default function Home() {
                       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
                     <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "1rem", color: "white", lineHeight: 1.4, marginBottom: "0.75rem" }}>
-                      You've seen 5 of {filteredDrills.length}.
+                      You've seen 4 of {filteredDrills.length}.
                     </p>
                     <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 300, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: "1.25rem" }}>
                       Enter your email to unlock<br />the full library — free.
@@ -652,7 +685,7 @@ export default function Home() {
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1rem", textAlign: "center" }}>
             Real Results
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "white", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>
+          <h2 className="reveal" style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "white", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>
             What players and parents are saying.
           </h2>
           <div className="grid md:grid-cols-3" style={{ gap: "1px", backgroundColor: "oklch(0.18 0.005 65)" }}>
