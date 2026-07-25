@@ -139,14 +139,7 @@ export default function DrillCard({ drill, onClick, locked = false, onUnlockClic
         >
           {drill.tagline}
         </p>
-        <div className="flex items-start gap-1.5">
-          <span style={{ fontFamily: "'Inter', sans-serif", color: "oklch(0.65 0.008 65)", fontSize: "0.65rem", flexShrink: 0 }}>
-            Fixes:
-          </span>
-          <span style={{ fontFamily: "'Inter', sans-serif", color: "oklch(0.42 0.18 25)", fontSize: "0.65rem", fontWeight: 500 }}>
-            {drill.villain}
-          </span>
-        </div>
+
       </div>
     </article>
   );
