@@ -360,6 +360,69 @@ export default function Apply() {
         </div>
       </section>
 
+      {/* ── ALL TESTIMONIALS WALL ───────────────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "5rem 0" }}>
+        <div className="container">
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem", textAlign: "center" }}>What They're Saying</p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>Every review. Unfiltered.</h2>
+          <div className="grid md:grid-cols-3" style={{ gap: "1px", backgroundColor: "oklch(0.88 0.005 80)" }}>
+            {[
+              { quote: "Before working with Jantzen, I felt tight and unable to get a good, hard, competitive swing. I definitely felt like I was put into better positions to attack the ball and do damage on mistake pitches.", name: "Chase Wells", tag: "Player" },
+              { quote: "In game so far I'm hitting .497 with 8 doubles, 4 HRs, and 24 RBIs in just 16 games. Having a coach like Jantzen giving you big league drills and cues is a true gamechanger.", name: "Alex Martinez", tag: "Player" },
+              { quote: "My swing has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.", name: "Spencer Dailey", tag: "Player" },
+              { quote: "I ended up hitting a distance PR and an exit velocity PR in the same day after a 30-minute call. I've gone from a scared hitter to crushing the ball to all sides of the field.", name: "Max Frazier", tag: "Player" },
+              { quote: "Completely changed my game. After working with him I had one of my best hitting seasons. He doesn't change you — he just makes you better.", name: "Benjamin Wallace", tag: "Player" },
+              { quote: "This guy is legit. Teaches you to find YOUR swing, not somebody else's. This is the best my swing has ever felt.", name: "Brady Greene", tag: "Player" },
+              { quote: "Working with Jantzen this year has been a blast! He has transformed my swing in ways that didn't seem within my capabilities at first, but I trusted his process and the results speak for itself!", name: "Anthony Della Rosa", tag: "Player" },
+              { quote: "My experience has been great — there are over 50 guys in here and somehow it still feels like I'm the only one getting trained. This is ran really well and I'm getting better every day.", name: "Tony Woodie", tag: "Player" },
+              { quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.", name: "Brady Lester", tag: "Player · Ohio State University" },
+              { quote: "Cade led his team with a .474 average thanks to Jantzen's tailored approach. If you're a parent weighing the options, Jantzen is your guy — endlessly positive, adaptable, and committed.", name: "Cade's Mom", tag: "Parent" },
+              { quote: "He takes the player's natural swing and adds small, incremental tweaks to get the most out of it — versus trying to rebuild the entire swing. The feedback is always quick and chocked full of information.", name: "Travis Foster", tag: "Parent" },
+              { quote: "Jantzen has been a mainstay in my sons' development for the past 10 years. He keeps it simple, to the point, and fun — and the improvement in the mindset of hitting has been amazing.", name: "Barney Wiley", tag: "Parent" },
+            ].map(({ quote, name, tag }) => (
+              <div key={name} style={{ backgroundColor: "white", padding: "1.75rem" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "0.75rem" }}>&ldquo;</div>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "0.9rem", color: "oklch(0.25 0.005 65)", lineHeight: 1.6, marginBottom: "1.25rem" }}>{quote}</p>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+                  <div style={{ width: "24px", height: "24px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.65rem", color: "white" }}>{name[0]}</span>
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, color: "oklch(0.12 0.005 65)", margin: 0 }}>{name}</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.5rem", fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", margin: 0 }}>{tag}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ───────────────────────────────────────────────── */}
+      <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
+        <div className="container">
+          <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem", textAlign: "center" }}>Common Questions</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>Everything you want to know before the call.</h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+              {[
+                { q: "How does the feedback work?", a: "You record your swings and send them to us through our private community. We watch every video and send back specific, personalized feedback — not generic cues. You'll know exactly what to work on before your next session." },
+                { q: "Do I need special equipment?", a: "No. You need a bat, a tee or a net, and a phone to record your swings. We ship you a tripod as part of the program so your setup is consistent every session." },
+                { q: "How is this different from my current coach?", a: "Most coaches give you more to think about. We do the opposite. We identify the one or two things that are actually causing your inconsistency and build a simple, repeatable plan around your natural swing — not a template." },
+                { q: "What if I don't see results in 30 days?", a: "We guarantee +5 MPH to your exit velocity in 30 days — or we work with you for free until you do. If you don't care about exit velo, we guarantee your swing will feel more natural than it ever has. We stand behind this completely." },
+                { q: "How much does it cost?", a: "We discuss investment on the strategy session call after we understand exactly where you are and what you need. We don't post pricing publicly because every athlete's situation is different. What I can tell you is that it's significantly less than a year of private lessons that aren't working." },
+                { q: "My son has a coach already. Can he still work with you?", a: "Yes. Most of our athletes have team coaches. We work alongside your existing coaching — we don't replace it. We focus on the individual swing development and mental approach that team coaches don't have time for." },
+              ].map(({ q, a }, i) => (
+                <div key={i} style={{ borderTop: "1px solid oklch(0.90 0.005 80)", padding: "1.5rem 0" }}>
+                  <p style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1rem", color: "oklch(0.12 0.005 65)", marginBottom: "0.6rem" }}>{q}</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.45 0.01 65)", margin: 0 }}>{a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── BOOKING SECTION ─────────────────────────────────── */}
       <section id="booking" style={{ padding: "5rem 0" }}>
         <div className="container">
@@ -368,10 +431,13 @@ export default function Apply() {
               Apply for a Strategy Session
             </p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.8rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "1rem" }}>
-              Your window is closing.<br />Let's get to work.
+              If you've read this far,<br />you already know what to do.
             </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.45 0.01 65)", marginBottom: "2.5rem", maxWidth: "520px", margin: "0 auto 2.5rem" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.45 0.01 65)", marginBottom: "1rem", maxWidth: "520px", margin: "0 auto 1rem" }}>
               This isn't a sales pitch. It's an honest look at what's happening with your swing and exactly what we need to do to fix it. No pressure. Just a plan.
+            </p>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "oklch(0.42 0.18 25)", letterSpacing: "0.08em", marginBottom: "2.5rem" }}>
+              I only open 5 new spots per month to ensure every athlete gets my full attention.
             </p>
 
             {/* GHL Booking Embed */}

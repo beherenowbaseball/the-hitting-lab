@@ -159,7 +159,7 @@ export default function Home() {
                 key={label}
                 onClick={() => {
                   if (label === "Drills") scrollToDrills();
-                  else if (label === "Work With Me") window.open('https://api.leadconnectorhq.com/widget/bookings/jantzen', '_blank');
+                  else if (label === "Work With Me") window.location.href = '/apply';
                 }}
                 style={{
                   fontFamily: "'Inter', sans-serif",
@@ -203,7 +203,7 @@ export default function Home() {
               {["Drills", "About", "Work With Me"].map((item) => (
                 <button
                   key={item}
-                  onClick={() => { setMenuOpen(false); if (item === "Drills") scrollToDrills(); else if (item === "Work With Me") window.open('https://api.leadconnectorhq.com/widget/bookings/jantzen', '_blank'); }}
+                  onClick={() => { setMenuOpen(false); if (item === "Drills") scrollToDrills(); else if (item === "Work With Me") window.location.href = '/apply'; }}
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "0.65rem",
@@ -734,6 +734,29 @@ export default function Home() {
             >
               Apply for a Strategy Session →
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── THE JOURNEY (Ichiro photo) ─────────────────────────── */}
+      <section style={{ position: "relative", overflow: "hidden" }}>
+        <img
+          src="/jantzen-ichiro.jpg"
+          alt="Jantzen Witte with Ichiro Suzuki at T-Mobile Park"
+          style={{ width: "100%", display: "block", maxHeight: "520px", objectFit: "cover", objectPosition: "center 20%" }}
+        />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to top, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.3) 50%, rgba(8,8,8,0.1) 100%)",
+          display: "flex", alignItems: "flex-end",
+        }}>
+          <div className="container" style={{ paddingBottom: "3rem" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "0.5rem" }}>
+              T-Mobile Park · Seattle Mariners
+            </p>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1rem, 2.5vw, 1.5rem)", color: "white", lineHeight: 1.4, maxWidth: "480px", margin: 0 }}>
+              "The best hitters I ever played with all had one thing in common — they made it look effortless."
+            </p>
           </div>
         </div>
       </section>
