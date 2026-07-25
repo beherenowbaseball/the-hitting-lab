@@ -48,10 +48,10 @@ export default function ThankYou() {
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
             <div style={{ width: "26px", height: "26px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.9rem", color: "white", lineHeight: 1 }}>B</span>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.9rem", color: "white", lineHeight: 1 }}>B</span>
             </div>
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white", letterSpacing: "0.03em", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.8rem", color: "white", letterSpacing: "0.05em", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
               <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: "rgba(255,255,255,0.45)", letterSpacing: "0.2em", textTransform: "uppercase" }}>Jantzen Witte</div>
             </div>
           </a>
@@ -77,9 +77,8 @@ export default function ThankYou() {
             </div>
 
             <h1 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic",
-              fontWeight: 400,
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
               fontSize: "clamp(2rem, 5vw, 3.4rem)",
               lineHeight: 1.1,
               color: "white",
@@ -185,9 +184,8 @@ export default function ThankYou() {
               Before The Call
             </p>
             <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic",
-              fontWeight: 400,
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
               fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
               color: "white",
               lineHeight: 1.15,
@@ -225,7 +223,7 @@ export default function ThankYou() {
                   alignItems: "flex-start",
                 }}>
                   <div style={{
-                    fontFamily: "'Playfair Display', serif",
+                    fontFamily: "'Inter', sans-serif",
                     fontWeight: 700,
                     fontSize: "clamp(2rem, 5vw, 3rem)",
                     color: "oklch(0.42 0.18 25)",
@@ -236,7 +234,7 @@ export default function ThankYou() {
                     {number}
                   </div>
                   <div>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1rem, 2.5vw, 1.2rem)", color: "white", marginBottom: "0.5rem", lineHeight: 1.2 }}>
+                    <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1rem, 2.5vw, 1.2rem)", color: "white", marginBottom: "0.5rem", lineHeight: 1.2 }}>
                       {title}
                     </h3>
                     <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", margin: 0 }}>
@@ -281,9 +279,8 @@ export default function ThankYou() {
               What Happens On The Call
             </p>
             <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic",
-              fontWeight: 400,
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
               fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
               color: "white",
               lineHeight: 1.15,
@@ -320,7 +317,7 @@ export default function ThankYou() {
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "0.75rem" }}>
                     {step}
                   </p>
-                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1rem", color: "white", marginBottom: "0.6rem", lineHeight: 1.2 }}>
+                  <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "1rem", color: "white", marginBottom: "0.6rem", lineHeight: 1.2 }}>
                     {title}
                   </h3>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.82rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", margin: 0 }}>
@@ -342,9 +339,8 @@ export default function ThankYou() {
               They Were Where You Are
             </p>
             <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic",
-              fontWeight: 400,
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
               fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
               color: "white",
               lineHeight: 1.15,
@@ -388,13 +384,13 @@ export default function ThankYou() {
                 },
               ].map(({ quote, name, tag }) => (
                 <div key={name} style={{ backgroundColor: "oklch(0.13 0.005 65)", padding: "2rem" }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", lineHeight: 0.8, color: "oklch(0.42 0.18 25)", fontStyle: "italic", marginBottom: "0.75rem" }}>&ldquo;</div>
-                  <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(0.88rem, 2vw, 1rem)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "2rem", lineHeight: 0.8, color: "oklch(0.42 0.18 25)", marginBottom: "0.75rem" }}>&ldquo;</div>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "clamp(0.88rem, 2vw, 1rem)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
                     {quote}
                   </p>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                     <div style={{ width: "28px", height: "28px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.75rem", color: "white" }}>{name[0]}</span>
+                      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.75rem", color: "white" }}>{name[0]}</span>
                     </div>
                     <div>
                       <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 600, color: "white", margin: 0 }}>{name}</p>
@@ -413,9 +409,8 @@ export default function ThankYou() {
         <div className="container">
           <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
             <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic",
-              fontWeight: 400,
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
               fontSize: "clamp(1.4rem, 3.5vw, 2rem)",
               color: "white",
               lineHeight: 1.2,
@@ -452,9 +447,8 @@ export default function ThankYou() {
               </span>
             </div>
             <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic",
-              fontWeight: 400,
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
               fontSize: "clamp(1.4rem, 3.5vw, 2rem)",
               color: "white",
               lineHeight: 1.2,
@@ -480,9 +474,9 @@ export default function ThankYou() {
         <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <div style={{ width: "18px", height: "18px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.65rem", color: "white" }}>B</span>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.65rem", color: "white" }}>B</span>
             </div>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</span>
+            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</span>
           </div>
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.18)" }}>
             © {new Date().getFullYear()} Jantzen Witte. All rights reserved.
