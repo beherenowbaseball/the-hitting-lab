@@ -243,7 +243,7 @@ export default function ThankYou() {
               {[
                 {
                   name: "Brady Lester",
-                  result: "D3 (Mount Union) → Big 10 (Ohio State)",
+                  result: "D3 (Mount Union) → NAIA → Ohio State University",
                   stats: ".337 AVG · 10 HR · 49 RBI · First Team All-OAC",
                   quote: "I stopped overthinking and just started hitting. The results followed.",
                 },

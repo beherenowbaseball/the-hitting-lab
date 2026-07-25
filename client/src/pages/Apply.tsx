@@ -233,7 +233,7 @@ export default function Apply() {
               {
                 quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.",
                 name: "Brady Lester",
-                tag: "Player · Ohio State University",
+                tag: "Player · NAIA → Ohio State University",
               },
               {
                 quote: "He takes the player's natural swing and adds small, incremental tweaks to get the most out of it — versus trying to rebuild the entire swing entirely.",
@@ -369,7 +369,7 @@ export default function Apply() {
             {[
               { quote: "Before working with Jantzen, I felt tight and unable to get a good, hard, competitive swing. I definitely felt like I was put into better positions to attack the ball and do damage on mistake pitches.", name: "Chase Wells", tag: "Player" },
               { quote: "The big game changer for me is having a big league player/coach in my corner for whenever I feel a little off. In game so far I'm hitting .497 with 8 doubles, 4 HRs, and 24 RBIs in just 16 games. Having a coach like Jantzen giving you big league drills and cues is a true gamechanger.", name: "Alex Martinez", tag: "Player" },
-              { quote: "My swing after working with Jantzen has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.", name: "Spencer Dailey", tag: "Player · Pitcher Only → 2-Way Player, Upper Iowa University" },
+              { quote: "My swing after working with Jantzen has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.", name: "Spencer Dailey", tag: "Player · D3 P.O. → 2-Way Player, Upper Iowa University" },
               { quote: "Making consistent contact with the ball all the time, and lots of strikeouts. He made an adjustment that was just a small tweak and it made a huge difference. I ended up hitting a distance PR and an exit velocity PR in the same day after a 30-minute call.", name: "Max Frazier", tag: "Player" },
               { quote: "This is arguably the most selfless environment I've seen. Everyone here loves to learn off each other and it makes this program that much better. Jantzen is a great coach and person.", name: "Aven Woods", tag: "Player" },
               { quote: "Has gave me a lot of confidence in my swing.", name: "Luke Hargis", tag: "Player" },
@@ -378,11 +378,13 @@ export default function Apply() {
               { quote: "Completely changed my game of baseball. After working with him I had one of my best hitting seasons. He doesn't change you — he just makes you better.", name: "Benjamin Wallace", tag: "Player" },
               { quote: "This guy is legit. Teaches you to find YOUR swing, not somebody else's. This is the best my swing has ever felt. Truly a game changer.", name: "Brady Greene", tag: "Player" },
               { quote: "Working with Jantzen this year has been a blast! He has transformed my swing in ways that didn't seem within my capabilities at first, but I trusted his process and the results speak for itself!", name: "Anthony Della Rosa", tag: "Player" },
-              { quote: "My experience has been great — there are over 50 guys in here and somehow it still feels like I'm the only one getting trained. This is ran really well and I'm getting better every day.", name: "Tony Woodie", tag: "Player" },
+              { quote: "My experience has been great — there are over 50 guys in here and somehow it still feels like I'm the only one getting trained. This is ran really well and I'm getting better every day.", name: "Tony Woodie", tag: "P.O. → Single Season HR & RBI Record Leader" },
               { quote: "My son has taken lessons with Jantzen off and on for much of his baseball-playing life. He has always been encouraging, positive, and knowledgeable. He truly cares about the players he works with.", name: "Courtney Gregory", tag: "Parent" },
               { quote: "Jantzen has been a mainstay in my sons' development for the past 10 years. He keeps it simple, to the point, and fun — and the improvement in the mindset of hitting has been amazing.", name: "Barney Wiley", tag: "Parent" },
               { quote: "Jantzen and his Be The Best Baseball hitting program is legit! His approach with the player is spot on as he tailors the instruction to the individual player's swing. He takes the player's natural swing and adds small, incremental tweaks to get the most out of it.", name: "Travis Foster", tag: "Parent" },
-              { quote: "I've been working with Witte for the past two months, and it's been huge for my development. It's not just drills — we talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.", name: "Brady Lester", tag: "Player · Ohio State University" },
+              { quote: "I've been working with Witte for the past two months, and it's been huge for my development. It's not just drills — we talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.", name: "Brady Lester", tag: "Player · NAIA → Ohio State University" },
+              { quote: "Working with Jantzen helped me take my game to the next level. The feedback and personalized approach made all the difference in my development.", name: "Saul Trevino", tag: "Player · JUCO → Oklahoma Wesleyan University" },
+              { quote: "Jantzen helped me simplify my swing and get back to being the hitter I knew I could be. The process works.", name: "Teddy Stephenson", tag: "Player · HS → University of the Holy Cross" },
             ].map(({ quote, name, tag }) => (
               <div key={name} style={{ backgroundColor: "white", padding: "1.75rem" }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "0.75rem" }}>&ldquo;</div>

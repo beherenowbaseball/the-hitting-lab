@@ -379,7 +379,7 @@ export default function Home() {
           {[0, 1].map((copy) => (
             <div key={copy} style={{ display: "flex", alignItems: "center", gap: "0", flexShrink: 0 }}>
               {[
-                { name: "Brady Lester", result: "D3 → Big 10 (Ohio State)", stat: ".337 AVG · 10 HR · 49 RBI" },
+                { name: "Brady Lester", result: "D3 → NAIA → Ohio State University", stat: ".337 AVG · 10 HR · 49 RBI" },
                 { name: "Brooks Burdine", result: "Zero offers → D1 (Air Force Academy)", stat: "Starting Freshman" },
                 { name: "Dominic", result: "Cal → Arizona State (PAC 12)", stat: ".276 AVG · 10 HR" },
               ].map(({ name, result, stat }) => (
