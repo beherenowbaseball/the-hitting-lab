@@ -1,5 +1,5 @@
 /* ============================================================
-   THE HITTING LAB — Home Page
+   BE THE BEST BASEBALL — Home Page
    Brand: Jantzen Witte
    Design: Sports Illustrated meets The Players Tribune
    StoryBrand: Problem → Guide → Plan → CTA
@@ -139,7 +139,7 @@ export default function Home() {
                 letterSpacing: "0.03em",
                 lineHeight: 1.1,
                 transition: "color 0.3s",
-              }}>THE HITTING LAB</div>
+              }}>BE THE BEST BASEBALL</div>
               <div style={{
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 400,
@@ -792,7 +792,7 @@ export default function Home() {
             <div style={{ width: "18px", height: "18px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.65rem", color: "white" }}>H</span>
             </div>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>THE HITTING LAB</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</span>
           </div>
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.18)" }}>
             © {new Date().getFullYear()} Jantzen Witte. All rights reserved.

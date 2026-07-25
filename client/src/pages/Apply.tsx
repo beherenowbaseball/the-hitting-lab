@@ -1,5 +1,5 @@
 /* ============================================================
-   THE HITTING LAB — Apply Page (/apply)
+   BE THE BEST BASEBALL — Apply Page (/apply)
    VSL + 90 Day Athlete Accelerator Application
    Shown immediately after email opt-in
    Sections:
@@ -61,7 +61,7 @@ export default function Apply() {
               <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.9rem", color: "white", lineHeight: 1 }}>H</span>
             </div>
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "oklch(0.12 0.005 65)", letterSpacing: "0.03em", lineHeight: 1.1 }}>THE HITTING LAB</div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "oklch(0.12 0.005 65)", letterSpacing: "0.03em", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
               <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: "oklch(0.55 0.01 65)", letterSpacing: "0.2em", textTransform: "uppercase" }}>Jantzen Witte</div>
             </div>
           </a>
@@ -208,7 +208,7 @@ export default function Apply() {
               color: "rgba(255,255,255,0.5)",
               marginTop: "1.25rem",
             }}>
-              — Jantzen Witte, Founder · The Hitting Lab
+              — Jantzen Witte, Founder · Be The Best Baseball
             </p>
           </div>
         </div>
@@ -471,7 +471,7 @@ export default function Apply() {
             <div style={{ width: "18px", height: "18px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.65rem", color: "white" }}>H</span>
             </div>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>THE HITTING LAB</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</span>
           </div>
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.18)" }}>
             © {new Date().getFullYear()} Jantzen Witte. All rights reserved.

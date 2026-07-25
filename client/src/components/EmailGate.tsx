@@ -45,7 +45,7 @@ export default function EmailGate({ onUnlock }: Props) {
         body: JSON.stringify({
           firstName: firstName.trim(),
           email: email.trim(),
-          source: "The Hitting Lab — Drill Library Gate",
+          source: "Be The Best Baseball — Drill Library Gate",
           tags: ["hitting-lab-lead"],
         }),
       });
@@ -120,7 +120,7 @@ export default function EmailGate({ onUnlock }: Props) {
             <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>H</span>
           </div>
           <div>
-            <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "oklch(0.12 0.005 65)", letterSpacing: "0.05em" }}>THE HITTING LAB</div>
+            <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "oklch(0.12 0.005 65)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</div>
             <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.45rem", color: "oklch(0.55 0.01 65)", letterSpacing: "0.2em", textTransform: "uppercase" }}>Jantzen Witte</div>
           </div>
         </div>

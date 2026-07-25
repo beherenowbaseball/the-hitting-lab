@@ -1,5 +1,5 @@
 /* ============================================================
-   THE HITTING LAB — Thank You Page (/thank-you)
+   BE THE BEST BASEBALL — Thank You Page (/thank-you)
    Shown after booking a Strategy Session
    Framework: Craig Ballantyne + Jeremy Haynes
    Goals:
@@ -40,7 +40,7 @@ export default function ThankYou() {
               <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.9rem", color: "white", lineHeight: 1 }}>H</span>
             </div>
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "oklch(0.12 0.005 65)", letterSpacing: "0.03em", lineHeight: 1.1 }}>THE HITTING LAB</div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "oklch(0.12 0.005 65)", letterSpacing: "0.03em", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
               <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: "oklch(0.55 0.01 65)", letterSpacing: "0.2em", textTransform: "uppercase" }}>Jantzen Witte</div>
             </div>
           </a>
@@ -119,13 +119,13 @@ export default function ThankYou() {
                   Watch this video before we talk.
                 </h3>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "1rem" }}>
-                  This 60-second video explains exactly how The Hitting Lab works and what we're going to build together. It will answer most of your questions before the call and make our time together much more productive.
+                  This 60-second video explains exactly how Be The Best Baseball works and what we're going to build together. It will answer most of your questions before the call and make our time together much more productive.
                 </p>
                 {/* Short VSL embed */}
                 <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "#000" }}>
                   <iframe
                     src="https://www.youtube.com/embed/3kOn_Nmbmpk?rel=0&modestbranding=1"
-                    title="How The Hitting Lab Works — Jantzen Witte"
+                    title="How Be The Best Baseball Works — Jantzen Witte"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
@@ -284,7 +284,7 @@ export default function ThankYou() {
               "We guarantee +5 MPH to your exit velocity in 30 days — or we work with you for free until you do."
             </p>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
-              — Jantzen Witte, Founder · The Hitting Lab
+              — Jantzen Witte, Founder · Be The Best Baseball
             </p>
           </div>
         </div>
@@ -318,7 +318,7 @@ export default function ThankYou() {
             <div style={{ width: "18px", height: "18px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.65rem", color: "white" }}>H</span>
             </div>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>THE HITTING LAB</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</span>
           </div>
           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.18)" }}>
             © {new Date().getFullYear()} Jantzen Witte. All rights reserved.
