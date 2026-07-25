@@ -422,7 +422,7 @@ export default function Home() {
                 { name: "Sam Campin", result: "JUCO", stat: "91 → 94 EV · +4-6 MPH" },
                 { name: "Spencer Dailey", result: "D3 P.O. → Upper Iowa University", stat: "+5 MPH Bat Speed" },
                 { name: "Brooks Burdine", result: "Zero Offers → Air Force Academy (D1)", stat: "MLB Draft Letters" },
-                { name: "Tony Woodie", result: "P.O. → Single Season HR & RBI Record", stat: "3 HR → 8 HR" },
+                { name: "Tony Woodie", result: "P.O. → Single Season HR & RBI Record Holder", stat: "3 HR → 10 HR" },
                 { name: "Max Fraizer", result: "High School", stat: "87 MPH EV PR → Beat It Week 2" },
                 { name: "Chase Wells", result: "Indy Ball → Detroit Tigers", stat: "" },
                 { name: "Daunte Stuart", result: "Indy Ball → Philadelphia Phillies", stat: "4 HR in 6 Games" },
