@@ -440,7 +440,7 @@ export default function Home() {
                 12 years. 5 organizations. 1 College World Series. 1 major league season.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "1.5rem" }}>
-                And I still had to unlearn everything. That's why I built the 90 Day Athlete Accelerator.
+                And I still had to unlearn everything. That's why I built the 90 Day Athlete Accelerator. I teach the method that took me from thinking about 7 different things in the box — stay back, stay inside, get a good pitch, be on time, stay closed, stay through — to focusing on the ball and what I wanted to do with it.
               </p>
               <div style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "1.75rem" }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "1rem" }}>&ldquo;</div>
