@@ -36,23 +36,23 @@ export default function ThankYou() {
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "oklch(0.10 0.005 65)" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#ffffff" }}>
 
       {/* ── MINIMAL NAV ─────────────────────────────────────── */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-        backgroundColor: "rgba(10,10,10,0.97)", backdropFilter: "blur(12px)",
-        borderBottom: "1px solid oklch(0.18 0.005 65)", height: "56px",
+        backgroundColor: "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)",
+        borderBottom: "1px solid #e8e4de", height: "56px",
         display: "flex", alignItems: "center",
       }}>
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
             <div style={{ width: "26px", height: "26px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.9rem", color: "white", lineHeight: 1 }}>B</span>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.9rem", color: "#111111", lineHeight: 1 }}>B</span>
             </div>
             <div>
-              <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.8rem", color: "white", letterSpacing: "0.05em", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
-              <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: "rgba(255,255,255,0.45)", letterSpacing: "0.2em", textTransform: "uppercase" }}>Jantzen Witte</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.8rem", color: "#111111", letterSpacing: "0.05em", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: "#999999", letterSpacing: "0.2em", textTransform: "uppercase" }}>Jantzen Witte</div>
             </div>
           </a>
         </div>
@@ -66,7 +66,7 @@ export default function ThankYou() {
             {/* Confirmation badge */}
             <div style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
-              backgroundColor: "oklch(0.18 0.005 65)",
+              backgroundColor: "#e8e4de",
               border: "1px solid oklch(0.42 0.18 25)",
               padding: "0.4rem 1rem", marginBottom: "1.75rem",
             }}>
@@ -81,7 +81,7 @@ export default function ThankYou() {
               fontWeight: 700,
               fontSize: "clamp(2rem, 5vw, 3.4rem)",
               lineHeight: 1.1,
-              color: "white",
+              color: "#111111",
               marginBottom: "1.25rem",
             }}>
               You made the right call.<br />Here's what happens next.
@@ -92,7 +92,7 @@ export default function ThankYou() {
               fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
               fontWeight: 300,
               lineHeight: 1.8,
-              color: "rgba(255,255,255,0.65)",
+              color: "#555555",
               marginBottom: "0",
               maxWidth: "540px",
               margin: "0 auto",
@@ -127,7 +127,7 @@ export default function ThankYou() {
               paddingBottom: "56.25%",
               height: 0,
               overflow: "hidden",
-              backgroundColor: "oklch(0.06 0.003 65)",
+              backgroundColor: "#f0ede8",
               border: "1px solid oklch(0.18 0.005 65)",
             }}>
               {/* PLACEHOLDER: Replace PLACEHOLDER_CONFIRMATION_VIDEO with your YouTube video ID */}
@@ -143,9 +143,9 @@ export default function ThankYou() {
                   borderRadius: "50%",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
-                  <span style={{ color: "white", fontSize: "1.5rem", marginLeft: "4px" }}>▶</span>
+                  <span style={{ color: "#111111", fontSize: "1.5rem", marginLeft: "4px" }}>▶</span>
                 </div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", textAlign: "center", maxWidth: "300px", lineHeight: 1.6 }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: "#999999", textAlign: "center", maxWidth: "300px", lineHeight: 1.6 }}>
                   Welcome video coming soon.<br />
                   Replace <code style={{ color: "oklch(0.72 0.12 25)" }}>PLACEHOLDER_CONFIRMATION_VIDEO</code> in ThankYou.tsx with your YouTube video ID.
                 </p>
@@ -165,7 +165,7 @@ export default function ThankYou() {
               fontFamily: "'Inter', sans-serif",
               fontSize: "0.72rem",
               fontWeight: 300,
-              color: "rgba(255,255,255,0.35)",
+              color: "#aaaaaa",
               textAlign: "center",
               marginTop: "0.75rem",
             }}>
@@ -187,7 +187,7 @@ export default function ThankYou() {
               fontFamily: "'Inter', sans-serif",
               fontWeight: 700,
               fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
-              color: "white",
+              color: "#111111",
               lineHeight: 1.15,
               marginBottom: "2.5rem",
               textAlign: "center",
@@ -219,7 +219,7 @@ export default function ThankYou() {
                   display: "flex",
                   gap: "2rem",
                   padding: "2rem 0",
-                  borderBottom: "1px solid oklch(0.18 0.005 65)",
+                  borderBottom: "1px solid #e8e4de",
                   alignItems: "flex-start",
                 }}>
                   <div style={{
@@ -234,10 +234,10 @@ export default function ThankYou() {
                     {number}
                   </div>
                   <div>
-                    <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1rem, 2.5vw, 1.2rem)", color: "white", marginBottom: "0.5rem", lineHeight: 1.2 }}>
+                    <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1rem, 2.5vw, 1.2rem)", color: "#111111", marginBottom: "0.5rem", lineHeight: 1.2 }}>
                       {title}
                     </h3>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", margin: 0 }}>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "#666666", margin: 0 }}>
                       {body}
                     </p>
                     {link && (
@@ -271,7 +271,7 @@ export default function ThankYou() {
       </section>
 
       {/* ── WHAT TO EXPECT ON THE CALL ──────────────────────── */}
-      <section style={{ backgroundColor: "oklch(0.07 0.003 65)", padding: "clamp(3rem, 8vw, 5rem) 0" }}>
+      <section style={{ backgroundColor: "#f5f4f0", padding: "clamp(3rem, 8vw, 5rem) 0" }}>
         <div className="container">
           <div style={{ maxWidth: "720px", margin: "0 auto" }}>
 
@@ -282,7 +282,7 @@ export default function ThankYou() {
               fontFamily: "'Inter', sans-serif",
               fontWeight: 700,
               fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
-              color: "white",
+              color: "#111111",
               lineHeight: 1.15,
               marginBottom: "2.5rem",
               textAlign: "center",
@@ -290,7 +290,7 @@ export default function ThankYou() {
               No pitch. No pressure.<br />Just a plan.
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", backgroundColor: "oklch(0.18 0.005 65)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", backgroundColor: "#e8e4de" }}>
               {[
                 {
                   step: "First 5 min",
@@ -313,14 +313,14 @@ export default function ThankYou() {
                   body: "If the 90 Day Athlete Accelerator is the right fit, we’ll talk about it. If it’s not, we’ll tell you that too. No pressure either way.",
                 },
               ].map(({ step, title, body }) => (
-                <div key={step} style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "2rem" }}>
+                <div key={step} style={{ backgroundColor: "#ffffff", padding: "2rem" }}>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "0.75rem" }}>
                     {step}
                   </p>
-                  <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "1rem", color: "white", marginBottom: "0.6rem", lineHeight: 1.2 }}>
+                  <h3 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "1rem", color: "#111111", marginBottom: "0.6rem", lineHeight: 1.2 }}>
                     {title}
                   </h3>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.82rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", margin: 0 }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.82rem", fontWeight: 300, lineHeight: 1.8, color: "#777777", margin: 0 }}>
                     {body}
                   </p>
                 </div>
@@ -342,7 +342,7 @@ export default function ThankYou() {
               fontFamily: "'Inter', sans-serif",
               fontWeight: 700,
               fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
-              color: "white",
+              color: "#111111",
               lineHeight: 1.15,
               marginBottom: "2.5rem",
               textAlign: "center",
@@ -350,7 +350,7 @@ export default function ThankYou() {
               Players who booked a call<br />and showed up.
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", backgroundColor: "oklch(0.18 0.005 65)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", backgroundColor: "#e8e4de" }}>
               {[
                 {
                   quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.",
@@ -383,17 +383,17 @@ export default function ThankYou() {
                   tag: "Parent · Ryan Foster's Dad",
                 },
               ].map(({ quote, name, tag }) => (
-                <div key={name} style={{ backgroundColor: "oklch(0.13 0.005 65)", padding: "2rem" }}>
+                <div key={name} style={{ backgroundColor: "#fafaf8", padding: "2rem" }}>
                   <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "2rem", lineHeight: 0.8, color: "oklch(0.42 0.18 25)", marginBottom: "0.75rem" }}>&ldquo;</div>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "clamp(0.88rem, 2vw, 1rem)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "clamp(0.88rem, 2vw, 1rem)", color: "#333333", lineHeight: 1.7, marginBottom: "1.5rem" }}>
                     {quote}
                   </p>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                     <div style={{ width: "28px", height: "28px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.75rem", color: "white" }}>{name[0]}</span>
+                      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.75rem", color: "#111111" }}>{name[0]}</span>
                     </div>
                     <div>
-                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 600, color: "white", margin: 0 }}>{name}</p>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 600, color: "#111111", margin: 0 }}>{name}</p>
                       <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 400, letterSpacing: "0.1em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", margin: 0 }}>{tag}</p>
                     </div>
                   </div>
@@ -434,7 +434,7 @@ export default function ThankYou() {
       </section>
 
       {/* ── GUARANTEE ────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "oklch(0.07 0.003 65)", padding: "clamp(3rem, 8vw, 5rem) 0" }}>
+      <section style={{ backgroundColor: "#f5f4f0", padding: "clamp(3rem, 8vw, 5rem) 0" }}>
         <div className="container">
           <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
             <div style={{
@@ -450,7 +450,7 @@ export default function ThankYou() {
               fontFamily: "'Inter', sans-serif",
               fontWeight: 700,
               fontSize: "clamp(1.4rem, 3.5vw, 2rem)",
-              color: "white",
+              color: "#111111",
               lineHeight: 1.2,
               marginBottom: "1.25rem",
             }}>
@@ -461,7 +461,7 @@ export default function ThankYou() {
               fontSize: "0.88rem",
               fontWeight: 300,
               lineHeight: 1.8,
-              color: "rgba(255,255,255,0.5)",
+              color: "#777777",
             }}>
               And if you don't care about exit velo — we guarantee your swing will feel more natural than it ever has, or same deal. We make big guarantees because we genuinely want to help as many talented hitters as we can. If we're not getting you results, we don't deserve your money.
             </p>
@@ -470,15 +470,15 @@ export default function ThankYou() {
       </section>
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer style={{ backgroundColor: "oklch(0.06 0.003 65)", borderTop: "1px solid oklch(0.14 0.005 65)", padding: "2rem 0" }}>
+      <footer style={{ backgroundColor: "#f0ede8", borderTop: "1px solid oklch(0.14 0.005 65)", padding: "2rem 0" }}>
         <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <div style={{ width: "18px", height: "18px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.65rem", color: "white" }}>B</span>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "0.65rem", color: "#111111" }}>B</span>
             </div>
-            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</span>
+            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "0.7rem", color: "#aaaaaa", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</span>
           </div>
-          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.18)" }}>
+          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "#cccccc" }}>
             © {new Date().getFullYear()} Jantzen Witte. All rights reserved.
           </span>
         </div>
