@@ -93,7 +93,7 @@ export default function DrillsUnlocked() {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         height: "56px",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+        <a href="/" style={{ display: "flex", alignItems: "center", gap: "0.6rem", textDecoration: "none" }}>
           <div style={{ width: "28px", height: "28px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.75rem", color: "white" }}>B</span>
           </div>
@@ -101,11 +101,9 @@ export default function DrillsUnlocked() {
             <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.12 0.005 65)", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
             <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.5rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "oklch(0.52 0.01 65)", lineHeight: 1 }}>JANTZEN WITTE</div>
           </div>
-        </div>
+        </a>
         <a
-          href={GHL_BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/apply"
           onClick={() => (window as any).trackEvent?.("booking_click", { location: "nav" })}
           style={{
             fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600,
@@ -150,9 +148,7 @@ export default function DrillsUnlocked() {
           </p>
           <div style={{ textAlign: "center", marginBottom: "0.75rem" }}>
             <a
-              href={GHL_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/apply"
               onClick={() => (window as any).trackEvent?.("booking_click", { location: "drills_welcome" })}
               style={{
                 display: "inline-block",
@@ -238,9 +234,7 @@ export default function DrillsUnlocked() {
           Want feedback on your swings as you work through the drills?
         </p>
         <a
-          href={GHL_BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/apply"
           onClick={() => (window as any).trackEvent?.("booking_click", { location: "sticky_bar" })}
           style={{
             fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700,
