@@ -398,7 +398,31 @@ export default function Home() {
       {/* ── CREDIBILITY BRIDGE ───────────────────────────────── */}
       <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">
-          <div className="grid md:grid-cols-2" style={{ gap: "3rem", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem", alignItems: "start" }}>
+            {/* LEFT — Photo stack */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div style={{ position: "relative" }}>
+                <img
+                  src="/jantzen-young.jpg"
+                  alt="Young Jantzen Witte at Perfect Game tournament"
+                  style={{ width: "100%", display: "block", objectFit: "cover", maxHeight: "340px" }}
+                />
+                <div style={{ position: "absolute", bottom: "0.75rem", left: "0.75rem", backgroundColor: "rgba(8,8,8,0.75)", padding: "0.4rem 0.75rem" }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", margin: 0 }}>Perfect Game Tournament · 2007</p>
+                </div>
+              </div>
+              <div style={{ position: "relative" }}>
+                <img
+                  src="/jantzen-japan.jpg"
+                  alt="Jantzen Witte celebrating with Seibu Lions in Japan"
+                  style={{ width: "100%", display: "block", objectFit: "cover", maxHeight: "220px" }}
+                />
+                <div style={{ position: "absolute", bottom: "0.75rem", left: "0.75rem", backgroundColor: "rgba(8,8,8,0.75)", padding: "0.4rem 0.75rem" }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", margin: 0 }}>Seibu Lions · Nippon Professional Baseball</p>
+                </div>
+              </div>
+            </div>
+            {/* RIGHT — Copy */}
             <div>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem" }}>
                 Coached By Someone Who Lived It
@@ -415,18 +439,18 @@ export default function Home() {
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 600, lineHeight: 1.8, color: "oklch(0.12 0.005 65)", marginBottom: "0.5rem" }}>
                 12 years. 5 organizations. 1 College World Series. 1 major league season.
               </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "1.5rem" }}>
                 And I still had to unlearn everything. That's why I built The Hitting Lab.
               </p>
-            </div>
-            <div style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "2.5rem" }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "4rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "1.25rem" }}>&ldquo;</div>
-              <blockquote style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.45, marginBottom: "1.25rem" }}>
-                Your swing used to be natural. Overcoaching and social media changed that.
-              </blockquote>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.52 0.01 65)" }}>
-                — Jantzen Witte
-              </p>
+              <div style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "1.75rem" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "1rem" }}>&ldquo;</div>
+                <blockquote style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1rem, 2.5vw, 1.3rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.45, marginBottom: "1rem" }}>
+                  Your swing used to be natural. Overcoaching and social media changed that.
+                </blockquote>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.52 0.01 65)" }}>
+                  — Jantzen Witte
+                </p>
+              </div>
             </div>
           </div>
         </div>
