@@ -65,8 +65,8 @@ export default function EmailGate({ onUnlock }: Props) {
 
     setLoading(false);
     onUnlock();
-    // Stay on the drills page — the drills are the lead magnet
-    // The /apply page is introduced via CTAs and the email sequence
+    // Redirect to the post-opt-in drills page with welcome video
+    setLocation("/drills");
   };
 
   return (
