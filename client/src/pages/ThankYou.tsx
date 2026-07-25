@@ -20,14 +20,32 @@ declare global {
   }
 }
 
-// Build a Google Calendar "Add to Calendar" link
-// Opens a pre-filled event — user sets their specific time
-function buildCalendarLink() {
+// Build calendar links
+function buildGoogleCalendarLink() {
   const title = encodeURIComponent("Hitting Strategy Session — Be The Best Baseball");
   const details = encodeURIComponent(
     "Your strategy session with Jantzen Witte.\n\nBefore the call:\n1. Watch the video at drills.bethebestbaseball.com/thank-you\n2. Submit your swing video at tally.so/r/lb5WQv\n3. Have a parent present"
   );
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}`;
+}
+
+function buildAppleCalendarLink() {
+  const title = encodeURIComponent("Hitting Strategy Session — Be The Best Baseball");
+  const notes = encodeURIComponent(
+    "Your strategy session with Jantzen Witte.\nBefore the call:\n1. Watch the video at drills.bethebestbaseball.com/thank-you\n2. Submit your swing video at tally.so/r/lb5WQv\n3. Have a parent present"
+  );
+  // .ics download for Apple Calendar
+  const icsContent = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "BEGIN:VEVENT",
+    `SUMMARY:${decodeURIComponent(title)}`,
+    `DESCRIPTION:${decodeURIComponent(notes)}`,
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\n");
+  const blob = new Blob([icsContent], { type: "text/calendar" });
+  return URL.createObjectURL(blob);
 }
 
 export default function ThankYou() {
@@ -136,14 +154,36 @@ export default function ThankYou() {
             </h2>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", borderBottom: "1px solid #e8e4de", alignItems: "center" }}>
+
+              {/* Step 1 — Add to Calendar */}
+              <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", borderBottom: "1px solid #e8e4de", alignItems: "flex-start" }}>
                 <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>1</div>
+                <div>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.15rem)", fontWeight: 500, color: "#111111", margin: "0 0 0.75rem 0", lineHeight: 1.4 }}>
+                    Add the call to your calendar so you don't miss it.
+                  </p>
+                  <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                    <a href={buildGoogleCalendarLink()} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", backgroundColor: crimson, color: "white", padding: "0.7rem 1.25rem", textDecoration: "none" }}>
+                      📅 Google Calendar
+                    </a>
+                    <a href={buildAppleCalendarLink()} download="hitting-strategy-session.ics" style={{ display: "inline-block", fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", backgroundColor: "#111111", color: "white", padding: "0.7rem 1.25rem", textDecoration: "none" }}>
+                      🍎 Apple Calendar
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 2 — Reply YES */}
+              <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", borderBottom: "1px solid #e8e4de", alignItems: "center" }}>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>2</div>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.15rem)", fontWeight: 500, color: "#111111", margin: 0, lineHeight: 1.4 }}>
                   Reply to the text we just sent you with <strong>YES</strong> to confirm your spot.
                 </p>
               </div>
-              <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", borderBottom: "1px solid #e8e4de", alignItems: "center" }}>
-                <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>2</div>
+
+              {/* Step 3 — Submit swing video */}
+              <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", borderBottom: "1px solid #e8e4de", alignItems: "flex-start" }}>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>3</div>
                 <div>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.15rem)", fontWeight: 500, color: "#111111", margin: "0 0 0.75rem 0", lineHeight: 1.4 }}>
                     Submit a video of you hitting so we can come prepared.
@@ -153,12 +193,15 @@ export default function ThankYou() {
                   </a>
                 </div>
               </div>
+
+              {/* Step 4 — Parent on call */}
               <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", alignItems: "center" }}>
-                <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>3</div>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>4</div>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.15rem)", fontWeight: 500, color: "#111111", margin: 0, lineHeight: 1.4 }}>
-                  Make sure a parent is on the call with you.
+                  Show up to the call with a parent.
                 </p>
               </div>
+
             </div>
           </div>
         </div>
