@@ -405,7 +405,7 @@ export default function Home() {
                 <img
                   src="/jantzen-young.jpg"
                   alt="Young Jantzen Witte at Perfect Game tournament"
-                  style={{ width: "100%", display: "block", objectFit: "cover", maxHeight: "340px" }}
+                  style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top", maxHeight: "340px" }}
                 />
                 <div style={{ position: "absolute", bottom: "0.75rem", left: "0.75rem", backgroundColor: "rgba(8,8,8,0.75)", padding: "0.4rem 0.75rem" }}>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", margin: 0 }}>Perfect Game Tournament · 2007</p>
@@ -415,7 +415,7 @@ export default function Home() {
                 <img
                   src="/jantzen-japan.jpg"
                   alt="Jantzen Witte celebrating with Seibu Lions in Japan"
-                  style={{ width: "100%", display: "block", objectFit: "cover", maxHeight: "220px" }}
+                  style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top", maxHeight: "220px" }}
                 />
                 <div style={{ position: "absolute", bottom: "0.75rem", left: "0.75rem", backgroundColor: "rgba(8,8,8,0.75)", padding: "0.4rem 0.75rem" }}>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", margin: 0 }}>Seibu Lions · Nippon Professional Baseball</p>
@@ -440,7 +440,7 @@ export default function Home() {
                 12 years. 5 organizations. 1 College World Series. 1 major league season.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "1.5rem" }}>
-                And I still had to unlearn everything. That's why I built The Hitting Lab.
+                And I still had to unlearn everything. That's why I built the 90 Day Athlete Accelerator.
               </p>
               <div style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "1.75rem" }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "1rem" }}>&ldquo;</div>

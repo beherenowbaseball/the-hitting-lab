@@ -285,7 +285,7 @@ export default function Apply() {
                 I spent 12 years in professional baseball — drafted by the Boston Red Sox, played in the College World Series at TCU — and I still had to unlearn everything I thought I knew about hitting.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)" }}>
-                That's why I built The Hitting Lab. I know exactly what it feels like to be where you are right now.
+                That's why I built the 90 Day Athlete Accelerator. I know exactly what it feels like to be where you are right now.
               </p>
             </div>
             {/* Stats */}
@@ -314,7 +314,7 @@ export default function Apply() {
               The 90 Day Athlete Accelerator
             </p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.6rem, 4vw, 2.6rem)", color: "white", lineHeight: 1.15, marginBottom: "3rem", textAlign: "center" }}>
-              This system works.<br />But only for the right player.
+              This framework works.<br />But only for the right player.
             </h2>
 
             <div className="grid md:grid-cols-2" style={{ gap: "2px", backgroundColor: "oklch(0.18 0.005 65)" }}>
@@ -369,7 +369,7 @@ export default function Apply() {
             {[
               { quote: "Before working with Jantzen, I felt tight and unable to get a good, hard, competitive swing. I definitely felt like I was put into better positions to attack the ball and do damage on mistake pitches.", name: "Chase Wells", tag: "Player" },
               { quote: "In game so far I'm hitting .497 with 8 doubles, 4 HRs, and 24 RBIs in just 16 games. Having a coach like Jantzen giving you big league drills and cues is a true gamechanger.", name: "Alex Martinez", tag: "Player" },
-              { quote: "My swing has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.", name: "Spencer Dailey", tag: "Player" },
+              { quote: "My swing has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.", name: "Spencer Dailey", tag: "Player · Pitcher Only → 2-Way Player, Upper Iowa University" },
               { quote: "I ended up hitting a distance PR and an exit velocity PR in the same day after a 30-minute call. I've gone from a scared hitter to crushing the ball to all sides of the field.", name: "Max Frazier", tag: "Player" },
               { quote: "Completely changed my game. After working with him I had one of my best hitting seasons. He doesn't change you — he just makes you better.", name: "Benjamin Wallace", tag: "Player" },
               { quote: "This guy is legit. Teaches you to find YOUR swing, not somebody else's. This is the best my swing has ever felt.", name: "Brady Greene", tag: "Player" },
