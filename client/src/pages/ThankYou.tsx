@@ -127,7 +127,7 @@ export default function ThankYou() {
 
             {/* Add to Calendar */}
             <a
-              href={buildCalendarLink()}
+              href={buildGoogleCalendarLink()}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -314,7 +314,7 @@ export default function ThankYou() {
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.85rem, 2vw, 0.95rem)", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.85)", marginBottom: "1.5rem" }}>
               Your window is closing. Every week you spend overthinking mechanics is a week you're not getting better. We'll see you on the call.
             </p>
-            <a href={buildCalendarLink()} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", backgroundColor: "white", color: crimson, padding: "0.85rem 1.75rem", textDecoration: "none" }}>
+            <a href={buildGoogleCalendarLink()} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", backgroundColor: "white", color: crimson, padding: "0.85rem 1.75rem", textDecoration: "none" }}>
               📅 Add to Google Calendar
             </a>
           </div>
