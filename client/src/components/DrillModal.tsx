@@ -12,9 +12,9 @@ interface Props {
   onClose: () => void;
 }
 
-function getYouTubeEmbedUrl(url: string): string {
+function getYouTubeEmbedUrl(url: string, autoplay = true): string {
   const match = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
-  if (match) return `https://www.youtube.com/embed/${match[1]}?autoplay=1&rel=0`;
+  if (match) return `https://www.youtube.com/embed/${match[1]}?autoplay=${autoplay ? 1 : 0}&rel=0`;
   return url;
 }
 
@@ -64,7 +64,7 @@ export default function DrillModal({ drill, onClose }: Props) {
           ×
         </button>
 
-        {/* YouTube embed */}
+        {/* YouTube embed(s) */}
         <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "#000" }}>
           <iframe
             src={getYouTubeEmbedUrl(drill.videoUrl)}
@@ -80,6 +80,28 @@ export default function DrillModal({ drill, onClose }: Props) {
             }}
           />
         </div>
+        {drill.videoUrl2 && (
+          <div>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", padding: "0.75rem 1.5rem 0.25rem", backgroundColor: "#000" }}>
+              Also Watch
+            </p>
+            <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "#000" }}>
+              <iframe
+                src={getYouTubeEmbedUrl(drill.videoUrl2, false)}
+                title={`${drill.name} — Part 2`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0, left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* Content */}
         <div className="p-6 md:p-8">
@@ -149,21 +171,6 @@ export default function DrillModal({ drill, onClose }: Props) {
             >
               {drill.villain}
             </span>
-          </div>
-
-          {/* Story angle */}
-          <div className="mb-6">
-            <p
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontStyle: "italic",
-                fontSize: "1.05rem",
-                color: "oklch(0.25 0.005 65)",
-                lineHeight: 1.6,
-              }}
-            >
-              "{drill.storyAngle}"
-            </p>
           </div>
 
           {/* Details grid */}

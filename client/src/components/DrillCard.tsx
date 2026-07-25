@@ -25,11 +25,9 @@ export default function DrillCard({ drill, onClick, locked = false, onUnlockClic
 
   return (
     <article
-      className="bg-white group cursor-pointer overflow-hidden"
+      className="bg-white group cursor-pointer overflow-hidden drill-card-hover"
       onClick={handleClick}
-      style={{ transition: "box-shadow 0.2s ease", position: "relative" }}
-      onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12)")}
-      onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
+      style={{ position: "relative" }}
     >
       {/* YouTube Thumbnail */}
       <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
@@ -139,14 +137,7 @@ export default function DrillCard({ drill, onClick, locked = false, onUnlockClic
         >
           {drill.tagline}
         </p>
-        <div className="flex items-start gap-1.5">
-          <span style={{ fontFamily: "'Inter', sans-serif", color: "oklch(0.65 0.008 65)", fontSize: "0.65rem", flexShrink: 0 }}>
-            Fixes:
-          </span>
-          <span style={{ fontFamily: "'Inter', sans-serif", color: "oklch(0.42 0.18 25)", fontSize: "0.65rem", fontWeight: 500 }}>
-            {drill.villain}
-          </span>
-        </div>
+
       </div>
     </article>
   );
