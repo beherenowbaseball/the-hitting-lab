@@ -177,7 +177,7 @@ export default function ThankYou() {
               <div style={{ display: "flex", gap: "1.5rem", padding: "1.75rem 0", borderBottom: "1px solid #e8e4de", alignItems: "center" }}>
                 <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "2.5rem", color: crimson, lineHeight: 1, flexShrink: 0, width: "50px" }}>2</div>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.15rem)", fontWeight: 500, color: "#111111", margin: 0, lineHeight: 1.4 }}>
-                  Reply to the text we just sent you with <strong>YES</strong> to confirm your spot.
+                  Reply <strong>"YES"</strong> to the text we just sent you.
                 </p>
               </div>
 
