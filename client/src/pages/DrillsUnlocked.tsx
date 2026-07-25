@@ -15,7 +15,7 @@ const SCROLL_SPEED = 0.6;
 
 const GHL_BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/jantzen";
 // ▼ Replace with your YouTube welcome video ID when recorded
-const WELCOME_VIDEO_ID = "PLACEHOLDER_WELCOME_VIDEO";
+const WELCOME_VIDEO_ID = ""; // Set to YouTube video ID when ready
 
 export default function DrillsUnlocked() {
   const [activeFilter, setActiveFilter] = useState<"all" | "standard" | "waterbag">("all");
@@ -120,18 +120,9 @@ export default function DrillsUnlocked() {
       <section style={{ paddingTop: "72px", paddingBottom: "clamp(1.5rem, 5vw, 3rem)", backgroundColor: "oklch(0.08 0.005 65)" }}>
         <div style={{ maxWidth: "760px", margin: "0 auto", padding: "2rem 1.5rem 0" }}>
 
-          {/* Video */}
-          <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "oklch(0.14 0.005 65)", marginBottom: "1.75rem" }}>
-            {WELCOME_VIDEO_ID === "PLACEHOLDER_WELCOME_VIDEO" ? (
-              <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.75rem" }}>
-                <div style={{ width: "52px", height: "52px", borderRadius: "50%", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ color: "white", fontSize: "1.1rem", marginLeft: "3px" }}>▶</span>
-                </div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "oklch(0.55 0.01 65)", textAlign: "center" }}>
-                  Welcome video — replace <code style={{ color: "oklch(0.42 0.18 25)" }}>PLACEHOLDER_WELCOME_VIDEO</code> with your YouTube ID
-                </p>
-              </div>
-            ) : (
+          {/* Video — only renders when WELCOME_VIDEO_ID is set */}
+          {WELCOME_VIDEO_ID && (
+            <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "oklch(0.14 0.005 65)", marginBottom: "1.75rem" }}>
               <iframe
                 src={`https://www.youtube.com/embed/${WELCOME_VIDEO_ID}?autoplay=1&rel=0`}
                 title="Welcome to the 32-Drill Framework"
@@ -139,8 +130,8 @@ export default function DrillsUnlocked() {
                 allowFullScreen
                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
               />
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Short copy + CTA */}
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.65)", marginBottom: "1.5rem", textAlign: "center" }}>
