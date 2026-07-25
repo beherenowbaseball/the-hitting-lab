@@ -65,8 +65,8 @@ export default function EmailGate({ onUnlock }: Props) {
 
     setLoading(false);
     onUnlock();
-    // Redirect to VSL + application page
-    setLocation("/apply");
+    // Stay on the drills page — the drills are the lead magnet
+    // The /apply page is introduced via CTAs and the email sequence
   };
 
   return (
