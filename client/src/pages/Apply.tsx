@@ -158,6 +158,27 @@ export default function Apply() {
             }}>
               Watch the full video, then apply for your free strategy session below.
             </p>
+            <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+              <a
+                href="#booking"
+                onClick={(e) => { e.preventDefault(); document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' }); (window as any).trackEvent?.('booking_click', { location: 'below_vsl' }); }}
+                style={{
+                  display: "inline-block",
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  backgroundColor: "oklch(0.42 0.18 25)",
+                  color: "white",
+                  padding: "1rem 2.5rem",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Apply for a Strategy Session →
+              </a>
+            </div>
           </div>
         </div>
       </section>
