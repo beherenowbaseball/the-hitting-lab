@@ -227,114 +227,139 @@ export default function Home() {
       </nav>
 
       {/* ── HERO ────────────────────────────────────────────── */}
-      <section className="relative w-full overflow-hidden" style={{ minHeight: "100svh" }}>
+      {/* ── HERO — Split layout: photo left, copy right ──────── */}
+      <section style={{ minHeight: "100svh", display: "flex", flexDirection: "row" }}>
+        {/* LEFT — Photo panel */}
         <div
-          className="absolute inset-0 bg-cover"
-          style={{ backgroundImage: "url('/hero-jantzen.jpg')", backgroundPosition: "center top", backgroundSize: "cover" }}
-        />
+          className="hidden md:block"
+          style={{
+            flex: "0 0 45%",
+            backgroundImage: "url('/hero-jantzen.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center top",
+            position: "relative",
+          }}
+        >
+          {/* Subtle right-edge fade into the dark panel */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to right, transparent 60%, oklch(0.10 0.005 65) 100%)",
+          }} />
+        </div>
+
+        {/* RIGHT — Copy panel */}
         <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, rgba(8,8,8,0.45) 0%, rgba(8,8,8,0.55) 35%, rgba(8,8,8,0.82) 60%, rgba(8,8,8,0.97) 100%), linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 40%, rgba(8,8,8,0.15) 70%)" }}
-        />
-        <div className="relative z-10 flex flex-col justify-end" style={{ minHeight: "100svh", paddingBottom: "5rem" }}>
-          <div className="container">
-            <div style={{ maxWidth: "640px", marginLeft: "auto" }}>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.6rem",
-                fontWeight: 600,
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "oklch(0.72 0.12 25)",
-                marginBottom: "1.25rem",
-              }}>
-                For Talented High School &amp; College Hitters
+          style={{
+            flex: "1 1 55%",
+            backgroundColor: "oklch(0.10 0.005 65)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            padding: "clamp(3rem, 8vw, 6rem) clamp(2rem, 6vw, 5rem)",
+            position: "relative",
+          }}
+        >
+          {/* Mobile-only background image (full bleed with overlay) */}
+          <div
+            className="block md:hidden absolute inset-0"
+            style={{
+              backgroundImage: "url('/hero-jantzen.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center top",
+              opacity: 0.15,
+            }}
+          />
+
+          <div style={{ position: "relative", zIndex: 1, maxWidth: "520px" }}>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "0.6rem",
+              fontWeight: 600,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "oklch(0.72 0.12 25)",
+              marginBottom: "1.25rem",
+            }}>
+              For Talented High School &amp; College Hitters
+            </p>
+            <h1 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(2rem, 5vw, 3.8rem)",
+              lineHeight: 1.08,
+              color: "white",
+              marginBottom: "1.25rem",
+            }}>
+              Overcoaching and social media have made you a worse hitter.
+            </h1>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(0.95rem, 2vw, 1.1rem)",
+              fontWeight: 300,
+              lineHeight: 1.7,
+              color: "rgba(255,255,255,0.75)",
+              marginBottom: "2rem",
+            }}>
+              Stop overthinking. Swing naturally.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }} className="sm:flex-row">
+              <button
+                onClick={scrollToDrills}
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "0.65rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  backgroundColor: "oklch(0.42 0.18 25)",
+                  color: "white",
+                  border: "none",
+                  padding: "0.9rem 1.75rem",
+                  cursor: "pointer",
+                  transition: "opacity 0.2s",
+                  width: "fit-content",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+              >
+                Unlock the Free 32-Drill Framework →
+              </button>
+              <button
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "0.65rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  backgroundColor: "transparent",
+                  color: "white",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  padding: "0.9rem 1.75rem",
+                  cursor: "pointer",
+                  transition: "background-color 0.2s",
+                  width: "fit-content",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+                onClick={() => setShowVSL(true)}
+              >
+                Watch the Video
+              </button>
+            </div>
+            {/* Transitional CTA — for the buyer who's already sold */}
+            <div style={{ marginTop: "1.75rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", fontWeight: 300, color: "rgba(255,255,255,0.45)", marginBottom: "0.6rem" }}>
+                Want feedback on your swings as you work through the drills?
               </p>
-              <h1 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontStyle: "italic",
-                fontWeight: 400,
-                fontSize: "clamp(2.2rem, 7vw, 4.5rem)",
-                lineHeight: 1.06,
-                color: "white",
-                marginBottom: "1.25rem",
-              }}>
-                Overcoaching and social media have made you a worse hitter.
-              </h1>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
-                fontWeight: 300,
-                lineHeight: 1.7,
-                color: "rgba(255,255,255,0.92)",
-                maxWidth: "30rem",
-                marginBottom: "2rem",
-              }}>
-                Stop overthinking. Swing naturally.
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }} className="sm:flex-row">
-                <button
-                  onClick={scrollToDrills}
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.65rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    backgroundColor: "oklch(0.42 0.18 25)",
-                    color: "white",
-                    border: "none",
-                    padding: "0.9rem 1.75rem",
-                    cursor: "pointer",
-                    transition: "opacity 0.2s",
-                    width: "fit-content",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                >
-                  Unlock the Free 32-Drill Framework →
-                </button>
-                <button
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.65rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    backgroundColor: "transparent",
-                    color: "white",
-                    border: "1px solid rgba(255,255,255,0.3)",
-                    padding: "0.9rem 1.75rem",
-                    cursor: "pointer",
-                    transition: "background-color 0.2s",
-                    width: "fit-content",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-                  onClick={() => setShowVSL(true)}
-                >
-                  Watch the Video
-                </button>
-              </div>
-              {/* Transitional CTA — for the buyer who's already sold */}
-              <div style={{ marginTop: "1.75rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", fontWeight: 300, color: "rgba(255,255,255,0.55)", marginBottom: "0.6rem" }}>
-                  Want feedback on your swings as you work through the drills?
-                </p>
-                <a
-                  href="/apply"
-                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", textDecoration: "underline", textUnderlineOffset: "4px" }}
-                >
-                  Apply for a Strategy Session →
-                </a>
-              </div>
+              <a
+                href="/apply"
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", textDecoration: "underline", textUnderlineOffset: "4px" }}
+              >
+                Apply for a Strategy Session →
+              </a>
             </div>
           </div>
-        </div>
-        {/* Scroll cue */}
-        <div style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", opacity: 0.4 }}>
-          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "white" }}>Scroll</span>
-          <div style={{ width: "1px", height: "28px", background: "linear-gradient(to bottom, white, transparent)" }} />
         </div>
       </section>
 
