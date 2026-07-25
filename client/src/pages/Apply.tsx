@@ -174,7 +174,30 @@ export default function Apply() {
               color: "white",
               lineHeight: 1.4,
             }}>
-              "We guarantee you'll add +5 MPH to your exit velocity in 30 days — or we work with you for free until you do."
+              "We guarantee +5 MPH to your exit velocity in 30 days — or we work with you for free until you do."
+            </p>
+            <p style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(0.95rem, 2.5vw, 1.3rem)",
+              color: "rgba(255,255,255,0.75)",
+              lineHeight: 1.5,
+              marginTop: "1.25rem",
+            }}>
+              And if you don't care about exit velo — we guarantee your swing will feel more natural than it ever has, or we work with you for free until it does.
+            </p>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "0.8rem",
+              fontWeight: 300,
+              color: "rgba(255,255,255,0.5)",
+              lineHeight: 1.7,
+              marginTop: "1.25rem",
+              maxWidth: "520px",
+              margin: "1.25rem auto 0",
+            }}>
+              We make big guarantees because I genuinely want to help as many talented hitters as I can. If we're not getting you results, we don't deserve your money.
             </p>
             <p style={{
               fontFamily: "'Inter', sans-serif",
@@ -182,8 +205,8 @@ export default function Apply() {
               fontWeight: 600,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.65)",
-              marginTop: "1rem",
+              color: "rgba(255,255,255,0.5)",
+              marginTop: "1.25rem",
             }}>
               — Jantzen Witte, Founder · The Hitting Lab
             </p>

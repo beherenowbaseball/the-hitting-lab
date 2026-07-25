@@ -338,6 +338,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SOCIAL PROOF TICKER ─────────────────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.12 0.005 65)", padding: "0", overflow: "hidden", borderTop: "1px solid oklch(0.20 0.005 65)", borderBottom: "1px solid oklch(0.20 0.005 65)" }}>
+        <div style={{
+          display: "flex",
+          animation: "ticker 28s linear infinite",
+          whiteSpace: "nowrap",
+        }}>
+          {[0, 1].map((copy) => (
+            <div key={copy} style={{ display: "flex", alignItems: "center", gap: "0", flexShrink: 0 }}>
+              {[
+                { name: "Brady Lester", result: "D3 → Big 10 (Ohio State)", stat: ".337 AVG · 10 HR · 49 RBI" },
+                { name: "Brooks Burdine", result: "Zero offers → D1 (Air Force Academy)", stat: "Starting Freshman" },
+                { name: "Dominic", result: "Cal → Arizona State (PAC 12)", stat: ".276 AVG · 10 HR" },
+              ].map(({ name, result, stat }) => (
+                <div key={name} style={{ display: "flex", alignItems: "center", gap: "2rem", padding: "0.85rem 2.5rem" }}>
+                  <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>{name}</span>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)" }}>{result}</span>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 300, color: "rgba(255,255,255,0.35)" }}>{stat}</span>
+                  <span style={{ color: "oklch(0.42 0.18 25)", fontSize: "0.6rem" }}>·</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <style>{`
+          @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
+      </section>
+
       {/* ── CREDIBILITY BRIDGE ───────────────────────────────── */}
       <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">
