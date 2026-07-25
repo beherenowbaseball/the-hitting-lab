@@ -12,9 +12,9 @@ interface Props {
   onClose: () => void;
 }
 
-function getYouTubeEmbedUrl(url: string): string {
+function getYouTubeEmbedUrl(url: string, autoplay = true): string {
   const match = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
-  if (match) return `https://www.youtube.com/embed/${match[1]}?autoplay=1&rel=0`;
+  if (match) return `https://www.youtube.com/embed/${match[1]}?autoplay=${autoplay ? 1 : 0}&rel=0`;
   return url;
 }
 
@@ -87,7 +87,7 @@ export default function DrillModal({ drill, onClose }: Props) {
             </p>
             <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "#000" }}>
               <iframe
-                src={getYouTubeEmbedUrl(drill.videoUrl2)}
+                src={getYouTubeEmbedUrl(drill.videoUrl2, false)}
                 title={`${drill.name} — Part 2`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
