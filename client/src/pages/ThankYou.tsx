@@ -131,12 +131,8 @@ export default function ThankYou() {
       <section style={{ padding: "clamp(3rem, 8vw, 5rem) 0", backgroundColor: "#ffffff" }}>
         <div className="container">
           <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: crimsonLight, marginBottom: "1rem", textAlign: "center" }}>
+            <h2 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "#111111", lineHeight: 1.15, marginBottom: "2.5rem", textAlign: "center", letterSpacing: "0.04em", textTransform: "uppercase" }}>
               What To Do Now
-            </p>
-            <h2 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", color: "#111111", lineHeight: 1.15, marginBottom: "2.5rem", textAlign: "center" }}>
-              3 things before the call.<br />
-              <span style={{ color: crimson }}>If you haven't done these, we'll reschedule.</span>
             </h2>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
@@ -210,7 +206,7 @@ export default function ThankYou() {
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", backgroundColor: "#e8e4de" }}>
               {[
-                { quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.", name: "Brady Lester", tag: "NAIA → Ohio State University · .337 AVG · 10 HR · 49 RBI" },
+                                { quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.", name: "Brady Lester", tag: "NAIA → Ohio State University · .337 AVG · 10 HR · 49 RBI" },
                 { quote: "I was so far down in the dumps and I found you as a resource. This is really life-changing. Finished .350 avg, .421 in conference, .468 OBP, .614 SLG. Earned a 4-year scholarship.", name: "Parker Sobiesiak", tag: "JUCO → 4-Year Scholarship" },
                 { quote: "Before working with Jantzen, I felt tight and unable to get a good, hard, competitive swing. I definitely felt like I was put into better positions to attack the ball and do damage on mistake pitches.", name: "Chase Wells", tag: "Indy Ball → Detroit Tigers" },
                 { quote: "I feel a million times better than I did before. Honestly, it was a dark spot for me. Confidence wasn't there at all. But I just feel a million times better. And it's not only baseball — this has helped a lot with me.", name: "Teddy Stephenson", tag: "HS → University of the Holy Cross" },
@@ -226,14 +222,7 @@ export default function ThankYou() {
                 { quote: "He takes the player's natural swing and adds small, incremental tweaks to get the most out of it versus trying to rebuild the entire swing entirely.", name: "Barney Wiley", tag: "Parent · 10 Years" },
                 { quote: "Has gave me a lot of confidence in my swing.", name: "Luke Hargis", tag: "High School Catcher" },
                 { quote: "Jantzen is one of the most encouraging, positive, and knowledgeable coaches I've ever worked with. He truly cares about the players he works with.", name: "Courtney Gregory", tag: "Parent" },
-                { quote: "Working with Jantzen has been a game changer. His knowledge of the game at the highest level really shows.", name: "Ethan Ketterer", tag: "High School · Liberty HS TX" },
-                { quote: "Jantzen has completely changed my approach to hitting. I feel so much more confident and relaxed at the plate.", name: "Graham TooGood", tag: "D2 · Jamestown" },
-                { quote: "Best hitting coach I've ever worked with. He simplifies everything and makes it make sense.", name: "Ryan Duffy", tag: "High School" },
-                { quote: "Jantzen helped me understand my swing in a way no other coach ever has. The improvement has been incredible.", name: "Anthony Della Rosa", tag: "High School" },
-                { quote: "The feedback is always specific and actionable. Never generic. Always exactly what I need to hear.", name: "Toufic", tag: "JUCO · 5★" },
-                { quote: "Jantzen helped me go from barely getting on base to being one of the best hitters on my team.", name: "Brady Greene", tag: "High School · 5★" },
-                { quote: "The improvement in the mindset of hitting has been amazing.", name: "Barney Wiley (2)", tag: "Parent · 10 Years" },
-                { quote: "Sam went from 91 to 94 exit velocity and added 4-6 MPH off flips in just 2 weeks.", name: "Sam Campin", tag: "College · Eastern University · 91 → 94 EV" },
+                { quote: "The improvement in the mindset of hitting has been amazing.", name: "Barney Wiley Sr.", tag: "Parent · 10 Years" },
               ].map(({ quote, name, tag }) => (
                 <div key={name} style={{ backgroundColor: "#fafaf8", padding: "2rem", border: "1px solid #e8e4de" }}>
                   <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "2rem", lineHeight: 0.8, color: crimson, marginBottom: "0.75rem" }}>&ldquo;</div>
