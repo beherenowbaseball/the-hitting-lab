@@ -1,13 +1,16 @@
 /* ============================================================
-   BE THE BEST BASEBALL — Thank You Page (/thank-you)
-   Shown after booking a Strategy Session
-   Framework: Craig Ballantyne + Jeremy Haynes
+   BE THE BEST BASEBALL — Thank You / Confirmation Page (/thank-you)
+   Shown after booking a Strategy Session via GHL calendar
+   Framework: Jeremy Haynes Confirmation Page System
    Goals:
-   1. Confirm the booking and reduce no-shows
-   2. Prime them for the sales conversation (pre-sell the program)
-   3. Give them a "homework" assignment (watch the VSL, send swing video)
-   4. Create urgency and social proof to prevent cold feet
-   5. Introduce the parent to the program if they weren't on the booking
+   1. Confirm the booking — validate the action, no friction
+   2. Urgency video — give believable reasons to show up
+   3. Pre-call homework — watch VSL, send swing video
+   4. What to expect on the call — reduce anxiety, increase show rate
+   5. Breakout objection-handling — answer questions before the call
+   6. Social proof from bookers — reinforce the decision
+   7. Easy reschedule — prevent ghosting
+   Meta Pixel: fires Schedule event on load
    ============================================================ */
 
 import { useEffect } from "react";
@@ -15,6 +18,7 @@ import { useEffect } from "react";
 declare global {
   interface Window {
     trackEvent?: (name: string, params?: Record<string, unknown>) => void;
+    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -23,8 +27,8 @@ export default function ThankYou() {
     window.trackEvent?.("booking_confirmed", { page: "/thank-you" });
     window.scrollTo(0, 0);
     // Fire Meta Pixel Schedule event — booking confirmed
-    if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
-      (window as unknown as Record<string, (...args: unknown[]) => void>).fbq("track", "Schedule", {
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "Schedule", {
         content_name: "Hitting Strategy Session",
         content_category: "Baseball Coaching",
       });
@@ -32,250 +36,272 @@ export default function ThankYou() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: "oklch(0.10 0.005 65)" }}>
 
       {/* ── MINIMAL NAV ─────────────────────────────────────── */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-        backgroundColor: "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)",
-        borderBottom: "1px solid oklch(0.88 0.005 80)", height: "56px",
+        backgroundColor: "rgba(10,10,10,0.97)", backdropFilter: "blur(12px)",
+        borderBottom: "1px solid oklch(0.18 0.005 65)", height: "56px",
         display: "flex", alignItems: "center",
       }}>
-        <div className="container" style={{ display: "flex", alignItems: "center" }}>
+        <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
             <div style={{ width: "26px", height: "26px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.9rem", color: "white", lineHeight: 1 }}>H</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.9rem", color: "white", lineHeight: 1 }}>B</span>
             </div>
             <div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "oklch(0.12 0.005 65)", letterSpacing: "0.03em", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
-              <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: "oklch(0.55 0.01 65)", letterSpacing: "0.2em", textTransform: "uppercase" }}>Jantzen Witte</div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white", letterSpacing: "0.03em", lineHeight: 1.1 }}>BE THE BEST BASEBALL</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "0.5rem", color: "rgba(255,255,255,0.45)", letterSpacing: "0.2em", textTransform: "uppercase" }}>Jantzen Witte</div>
             </div>
           </a>
         </div>
       </nav>
 
-      {/* ── CONFIRMATION HERO ───────────────────────────────── */}
-      <section style={{ paddingTop: "80px", backgroundColor: "oklch(0.10 0.005 65)", paddingBottom: "4rem" }}>
+      {/* ── HERO — CONFIRMATION ─────────────────────────────── */}
+      <section style={{ paddingTop: "80px", paddingBottom: "0" }}>
         <div className="container">
-          <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
+          <div style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center", padding: "clamp(3rem, 8vw, 5rem) 0 2rem" }}>
 
-            {/* Confirmation checkmark */}
+            {/* Confirmation badge */}
             <div style={{
-              width: "64px", height: "64px",
-              backgroundColor: "oklch(0.42 0.18 25)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 1.5rem",
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              backgroundColor: "oklch(0.18 0.005 65)",
+              border: "1px solid oklch(0.42 0.18 25)",
+              padding: "0.4rem 1rem", marginBottom: "1.75rem",
             }}>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
+              <span style={{ color: "oklch(0.72 0.12 25)", fontSize: "0.9rem" }}>✓</span>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)" }}>
+                Your Session Is Booked
+              </span>
             </div>
 
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1rem" }}>
-              You're on the calendar
-            </p>
-
             <h1 style={{
-              fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400,
-              fontSize: "clamp(1.8rem, 5vw, 3rem)", lineHeight: 1.1, color: "white", marginBottom: "1.25rem",
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(2rem, 5vw, 3.4rem)",
+              lineHeight: 1.1,
+              color: "white",
+              marginBottom: "1.25rem",
             }}>
-              Your Strategy Session<br />is confirmed.
+              You made the right call.<br />Here's what happens next.
             </h1>
 
             <p style={{
-              fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.9rem, 2vw, 1rem)",
-              fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.6)",
-              maxWidth: "480px", margin: "0 auto 1rem",
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
+              fontWeight: 300,
+              lineHeight: 1.8,
+              color: "rgba(255,255,255,0.65)",
+              marginBottom: "0",
+              maxWidth: "540px",
+              margin: "0 auto",
             }}>
-              Check your email for the calendar invite and Zoom link. Before we talk, there are three things I need you to do.
+              Check your email for your calendar invite. Before we talk, watch the short video below — it'll make our session 10x more valuable.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── URGENCY VIDEO ────────────────────────────────────── */}
+      <section style={{ padding: "2rem 0 0" }}>
+        <div className="container">
+          <div style={{ maxWidth: "720px", margin: "0 auto" }}>
 
             <p style={{
-              fontFamily: "'Playfair Display', serif", fontStyle: "italic",
-              fontSize: "1rem", color: "oklch(0.72 0.12 25)",
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "0.6rem",
+              fontWeight: 600,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "oklch(0.72 0.12 25)",
+              textAlign: "center",
+              marginBottom: "1rem",
             }}>
-              Do not skip these. They will make our session 10x more valuable.
+              Watch This First
+            </p>
+
+            {/* Video embed — replace PLACEHOLDER_CONFIRMATION_VIDEO with your YouTube ID */}
+            <div style={{
+              position: "relative",
+              paddingBottom: "56.25%",
+              height: 0,
+              overflow: "hidden",
+              backgroundColor: "oklch(0.06 0.003 65)",
+              border: "1px solid oklch(0.18 0.005 65)",
+            }}>
+              {/* PLACEHOLDER: Replace PLACEHOLDER_CONFIRMATION_VIDEO with your YouTube video ID */}
+              <div style={{
+                position: "absolute", inset: 0,
+                display: "flex", flexDirection: "column",
+                alignItems: "center", justifyContent: "center",
+                gap: "1rem",
+              }}>
+                <div style={{
+                  width: "64px", height: "64px",
+                  backgroundColor: "oklch(0.42 0.18 25)",
+                  borderRadius: "50%",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <span style={{ color: "white", fontSize: "1.5rem", marginLeft: "4px" }}>▶</span>
+                </div>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", textAlign: "center", maxWidth: "300px", lineHeight: 1.6 }}>
+                  Welcome video coming soon.<br />
+                  Replace <code style={{ color: "oklch(0.72 0.12 25)" }}>PLACEHOLDER_CONFIRMATION_VIDEO</code> in ThankYou.tsx with your YouTube video ID.
+                </p>
+              </div>
+              {/* Uncomment and replace ID when ready:
+              <iframe
+                src="https://www.youtube.com/embed/PLACEHOLDER_CONFIRMATION_VIDEO?autoplay=1&rel=0"
+                title="Watch Before Your Strategy Session"
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+              */}
+            </div>
+
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "0.72rem",
+              fontWeight: 300,
+              color: "rgba(255,255,255,0.35)",
+              textAlign: "center",
+              marginTop: "0.75rem",
+            }}>
+              This video explains exactly what we'll cover on the call and why showing up will change your season.
             </p>
           </div>
         </div>
       </section>
 
       {/* ── 3 THINGS TO DO BEFORE THE CALL ─────────────────── */}
-      {/* Jeremy Haynes framework: pre-sell, prime, and pre-qualify */}
-      <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
+      <section style={{ padding: "clamp(3rem, 8vw, 5rem) 0" }}>
         <div className="container">
           <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem", textAlign: "center" }}>
-              Before Our Call
+
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1rem", textAlign: "center" }}>
+              Before The Call
             </p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.15, marginBottom: "3rem", textAlign: "center" }}>
-              3 things to do right now.
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
+              color: "white",
+              lineHeight: 1.15,
+              marginBottom: "2.5rem",
+              textAlign: "center",
+            }}>
+              3 things that will make our session<br />worth 10x more.
             </h2>
 
-            {/* Step 1 */}
-            <div style={{ display: "flex", gap: "2rem", marginBottom: "3rem", alignItems: "flex-start" }}>
-              <div style={{
-                width: "48px", height: "48px", flexShrink: 0,
-                backgroundColor: "oklch(0.42 0.18 25)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.2rem", color: "white" }}>1</span>
-              </div>
-              <div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.2rem", color: "oklch(0.12 0.005 65)", marginBottom: "0.5rem" }}>
-                  Watch this video before we talk.
-                </h3>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "1rem" }}>
-                  This 60-second video explains exactly how Be The Best Baseball works and what we're going to build together. It will answer most of your questions before the call and make our time together much more productive.
-                </p>
-                {/* Short VSL embed */}
-                <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "#000" }}>
-                  <iframe
-                    src="https://www.youtube.com/embed/3kOn_Nmbmpk?rel=0&modestbranding=1"
-                    title="How Be The Best Baseball Works — Jantzen Witte"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-                  />
+            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+              {[
+                {
+                  number: "01",
+                  title: "Watch the video above",
+                  body: "It's short. It explains exactly how the 90 Day Athlete Accelerator works, who it's for, and what changes in 90 days. You'll get more out of the call if you've seen it.",
+                },
+                {
+                  number: "02",
+                  title: "Send us a game swing video",
+                  body: "Text or email us a video of you hitting — cage or game, doesn't matter. This lets us come to the call with specific feedback on your swing instead of starting from scratch. Text it to us at the number in your confirmation email.",
+                },
+                {
+                  number: "03",
+                  title: "Have a parent on the call",
+                  body: "We need the financially responsible party present. If a parent can't make it, reach out and we'll find a time that works for everyone. This isn't a sales call — it's a plan. But we need the right people in the room.",
+                },
+              ].map(({ number, title, body }) => (
+                <div key={number} style={{
+                  display: "flex",
+                  gap: "2rem",
+                  padding: "2rem 0",
+                  borderBottom: "1px solid oklch(0.18 0.005 65)",
+                  alignItems: "flex-start",
+                }}>
+                  <div style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontWeight: 700,
+                    fontSize: "clamp(2rem, 5vw, 3rem)",
+                    color: "oklch(0.42 0.18 25)",
+                    lineHeight: 1,
+                    flexShrink: 0,
+                    width: "60px",
+                  }}>
+                    {number}
+                  </div>
+                  <div>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1rem, 2.5vw, 1.2rem)", color: "white", marginBottom: "0.5rem", lineHeight: 1.2 }}>
+                      {title}
+                    </h3>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", margin: 0 }}>
+                      {body}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div style={{ display: "flex", gap: "2rem", marginBottom: "3rem", alignItems: "flex-start" }}>
-              <div style={{
-                width: "48px", height: "48px", flexShrink: 0,
-                backgroundColor: "oklch(0.12 0.005 65)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.2rem", color: "white" }}>2</span>
-              </div>
-              <div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.2rem", color: "oklch(0.12 0.005 65)", marginBottom: "0.5rem" }}>
-                  Send me a game swing video.
-                </h3>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "0.75rem" }}>
-                  Before our call, I want to see your actual game swing — not a cage swing. A game swing is where the truth lives. Send it to me at:
-                </p>
-                <a
-                  href="https://instagram.com/jantzenwitte"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-block",
-                    fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 700,
-                    letterSpacing: "0.14em", textTransform: "uppercase",
-                    backgroundColor: "oklch(0.42 0.18 25)", color: "white",
-                    padding: "0.75rem 1.5rem", textDecoration: "none",
-                  }}
-                >
-                  DM on Instagram @jantzenwitte →
-                </a>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 300, color: "oklch(0.55 0.01 65)", marginTop: "0.75rem" }}>
-                  Or email it to: [your email here]
-                </p>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
-              <div style={{
-                width: "48px", height: "48px", flexShrink: 0,
-                backgroundColor: "oklch(0.12 0.005 65)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.2rem", color: "white" }}>3</span>
-              </div>
-              <div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.2rem", color: "oklch(0.12 0.005 65)", marginBottom: "0.5rem" }}>
-                  If you're a parent, read this.
-                </h3>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "0.75rem" }}>
-                  I know you've invested a lot in your son's development — travel ball, private lessons, tournaments. I respect that. On our call, I'm going to show you exactly what we do differently, why it works when everything else hasn't, and what the path forward looks like.
-                </p>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)" }}>
-                  <strong style={{ fontWeight: 600, color: "oklch(0.12 0.005 65)" }}>Please be on the call.</strong> The decisions we make together will directly impact your son's career. I want you in the room.
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* ── WHAT TO EXPECT ON THE CALL ──────────────────────── */}
-      {/* Ballantyne: set expectations, reduce anxiety, prime for yes */}
-      <section style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "5rem 0" }}>
-        <div className="container">
-          <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem" }}>
-              What to Expect
-            </p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "1.5rem" }}>
-              Here's exactly what happens<br />on our call.
-            </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "2.5rem" }}>
-              This is not a sales pitch. I'm going to ask you questions, listen to what's happening, and give you an honest assessment of what needs to change. If I think the 90 Day Athlete Accelerator is the right fit, I'll explain exactly how it works. If it's not the right fit, I'll tell you that too.
-            </p>
-
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1px", backgroundColor: "oklch(0.88 0.005 80)", textAlign: "left" }}>
-              {[
-                { time: "0–5 min", label: "Introductions & Goals", desc: "I learn exactly where the player is and where they want to go." },
-                { time: "5–15 min", label: "Swing Analysis", desc: "We review the game swing video you sent and I tell you exactly what I see." },
-                { time: "15–25 min", label: "The Plan", desc: "I walk you through the specific drills and approach we'd use in the first 30 days." },
-                { time: "25–30 min", label: "Next Steps", desc: "If it's a fit, we talk about how to get started. No pressure, no tricks." },
-              ].map(({ time, label, desc }) => (
-                <div key={label} style={{ backgroundColor: "white", padding: "1.5rem" }}>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.4rem" }}>{time}</p>
-                  <p style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.95rem", color: "oklch(0.12 0.005 65)", marginBottom: "0.4rem" }}>{label}</p>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.78rem", fontWeight: 300, lineHeight: 1.6, color: "oklch(0.45 0.01 65)", margin: 0 }}>{desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SOCIAL PROOF / RESULTS ──────────────────────────── */}
-      <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
+      <section style={{ backgroundColor: "oklch(0.07 0.003 65)", padding: "clamp(3rem, 8vw, 5rem) 0" }}>
         <div className="container">
           <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem", textAlign: "center" }}>
-              The Results
+
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1rem", textAlign: "center" }}>
+              What Happens On The Call
             </p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "2.5rem", textAlign: "center" }}>
-              Players who trusted the process.
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
+              color: "white",
+              lineHeight: 1.15,
+              marginBottom: "2.5rem",
+              textAlign: "center",
+            }}>
+              No pitch. No pressure.<br />Just a plan.
             </h2>
 
-            <div style={{ display: "grid", gap: "1px", backgroundColor: "oklch(0.88 0.005 80)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", backgroundColor: "oklch(0.18 0.005 65)" }}>
               {[
                 {
-                  name: "Brady Lester",
-                  result: "D3 (Mount Union) → NAIA → Ohio State University",
-                  stats: ".337 AVG · 10 HR · 49 RBI · First Team All-OAC",
-                  quote: "I stopped overthinking and just started hitting. The results followed.",
+                  step: "First 5 min",
+                  title: "We watch your swing",
+                  body: "If you sent us a video, we'll have already watched it. We come to the call with specific observations — not generic advice.",
                 },
                 {
-                  name: "Brooks Burdine",
-                  result: "Zero offers → D1 (Air Force Academy)",
-                  stats: "Uncommitted in high school → Starting freshman at Air Force",
-                  quote: "Jantzen showed me exactly what was holding me back. Once I fixed it, everything changed.",
+                  step: "Next 10 min",
+                  title: "We identify the real problem",
+                  body: "Not 7 things. One or two things that are actually causing your inconsistency. Most coaches give you more to think about. We do the opposite.",
                 },
                 {
-                  name: "Dominic",
-                  result: "Cal → Arizona State (PAC 12)",
-                  stats: ".276 AVG · 10 HR · Power numbers up significantly",
-                  quote: "The simplicity of the approach is what makes it work. Less thinking, more hitting.",
+                  step: "Next 10 min",
+                  title: "We build your plan",
+                  body: "A specific, simple framework built around your natural swing. Not a template. Not a generic drill list. Your plan.",
                 },
-              ].map(({ name, result, stats, quote }) => (
-                <div key={name} style={{ backgroundColor: "white", padding: "2rem" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.75rem" }}>
-                    <div>
-                      <p style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1rem", color: "oklch(0.12 0.005 65)", margin: 0 }}>{name}</p>
-                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", margin: 0 }}>{result}</p>
-                    </div>
-                  </div>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 400, color: "oklch(0.52 0.01 65)", marginBottom: "0.75rem" }}>{stats}</p>
-                  <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "0.95rem", color: "oklch(0.35 0.01 65)", lineHeight: 1.6, margin: 0 }}>"{quote}"</p>
+                {
+                  step: "Final 5 min",
+                  title: "We decide together",
+                  body: "If the 90 Day Athlete Accelerator is the right fit for you, we'll talk about it. If it's not, we'll tell you that too. No pressure either way.",
+                },
+              ].map(({ step, title, body }) => (
+                <div key={step} style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "2rem" }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "0.75rem" }}>
+                    {step}
+                  </p>
+                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1rem", color: "white", marginBottom: "0.6rem", lineHeight: 1.2 }}>
+                    {title}
+                  </h3>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.82rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", margin: 0 }}>
+                    {body}
+                  </p>
                 </div>
               ))}
             </div>
@@ -283,47 +309,162 @@ export default function ThankYou() {
         </div>
       </section>
 
-      {/* ── GUARANTEE REMINDER ──────────────────────────────── */}
-      <section style={{ backgroundColor: "oklch(0.42 0.18 25)", padding: "3rem 0" }}>
+      {/* ── SOCIAL PROOF — BOOKER TESTIMONIALS ──────────────── */}
+      <section style={{ padding: "clamp(3rem, 8vw, 5rem) 0" }}>
         <div className="container">
-          <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1rem, 3vw, 1.5rem)", color: "white", lineHeight: 1.5, marginBottom: "0.75rem" }}>
-              "We guarantee +5 MPH to your exit velocity in 30 days — or we work with you for free until you do."
+          <div style={{ maxWidth: "820px", margin: "0 auto" }}>
+
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1rem", textAlign: "center" }}>
+              They Were Where You Are
             </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
-              — Jantzen Witte, Founder · Be The Best Baseball
-            </p>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(1.6rem, 4vw, 2.4rem)",
+              color: "white",
+              lineHeight: 1.15,
+              marginBottom: "2.5rem",
+              textAlign: "center",
+            }}>
+              Players who booked a call<br />and showed up.
+            </h2>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", backgroundColor: "oklch(0.18 0.005 65)" }}>
+              {[
+                {
+                  quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.",
+                  name: "Brady Lester",
+                  tag: "NAIA → Ohio State University · .337 AVG · 10 HR · 49 RBI",
+                },
+                {
+                  quote: "I was so far down in the dumps and I found you as a resource. This is really life-changing. Finished .350 avg, .421 in conference, .468 OBP, .614 SLG. Earned a 4-year scholarship.",
+                  name: "Parker Sobiesiak",
+                  tag: "JUCO → 4-Year Scholarship",
+                },
+                {
+                  quote: "Before working with Jantzen, I felt tight and unable to get a good, hard, competitive swing. I definitely felt like I was put into better positions to attack the ball and do damage on mistake pitches.",
+                  name: "Chase Wells",
+                  tag: "Indy Ball → Detroit Tigers",
+                },
+                {
+                  quote: "I feel a million times better than I did before. Honestly, it was a dark spot for me. Confidence wasn't there at all. But I just feel a million times better. And it's not only baseball — this has helped a lot with me.",
+                  name: "Teddy Stephenson",
+                  tag: "HS → University of the Holy Cross",
+                },
+                {
+                  quote: "Got my feels back in one session.",
+                  name: "Brooks Burdine",
+                  tag: "Zero Offers → Air Force Academy (D1) + MLB Draft Letters",
+                },
+                {
+                  quote: "His approach is spot on — he tailors the program to the individual. He takes the player's natural swing and adds small, incremental tweaks to get the most out of it. Buy in is 100%.",
+                  name: "Travis Foster",
+                  tag: "Parent · Ryan Foster's Dad",
+                },
+              ].map(({ quote, name, tag }) => (
+                <div key={name} style={{ backgroundColor: "oklch(0.13 0.005 65)", padding: "2rem" }}>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", lineHeight: 0.8, color: "oklch(0.42 0.18 25)", fontStyle: "italic", marginBottom: "0.75rem" }}>&ldquo;</div>
+                  <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(0.88rem, 2vw, 1rem)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                    {quote}
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                    <div style={{ width: "28px", height: "28px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.75rem", color: "white" }}>{name[0]}</span>
+                    </div>
+                    <div>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 600, color: "white", margin: 0 }}>{name}</p>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 400, letterSpacing: "0.1em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", margin: 0 }}>{tag}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── URGENCY / NO-SHOW PREVENTION ────────────────────── */}
-      {/* Ballantyne: remind them why they booked, reinforce commitment */}
-      <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "4rem 0" }}>
+      <section style={{ backgroundColor: "oklch(0.42 0.18 25)", padding: "clamp(2.5rem, 6vw, 4rem) 0" }}>
         <div className="container">
-          <div style={{ maxWidth: "560px", margin: "0 auto", textAlign: "center" }}>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "white", lineHeight: 1.2, marginBottom: "1.25rem" }}>
+          <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(1.4rem, 3.5vw, 2rem)",
+              color: "white",
+              lineHeight: 1.2,
+              marginBottom: "1rem",
+            }}>
               You booked this call for a reason.
             </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", marginBottom: "1.25rem" }}>
-              Something isn't working. You know it. The overthinking, the inconsistency, the gap between what you can do in the cage and what you do in games — it's real, and it's costing you.
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(0.85rem, 2vw, 0.95rem)",
+              fontWeight: 300,
+              lineHeight: 1.8,
+              color: "rgba(255,255,255,0.85)",
+              marginBottom: "1.5rem",
+            }}>
+              Your window is closing. Every week you spend overthinking mechanics is a week you're not getting better. We'll see you on the call.
             </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", marginBottom: "2rem" }}>
-              Show up to this call ready to be honest about where you are and serious about where you want to go. That's all I ask.
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              letterSpacing: "0.1em",
+              color: "rgba(255,255,255,0.65)",
+            }}>
+              Need to reschedule? Reply to your confirmation email and we'll find a new time.
             </p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "1rem", color: "oklch(0.72 0.12 25)" }}>
-              See you on the call. — Jantzen
+          </div>
+        </div>
+      </section>
+
+      {/* ── GUARANTEE ────────────────────────────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.07 0.003 65)", padding: "clamp(3rem, 8vw, 5rem) 0" }}>
+        <div className="container">
+          <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              marginBottom: "1.5rem",
+            }}>
+              <span style={{ color: "oklch(0.72 0.12 25)", fontSize: "1.2rem" }}>🛡</span>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)" }}>
+                The Guarantee
+              </span>
+            </div>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              fontSize: "clamp(1.4rem, 3.5vw, 2rem)",
+              color: "white",
+              lineHeight: 1.2,
+              marginBottom: "1.25rem",
+            }}>
+              +5 MPH exit velocity in 30 days —<br />or we work with you for free until you do.
+            </h2>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "0.88rem",
+              fontWeight: 300,
+              lineHeight: 1.8,
+              color: "rgba(255,255,255,0.5)",
+            }}>
+              And if you don't care about exit velo — we guarantee your swing will feel more natural than it ever has, or same deal. We make big guarantees because we genuinely want to help as many talented hitters as we can. If we're not getting you results, we don't deserve your money.
             </p>
           </div>
         </div>
       </section>
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer style={{ backgroundColor: "oklch(0.10 0.005 65)", borderTop: "1px solid oklch(0.18 0.005 65)", padding: "2rem 0" }}>
+      <footer style={{ backgroundColor: "oklch(0.06 0.003 65)", borderTop: "1px solid oklch(0.14 0.005 65)", padding: "2rem 0" }}>
         <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <div style={{ width: "18px", height: "18px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.65rem", color: "white" }}>H</span>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.65rem", color: "white" }}>B</span>
             </div>
             <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>BE THE BEST BASEBALL</span>
           </div>
