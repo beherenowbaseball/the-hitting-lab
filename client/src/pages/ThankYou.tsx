@@ -207,14 +207,16 @@ export default function ThankYou() {
                 {
                   number: "02",
                   title: "Send us a game swing video",
-                  body: "Text or email us a video of you hitting — cage or game, doesn't matter. This lets us come to the call with specific feedback on your swing instead of starting from scratch. Text it to us at the number in your confirmation email.",
+                  body: "Send us a video of you hitting — cage or game, doesn't matter. This lets us come to the call with specific feedback on your swing instead of starting from scratch.",
+                  link: "https://tally.so/r/lb5WQv",
+                  linkText: "Submit Your Swing Video →",
                 },
                 {
                   number: "03",
                   title: "Have a parent on the call",
                   body: "We need the financially responsible party present. If a parent can't make it, reach out and we'll find a time that works for everyone. This isn't a sales call — it's a plan. But we need the right people in the room.",
                 },
-              ].map(({ number, title, body }) => (
+              ].map(({ number, title, body, link, linkText }: { number: string; title: string; body: string; link?: string; linkText?: string }) => (
                 <div key={number} style={{
                   display: "flex",
                   gap: "2rem",
@@ -240,6 +242,28 @@ export default function ThankYou() {
                     <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", margin: 0 }}>
                       {body}
                     </p>
+                    {link && (
+                      <a
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-block",
+                          marginTop: "1rem",
+                          fontFamily: "'Inter', sans-serif",
+                          fontSize: "0.6rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.14em",
+                          textTransform: "uppercase",
+                          backgroundColor: "oklch(0.42 0.18 25)",
+                          color: "white",
+                          padding: "0.7rem 1.25rem",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {linkText}
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
