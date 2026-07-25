@@ -305,7 +305,13 @@ export default function Home() {
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }} className="sm:flex-row">
               <button
-                onClick={scrollToDrills}
+                onClick={() => {
+                  if (isUnlocked) {
+                    window.location.href = "/drills";
+                  } else {
+                    setShowGate(true);
+                  }
+                }}
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: "0.65rem",
