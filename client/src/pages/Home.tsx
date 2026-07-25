@@ -393,6 +393,8 @@ export default function Home() {
                 { name: "Max Fraizer", result: "High School", stat: "87 MPH EV PR → Beat It Week 2" },
                 { name: "Spencer Dailey", result: "D3 P.O. → 2-Way Player, Upper Iowa", stat: "+5 MPH Bat Speed" },
                 { name: "Teddy Stephenson", result: "HS → University of the Holy Cross", stat: "" },
+                { name: "Daunte Stuart", result: "Indy Ball → Philadelphia Phillies", stat: "4 HR in 6 Games" },
+                { name: "Chase Wells", result: "Indy Ball → Detroit Tigers", stat: "" },
               ].map(({ name, result, stat }) => (
                 <div key={name} style={{ display: "flex", alignItems: "center", gap: "2rem", padding: "0.85rem 2.5rem" }}>
                   <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>{name}</span>
