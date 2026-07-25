@@ -127,23 +127,6 @@ export default function ThankYou() {
         </div>
       </section>
 
-      {/* ── 3. REPLY YES MICRO-COMMITMENT ───────────────────── */}
-      <section style={{ backgroundColor: "#f5f4f0", padding: "clamp(2rem, 5vw, 3rem) 0" }}>
-        <div className="container">
-          <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: crimsonLight, marginBottom: "0.75rem" }}>
-              One Quick Thing
-            </p>
-            <h2 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1.2rem, 3vw, 1.6rem)", color: "#111111", lineHeight: 1.2, marginBottom: "0.75rem" }}>
-              Reply YES to the text we just sent you.
-            </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "#555555", margin: 0 }}>
-              You should have a text from Jantzen confirming your call. Reply YES. It takes 5 seconds and it tells us you're ready. Players who confirm show up. Players who don't, don't.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ── 4. WHAT TO DO NOW ───────────────────────────────── */}
       <section style={{ padding: "clamp(3rem, 8vw, 5rem) 0", backgroundColor: "#ffffff" }}>
         <div className="container">
