@@ -214,6 +214,59 @@ export default function Apply() {
         </div>
       </section>
 
+      {/* ── TESTIMONIALS ─────────────────────────────────────── */}
+      <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
+        <div className="container">
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "1rem", textAlign: "center" }}>
+            From the Players
+          </p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>
+            Real players. Real results.
+          </h2>
+          <div className="grid md:grid-cols-2" style={{ gap: "1px", backgroundColor: "oklch(0.88 0.005 80)" }}>
+            {[
+              {
+                quote: "My swing has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.",
+                name: "Spencer Dailey",
+                tag: "Player",
+              },
+              {
+                quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. Witte's experience shows in everything he does.",
+                name: "Brady Lester",
+                tag: "Player · Ohio State University",
+              },
+              {
+                quote: "He takes the player's natural swing and adds small, incremental tweaks to get the most out of it — versus trying to rebuild the entire swing entirely.",
+                name: "Travis Foster",
+                tag: "Parent",
+              },
+              {
+                quote: "I ended up hitting a distance PR and an exit velocity PR in the same day after a 30-minute call. I've gone from a scared hitter to crushing the ball to all sides of the field.",
+                name: "Max Frazier",
+                tag: "Player",
+              },
+            ].map(({ quote, name, tag }) => (
+              <div key={name} style={{ backgroundColor: "white", padding: "2rem" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "1rem" }}>&ldquo;</div>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", color: "oklch(0.25 0.005 65)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+                  {quote}
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                  <div style={{ width: "28px", height: "28px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.75rem", color: "white" }}>{name[0]}</span>
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 600, color: "oklch(0.12 0.005 65)", margin: 0 }}>{name}</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", margin: 0 }}>{tag}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       {/* ── CREDIBILITY ─────────────────────────────────────── */}
       <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">

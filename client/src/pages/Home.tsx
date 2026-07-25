@@ -319,7 +319,7 @@ export default function Home() {
               {/* Transitional CTA — for the buyer who's already sold */}
               <div style={{ marginTop: "1.75rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", fontWeight: 300, color: "rgba(255,255,255,0.55)", marginBottom: "0.6rem" }}>
-                  Want us to watch your swings and build a plan around your specific flaws?
+                  Want feedback on your swings as you work through the drills?
                 </p>
                 <a
                   href="/apply"
@@ -578,7 +578,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FOR YOU / NOT FOR YOU ─────────────────────────── */}
+      {/* ── TESTIMONIALS ─────────────────────────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "5rem 0" }}>
+        <div className="container">
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "1rem", textAlign: "center" }}>
+            Real Results
+          </p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "white", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>
+            What players and parents are saying.
+          </h2>
+          <div className="grid md:grid-cols-3" style={{ gap: "1px", backgroundColor: "oklch(0.18 0.005 65)" }}>
+            {[
+              {
+                quote: "In game so far I'm hitting .497 with 8 doubles, 4 HRs, and 24 RBIs in just 16 games. Having a coach like Jantzen in your corner giving you big league drills and cues is a true gamechanger.",
+                name: "Alex Martinez",
+                tag: "Player",
+              },
+              {
+                quote: "He doesn't change you — he just makes you better. Completely changed my game. After working with him I had one of my best hitting seasons.",
+                name: "Benjamin Wallace",
+                tag: "Player",
+              },
+              {
+                quote: "Cade led his team with a .474 average. If you're a parent weighing the options of who to have coach your son, Jantzen is your guy — endlessly positive, adaptable, and committed.",
+                name: "Cade's Mom",
+                tag: "Parent",
+              },
+            ].map(({ quote, name, tag }) => (
+              <div key={name} style={{ backgroundColor: "oklch(0.12 0.005 65)", padding: "2rem" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", lineHeight: 0.8, color: "oklch(0.42 0.18 25)", fontStyle: "italic", marginBottom: "1rem" }}>&ldquo;</div>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(0.9rem, 2vw, 1.05rem)", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+                  {quote}
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                  <div style={{ width: "28px", height: "28px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.75rem", color: "white" }}>{name[0]}</span>
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 600, color: "white", margin: 0 }}>{name}</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", margin: 0 }}>{tag}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+            {/* ── FOR YOU / NOT FOR YOU ─────────────────────────── */}
       <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">
           <div style={{ maxWidth: "820px", margin: "0 auto" }}>

@@ -137,7 +137,7 @@ export default function EmailGate({ onUnlock }: Props) {
             marginBottom: "0.75rem",
           }}
         >
-          Stop Guessing.<br />Start Hitting.
+          The same drill library<br />our 90 Day athletes use.
         </h2>
         <p
           style={{
@@ -149,7 +149,7 @@ export default function EmailGate({ onUnlock }: Props) {
             marginBottom: "1.75rem",
           }}
         >
-          Enter your name and email to unlock the full 32-drill framework — the same system I used to survive 12 years in pro ball. Free. No spam.
+          Doing the drills will help you build a better swing. But the real growth comes from getting feedback from us as you do them. Enter your name and email to unlock the full 32-drill framework — free.
         </p>
 
         {/* Form */}
@@ -279,7 +279,7 @@ export default function EmailGate({ onUnlock }: Props) {
             textAlign: "center",
           }}
         >
-          No spam. Unsubscribe anytime. Used by coaches &amp; players at every level.
+          No spam. Unsubscribe anytime. Join 50+ players already in the program.
         </p>
       </div>
     </div>
