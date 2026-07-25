@@ -433,15 +433,7 @@ export default function ThankYou() {
             }}>
               Your window is closing. Every week you spend overthinking mechanics is a week you're not getting better. We'll see you on the call.
             </p>
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              color: "rgba(255,255,255,0.65)",
-            }}>
-              Need to reschedule? Reply to your confirmation email and we'll find a new time.
-            </p>
+
           </div>
         </div>
       </section>
