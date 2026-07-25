@@ -135,10 +135,10 @@ export default function ThankYou() {
               One Quick Thing
             </p>
             <h2 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "clamp(1.2rem, 3vw, 1.6rem)", color: "#111111", lineHeight: 1.2, marginBottom: "0.75rem" }}>
-              Reply YES to your confirmation email to lock in your spot.
+              Reply YES to the text we just sent you.
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "#555555", margin: 0 }}>
-              Check your inbox — you should have a confirmation email from us. Hit reply and type YES. It takes 5 seconds and it tells us you're committed. Players who confirm show up. Players who don't, don't.
+              You should have a text from Jantzen confirming your call. Reply YES. It takes 5 seconds and it tells us you're ready. Players who confirm show up. Players who don't, don't.
             </p>
           </div>
         </div>
