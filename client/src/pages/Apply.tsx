@@ -389,7 +389,7 @@ export default function Apply() {
           <div className="grid md:grid-cols-3" style={{ gap: "1px", backgroundColor: "oklch(0.95 0.003 80)" }}>
             {[
               { quote: "I was so far down in the dumps and I found you as a resource. This is really life-changing. Finished .350 avg, .421 in conference, .468 OBP, .614 SLG. Earned a 4-year scholarship.", name: "Parker Sobiesiak", tag: "Player · JUCO → 4-Year Scholarship" },
-              { quote: "My line drive percentage went from 41 to 57. Miss hit a ball and still got a double — Baseball's just more fun now.", name: "Saul Trevino", tag: "Player · JUCO → Transferring to Texas" },
+              { quote: "My line drive percentage went from 41 to 57. Miss hit a ball and still got a double — Baseball's just more fun now.", name: "Saul Trevino", tag: "Player · JUCO → Oklahoma Wesleyan University · .407 AVG / 1.140 OPS" },
               { quote: "His aura is bigger. He knows where he's at and what he's doing. When he looks comfortable, he plays phenomenal.", name: "Alma Trevino", tag: "Parent · Saul's Mom" },
               { quote: "Y'all have worked wonders with me. It just clicked. Batted .385 for the whole season, .550 in district, 39 hits.", name: "Hudson Sharp", tag: "Player · High School" },
               { quote: "Before the program, pitches I could have put over the fence — I'd just put up the middle. Now I can tell when I'm not delivering the barrel, and I know exactly how to fix it. There are unlocks still coming.", name: "Sam Campin", tag: "Player · JUCO · 91 → 94 EV" },
@@ -409,7 +409,7 @@ export default function Apply() {
               { quote: "Yeah dude best swings of my life just like you said.", name: "Toufic", tag: "Player · JUCO" },
               { quote: "It's not just drills. We talk through my approach, my swing thoughts, and the mental side of hitting. The podcast-style Zoom calls with pro players and coaches have been unreal. Witte's experience shows in everything he does.", name: "Brady Lester", tag: "Player · NAIA → Ohio State University" },
               { quote: "The big game changer for me is having a big league player/coach in my corner. In game so far I'm hitting .497 with 8 doubles, 4 HRs, and 24 RBIs in just 16 games.", name: "Alex Martinez", tag: "Player" },
-              { quote: "My swing after working with Jantzen has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.", name: "Spencer Dailey", tag: "Player · D3 P.O. → 2-Way Player, Upper Iowa University" },
+              { quote: "My swing has felt more easy and repeatable while adding an average of 5 mph of bat speed. I've felt more confident and free in the box than ever before.", name: "Spencer Dailey", tag: "Player · D3 P.O. → Upper Iowa University · +5 MPH Bat Speed" },
               { quote: "Before working with Jantzen, I felt tight and unable to get a good, hard, competitive swing. I definitely felt like I was put into better positions to attack the ball and do damage on mistake pitches.", name: "Chase Wells", tag: "Player · Indy Ball → Detroit Tigers" },
               { quote: "Completely changed my game of baseball. After working with him I had one of my best hitting seasons. He doesn't change you — he just makes you better.", name: "Benjamin Wallace", tag: "Player" },
               { quote: "Jantzen has been a mainstay in my sons' development for the past 10 years. He keeps it simple, to the point, and fun — and the improvement in the mindset of hitting has been amazing.", name: "Barney Wiley", tag: "Parent · 10 Years" },
@@ -434,7 +434,7 @@ export default function Apply() {
         </div>
       </section>
 
-      {/* ── FAQ ───────────────────────────────────────────────── */}
+      {/* ── FAQ ─────────────────────────────────────────────── */}
       <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
         <div className="container">
           <div style={{ maxWidth: "680px", margin: "0 auto" }}>
@@ -442,18 +442,45 @@ export default function Apply() {
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, marginBottom: "3rem", textAlign: "center" }}>Everything you want to know before the call.</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
               {[
-                { q: "How does the feedback work?", a: "You record your swings and send them to us through our private community. We watch every video and send back specific, personalized feedback — not generic cues. You'll know exactly what to work on before your next session." },
+                { q: "Does my parent need to be on the call?", a: "We need the financially responsible party to be present on the strategy session call. If a parent or guardian cannot make the call for a certain reason, we will have to find a time that works for everyone." },
+                { q: "How does the feedback work?", a: "You record your swings and send them to us through our private community. We watch every video and send back specific, personalized feedback — not generic cues. You’ll know exactly what to work on before your next session." },
                 { q: "Do I need special equipment?", a: "No. You need a bat, a tee or a net, and a phone to record your swings. We ship you a tripod as part of the program so your setup is consistent every session." },
+                { q: "How much time does the program take?", a: "This varies greatly by athlete. Some guys send us video once a week. Others every day. We give you the freedom to approach this with what works best for your schedule." },
                 { q: "How is this different from my current coach?", a: "Most coaches give you more to think about. We do the opposite. We identify the one or two things that are actually causing your inconsistency and build a simple, repeatable plan around your natural swing — not a template." },
-                { q: "What if I don't see results in 30 days?", a: "We guarantee +5 MPH to your exit velocity in 30 days — or we work with you for free until you do. If you don't care about exit velo, we guarantee your swing will feel more natural than it ever has. We stand behind this completely." },
-                { q: "How much does it cost?", a: "We discuss investment on the strategy session call after we understand exactly where you are and what you need. We don't post pricing publicly because every athlete's situation is different. What I can tell you is that it's significantly less than a year of private lessons that aren't working." },
-                { q: "My son has a coach already. Can he still work with you?", a: "Yes. Most of our athletes have team coaches. We work alongside your existing coaching — we don't replace it. We focus on the individual swing development and mental approach that team coaches don't have time for." },
+                { q: "What if I don’t see results in 30 days?", a: "We guarantee +5 MPH to your exit velocity in 30 days — or we work with you for free until you do. If you don’t care about exit velo, we guarantee your swing will feel more natural than it ever has. We stand behind this completely." },
+                { q: "How much does it cost?", a: "We discuss investment on the strategy session call after we understand exactly where you are and what you need. We don’t post pricing publicly because every athlete’s situation is different. What I can tell you is that it’s significantly less than a year of private lessons that aren’t working." },
+                { q: "My son has a coach already. Can he still work with you?", a: "Yes. Most of our athletes have team coaches. We work alongside your existing coaching — we don’t replace it. We focus on the individual swing development and mental approach that team coaches don’t have time for." },
               ].map(({ q, a }, i) => (
                 <div key={i} style={{ borderTop: "1px solid oklch(0.90 0.005 80)", padding: "1.5rem 0" }}>
                   <p style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1rem", color: "oklch(0.12 0.005 65)", marginBottom: "0.6rem" }}>{q}</p>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.45 0.01 65)", margin: 0 }}>{a}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Fallback for people not ready to book */}
+            <div style={{ marginTop: "3rem", padding: "2rem", backgroundColor: "oklch(0.97 0.003 80)", textAlign: "center", borderTop: "3px solid oklch(0.42 0.18 25)" }}>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "1rem", color: "oklch(0.12 0.005 65)", marginBottom: "0.5rem" }}>
+                Not ready to book yet?
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", fontWeight: 300, color: "oklch(0.45 0.01 65)", marginBottom: "1rem", lineHeight: 1.7 }}>
+                Start with the free 32-drill framework first. Enter your name and email to unlock the full library.
+              </p>
+              <a
+                href="/"
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "0.6rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "oklch(0.42 0.18 25)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                }}
+              >
+                Grab the Free 32 Drills First →
+              </a>
             </div>
           </div>
         </div>

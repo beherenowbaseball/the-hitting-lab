@@ -416,18 +416,17 @@ export default function Home() {
               {              [
                 { name: "Parker Sobiesiak", result: "JUCO → 4-Year Scholarship", stat: ".209 → .421 AVG in Conference" },
                 { name: "Brady Lester", result: "NAIA → Ohio State University", stat: ".337 AVG · 10 HR · 49 RBI" },
-                { name: "Dom", result: "D1 Arizona State", stat: ".220/4 HR → .275/10 HR" },
+                { name: "Dominic", result: "Cal → Arizona State (D1)", stat: ".220/4 HR → .275/10 HR" },
                 { name: "Hudson Sharp", result: "High School", stat: ".385 Season · .550 District · 39 Hits" },
-                { name: "Saul Trevino", result: "JUCO → Transferring to Texas", stat: "Line Drive % 41% → 57%" },
+                { name: "Saul Trevino", result: "JUCO → Oklahoma Wesleyan University", stat: ".407 AVG · 1.140 OPS · LD% 41→57" },
                 { name: "Sam Campin", result: "JUCO", stat: "91 → 94 EV · +4-6 MPH" },
-                { name: "Ryan Foster", result: "D2, University of Jamestown", stat: "2 Hits → Barreling Every Game" },
-                { name: "Brooks Burdine", result: "Air Force Academy Scholarship", stat: "MLB Draft Letters" },
+                { name: "Spencer Dailey", result: "D3 P.O. → Upper Iowa University", stat: "+5 MPH Bat Speed" },
+                { name: "Brooks Burdine", result: "Zero Offers → Air Force Academy (D1)", stat: "MLB Draft Letters" },
                 { name: "Tony Woodie", result: "P.O. → Single Season HR & RBI Record", stat: "3 HR → 8 HR" },
                 { name: "Max Fraizer", result: "High School", stat: "87 MPH EV PR → Beat It Week 2" },
-                { name: "Spencer Dailey", result: "D3 P.O. → 2-Way Player, Upper Iowa", stat: "+5 MPH Bat Speed" },
-                { name: "Teddy Stephenson", result: "HS → University of the Holy Cross", stat: "" },
-                { name: "Daunte Stuart", result: "Indy Ball → Philadelphia Phillies", stat: "4 HR in 6 Games" },
                 { name: "Chase Wells", result: "Indy Ball → Detroit Tigers", stat: "" },
+                { name: "Daunte Stuart", result: "Indy Ball → Philadelphia Phillies", stat: "4 HR in 6 Games" },
+                { name: "Teddy Stephenson", result: "HS → University of the Holy Cross", stat: "" },
               ].map(({ name, result, stat }) => (
                 <div key={name} style={{ display: "flex", alignItems: "center", gap: "2rem", padding: "0.85rem 2.5rem" }}>
                   <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>{name}</span>
