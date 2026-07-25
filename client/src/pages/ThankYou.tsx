@@ -58,53 +58,8 @@ export default function ThankYou() {
         </div>
       </nav>
 
-      {/* ── HERO — CONFIRMATION ─────────────────────────────── */}
-      <section style={{ paddingTop: "80px", paddingBottom: "0" }}>
-        <div className="container">
-          <div style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center", padding: "clamp(3rem, 8vw, 5rem) 0 2rem" }}>
-
-            {/* Confirmation badge */}
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: "0.5rem",
-              backgroundColor: "#e8e4de",
-              border: "1px solid oklch(0.42 0.18 25)",
-              padding: "0.4rem 1rem", marginBottom: "1.75rem",
-            }}>
-              <span style={{ color: "oklch(0.72 0.12 25)", fontSize: "0.9rem" }}>✓</span>
-              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)" }}>
-                Your Session Is Booked
-              </span>
-            </div>
-
-            <h1 style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 700,
-              fontSize: "clamp(2rem, 5vw, 3.4rem)",
-              lineHeight: 1.1,
-              color: "#111111",
-              marginBottom: "1.25rem",
-            }}>
-              You made the right call.<br />Here's what happens next.
-            </h1>
-
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
-              fontWeight: 300,
-              lineHeight: 1.8,
-              color: "#555555",
-              marginBottom: "0",
-              maxWidth: "540px",
-              margin: "0 auto",
-            }}>
-              Check your email for your calendar invite. Before we talk, watch the short video below — it'll make our session 10x more valuable.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── URGENCY VIDEO ────────────────────────────────────── */}
-      <section style={{ padding: "2rem 0 0" }}>
+      {/* ── URGENCY VIDEO (first thing they see per Haynes) ─── */}
+      <section style={{ paddingTop: "56px" }}>
         <div className="container">
           <div style={{ maxWidth: "720px", margin: "0 auto" }}>
 
@@ -121,44 +76,21 @@ export default function ThankYou() {
               Watch This First
             </p>
 
-            {/* Video embed — replace PLACEHOLDER_CONFIRMATION_VIDEO with your YouTube ID */}
+            {/* Video embed — DXRYhj2T09Y */}
             <div style={{
               position: "relative",
               paddingBottom: "56.25%",
               height: 0,
               overflow: "hidden",
-              backgroundColor: "#f0ede8",
-              border: "1px solid oklch(0.18 0.005 65)",
+              backgroundColor: "#000",
             }}>
-              {/* PLACEHOLDER: Replace PLACEHOLDER_CONFIRMATION_VIDEO with your YouTube video ID */}
-              <div style={{
-                position: "absolute", inset: 0,
-                display: "flex", flexDirection: "column",
-                alignItems: "center", justifyContent: "center",
-                gap: "1rem",
-              }}>
-                <div style={{
-                  width: "64px", height: "64px",
-                  backgroundColor: "oklch(0.42 0.18 25)",
-                  borderRadius: "50%",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  <span style={{ color: "#111111", fontSize: "1.5rem", marginLeft: "4px" }}>▶</span>
-                </div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: "#999999", textAlign: "center", maxWidth: "300px", lineHeight: 1.6 }}>
-                  Welcome video coming soon.<br />
-                  Replace <code style={{ color: "oklch(0.72 0.12 25)" }}>PLACEHOLDER_CONFIRMATION_VIDEO</code> in ThankYou.tsx with your YouTube video ID.
-                </p>
-              </div>
-              {/* Uncomment and replace ID when ready:
               <iframe
-                src="https://www.youtube.com/embed/PLACEHOLDER_CONFIRMATION_VIDEO?autoplay=1&rel=0"
+                src="https://www.youtube.com/embed/DXRYhj2T09Y?autoplay=1&rel=0&modestbranding=1"
                 title="Watch Before Your Strategy Session"
                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
-              */}
             </div>
 
             <p style={{
@@ -170,6 +102,46 @@ export default function ThankYou() {
               marginTop: "0.75rem",
             }}>
               This video explains exactly what we'll cover on the call and why showing up will change your season.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONFIRMATION HERO ───────────────────────────────── */}
+      <section style={{ padding: "clamp(2.5rem, 6vw, 4rem) 0 0" }}>
+        <div className="container">
+          <div style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center" }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              backgroundColor: "#f5f4f0",
+              border: "1px solid oklch(0.42 0.18 25)",
+              padding: "0.4rem 1rem", marginBottom: "1.5rem",
+            }}>
+              <span style={{ color: "oklch(0.72 0.12 25)", fontSize: "0.9rem" }}>✓</span>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)" }}>
+                Your Session Is Booked
+              </span>
+            </div>
+            <h1 style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(1.8rem, 4.5vw, 3rem)",
+              lineHeight: 1.1,
+              color: "#111111",
+              marginBottom: "1rem",
+            }}>
+              You made the right call.<br />Here's what happens next.
+            </h1>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(0.9rem, 2vw, 1rem)",
+              fontWeight: 300,
+              lineHeight: 1.8,
+              color: "#555555",
+              maxWidth: "520px",
+              margin: "0 auto",
+            }}>
+              Check your email for your calendar invite. Complete the 3 steps below before we talk — it'll make our session 10x more valuable.
             </p>
           </div>
         </div>
