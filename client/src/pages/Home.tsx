@@ -342,9 +342,9 @@ export default function Home() {
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)")}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-                onClick={() => setShowVSL(true)}
-              >
-                Watch the Video
+                  onClick={() => { window.trackEvent?.("watch_video_click", { location: "hero" }); window.location.href = "/apply"; }}
+                >
+                  Watch the Video
               </button>
             </div>
             {/* Transitional CTA — for the buyer who's already sold */}
