@@ -297,23 +297,23 @@ export default function ThankYou() {
               {[
                 {
                   step: "First 5 min",
-                  title: "We watch your swing",
-                  body: "If you sent us a video, we'll have already watched it. We come to the call with specific observations — not generic advice.",
+                  title: "We get to know each other",
+                  body: "I learn what you’ve tried in the past. What has worked and what hasn’t. No judgment — just context so I can actually help.",
                 },
                 {
                   step: "Next 10 min",
-                  title: "We identify the real problem",
-                  body: "Not 7 things. One or two things that are actually causing your inconsistency. Most coaches give you more to think about. We do the opposite.",
+                  title: "We look at your swing",
+                  body: "We take a look at your swing and find the gaps we need to work through. Specific, honest feedback — not generic cues.",
                 },
                 {
                   step: "Next 10 min",
                   title: "We build your plan",
-                  body: "A specific, simple framework built around your natural swing. Not a template. Not a generic drill list. Your plan.",
+                  body: "We build your plan of what to work on and how. Simple, repeatable, built around your natural swing.",
                 },
                 {
                   step: "Final 5 min",
                   title: "We decide together",
-                  body: "If the 90 Day Athlete Accelerator is the right fit for you, we'll talk about it. If it's not, we'll tell you that too. No pressure either way.",
+                  body: "If the 90 Day Athlete Accelerator is the right fit, we’ll talk about it. If it’s not, we’ll tell you that too. No pressure either way.",
                 },
               ].map(({ step, title, body }) => (
                 <div key={step} style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "2rem" }}>
