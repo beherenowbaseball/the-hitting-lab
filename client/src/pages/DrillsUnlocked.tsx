@@ -1,7 +1,5 @@
 /* ============================================================
    BE THE BEST BASEBALL — Post Opt-In Drills Page
-   Shown immediately after email opt-in.
-   Welcome video → framing copy → book CTA → 32 drills
    ============================================================ */
 
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -16,7 +14,7 @@ const CARD_GAP = 1;
 const SCROLL_SPEED = 0.6;
 
 const GHL_BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/jantzen";
-// ▼ Replace this with the real YouTube welcome video ID when recorded
+// ▼ Replace with your YouTube welcome video ID when recorded
 const WELCOME_VIDEO_ID = "PLACEHOLDER_WELCOME_VIDEO";
 
 export default function DrillsUnlocked() {
@@ -34,9 +32,8 @@ export default function DrillsUnlocked() {
     activeFilter === "standard" ? standardDrills :
     waterbagDrills;
 
-  const duplicatedDrills = [...filteredDrills, ...filteredDrills];
+  const duplicatedDrills = [...filteredDrills, ...filteredDrills, ...filteredDrills];
 
-  // ── Infinite carousel ────────────────────────────────────────
   const getCardWidth = useCallback(() => {
     if (typeof window === "undefined") return CARD_WIDTH_DESKTOP + CARD_GAP;
     return (window.innerWidth < 640 ? CARD_WIDTH_MOBILE : CARD_WIDTH_DESKTOP) + CARD_GAP;
@@ -58,14 +55,12 @@ export default function DrillsUnlocked() {
     return () => cancelAnimationFrame(animFrameRef.current);
   }, [animate, activeFilter]);
 
-  // ── Scroll shadow ────────────────────────────────────────────
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ── GA4 tracking ─────────────────────────────────────────────
   useEffect(() => {
     (window as any).trackEvent?.("drills_page_view", {});
   }, []);
@@ -86,7 +81,7 @@ export default function DrillsUnlocked() {
   });
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "white", fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "white" }}>
 
       {/* ── Nav ─────────────────────────────────────────────── */}
       <nav style={{
@@ -99,11 +94,7 @@ export default function DrillsUnlocked() {
         height: "56px",
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-          <div style={{
-            width: "28px", height: "28px",
-            backgroundColor: "oklch(0.42 0.18 25)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
+          <div style={{ width: "28px", height: "28px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.75rem", color: "white" }}>B</span>
           </div>
           <div>
@@ -127,48 +118,19 @@ export default function DrillsUnlocked() {
         </a>
       </nav>
 
-      {/* ── Welcome Section ──────────────────────────────────── */}
-      <section style={{ paddingTop: "80px", paddingBottom: "3rem", backgroundColor: "oklch(0.08 0.005 65)" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 1.5rem", textAlign: "center" }}>
-          <p style={{
-            fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600,
-            letterSpacing: "0.2em", textTransform: "uppercase",
-            color: "oklch(0.42 0.18 25)", marginBottom: "1rem",
-          }}>
-            YOUR 32-DRILL FRAMEWORK IS UNLOCKED
-          </p>
-          <h1 style={{
-            fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400,
-            fontSize: "clamp(1.8rem, 5vw, 3rem)",
-            color: "white", lineHeight: 1.15, marginBottom: "1.5rem",
-          }}>
-            Welcome to our Drill Framework.<br />Here's how to get the most out of it.
-          </h1>
+      {/* ── Welcome Video + CTA ──────────────────────────────── */}
+      <section style={{ paddingTop: "72px", paddingBottom: "3rem", backgroundColor: "oklch(0.08 0.005 65)" }}>
+        <div style={{ maxWidth: "760px", margin: "0 auto", padding: "2rem 1.5rem 0" }}>
 
-          {/* Welcome Video */}
-          <div style={{
-            position: "relative", paddingBottom: "56.25%",
-            backgroundColor: "oklch(0.14 0.005 65)", marginBottom: "2rem",
-            border: "1px solid oklch(0.2 0.005 65)",
-          }}>
+          {/* Video */}
+          <div style={{ position: "relative", paddingBottom: "56.25%", backgroundColor: "oklch(0.14 0.005 65)", marginBottom: "1.75rem" }}>
             {WELCOME_VIDEO_ID === "PLACEHOLDER_WELCOME_VIDEO" ? (
-              <div style={{
-                position: "absolute", inset: 0,
-                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-                gap: "1rem",
-              }}>
-                <div style={{
-                  width: "56px", height: "56px", borderRadius: "50%",
-                  backgroundColor: "oklch(0.42 0.18 25)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  <span style={{ color: "white", fontSize: "1.25rem", marginLeft: "3px" }}>▶</span>
+              <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.75rem" }}>
+                <div style={{ width: "52px", height: "52px", borderRadius: "50%", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ color: "white", fontSize: "1.1rem", marginLeft: "3px" }}>▶</span>
                 </div>
-                <p style={{
-                  fontFamily: "'Inter', sans-serif", fontSize: "0.75rem",
-                  color: "oklch(0.55 0.01 65)", textAlign: "center", maxWidth: "280px",
-                }}>
-                  Welcome video coming soon.<br />Replace <code style={{ color: "oklch(0.42 0.18 25)" }}>PLACEHOLDER_WELCOME_VIDEO</code> in DrillsUnlocked.tsx with your YouTube video ID.
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "oklch(0.55 0.01 65)", textAlign: "center" }}>
+                  Welcome video — replace <code style={{ color: "oklch(0.42 0.18 25)" }}>PLACEHOLDER_WELCOME_VIDEO</code> with your YouTube ID
                 </p>
               </div>
             ) : (
@@ -182,65 +144,42 @@ export default function DrillsUnlocked() {
             )}
           </div>
 
-          {/* Framing copy */}
-          <p style={{
-            fontFamily: "'Inter', sans-serif", fontSize: "1rem", fontWeight: 300,
-            lineHeight: 1.8, color: "rgba(255,255,255,0.75)", marginBottom: "0.75rem",
-          }}>
-            These drills will help you build a better swing. But the real growth comes from getting feedback from us as you do them.
+          {/* Short copy + CTA */}
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.65)", marginBottom: "1.5rem", textAlign: "center" }}>
+            Want us to watch your swings and build a plan around your specific flaws?
           </p>
-          <p style={{
-            fontFamily: "'Inter', sans-serif", fontSize: "1rem", fontWeight: 300,
-            lineHeight: 1.8, color: "rgba(255,255,255,0.75)", marginBottom: "2.5rem",
-          }}>
-            If you want us to watch your swings, identify exactly what needs to change, and build a custom plan around your specific flaws — book a strategy session below. We'll see if you're a good fit to work with us.
-          </p>
-
-          {/* Book a Call CTA */}
-          <a
-            href={GHL_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => (window as any).trackEvent?.("booking_click", { location: "drills_welcome" })}
-            style={{
-              display: "inline-block",
-              fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 700,
-              letterSpacing: "0.15em", textTransform: "uppercase",
-              backgroundColor: "oklch(0.42 0.18 25)", color: "white",
-              padding: "1rem 2.5rem", textDecoration: "none",
-              marginBottom: "1rem",
-            }}
-          >
-            Book a Strategy Session →
-          </a>
-          <p style={{
-            fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 300,
-            color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em",
-          }}>
-            We guarantee +5 MPH exit velocity in 30 days — or we work with you for free.
+          <div style={{ textAlign: "center", marginBottom: "0.75rem" }}>
+            <a
+              href={GHL_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => (window as any).trackEvent?.("booking_click", { location: "drills_welcome" })}
+              style={{
+                display: "inline-block",
+                fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 700,
+                letterSpacing: "0.15em", textTransform: "uppercase",
+                backgroundColor: "oklch(0.42 0.18 25)", color: "white",
+                padding: "0.9rem 2rem", textDecoration: "none",
+              }}
+            >
+              Book a Strategy Session →
+            </a>
+          </div>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 300, color: "rgba(255,255,255,0.3)", letterSpacing: "0.05em", textAlign: "center" }}>
+            +5 MPH exit velocity guaranteed in 30 days — or we work with you for free.
           </p>
         </div>
       </section>
 
       {/* ── Drills Section ───────────────────────────────────── */}
-      <section style={{ paddingTop: "4rem", paddingBottom: "5rem", backgroundColor: "white" }}>
+      <section style={{ paddingTop: "4rem", paddingBottom: "6rem", backgroundColor: "white" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem" }}>
-          <p style={{
-            fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600,
-            letterSpacing: "0.2em", textTransform: "uppercase",
-            color: "oklch(0.42 0.18 25)", marginBottom: "0.5rem",
-          }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.5rem" }}>
             THE PROGRAM
           </p>
-          <h2 style={{
-            fontFamily: "'Playfair Display', serif", fontWeight: 700,
-            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-            color: "oklch(0.12 0.005 65)", lineHeight: 1.1, marginBottom: "2rem",
-          }}>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.1, marginBottom: "2rem" }}>
             32 Drills. Designed to bring out your natural swing.
           </h2>
-
-          {/* Filter tabs */}
           <div style={{ display: "flex", gap: "0.5rem", marginBottom: "2.5rem", flexWrap: "wrap" }}>
             {(["all", "standard", "waterbag"] as const).map(f => (
               <button key={f} style={filterBtnStyle(activeFilter === f)} onClick={() => setActiveFilter(f)}>
@@ -248,7 +187,6 @@ export default function DrillsUnlocked() {
               </button>
             ))}
           </div>
-
           <div style={{ borderTop: "1px solid oklch(0.92 0.005 80)", marginBottom: "1.5rem" }} />
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "oklch(0.65 0.008 65)", marginBottom: "1rem" }}>
             Hold to pause · Tap any drill to watch the video
@@ -256,20 +194,26 @@ export default function DrillsUnlocked() {
         </div>
 
         {/* Carousel */}
-        <div style={{ overflow: "hidden", cursor: "grab", position: "relative" }}
+        <div
+          style={{ overflow: "hidden", cursor: "grab" }}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
+          onTouchEnd={() => setTimeout(() => setIsPaused(false), 1500)}
         >
           <div ref={carouselRef} style={{ display: "flex", gap: `${CARD_GAP}px`, willChange: "transform" }}>
-            {duplicatedDrills.map((drill, i) => (
-              <DrillCard
-                key={`${drill.id}-${i}`}
-                drill={drill}
-                index={i % filteredDrills.length}
-                onClick={() => setSelectedDrill(drill)}
-              />
+            {duplicatedDrills.map((drill, idx) => (
+              <div
+                key={`${drill.id}-${idx}`}
+                style={{
+                  minWidth: `${CARD_WIDTH_MOBILE}px`,
+                  width: `${CARD_WIDTH_MOBILE}px`,
+                  flexShrink: 0,
+                }}
+                className="sm:min-w-[320px] sm:w-[320px]"
+              >
+                <DrillCard drill={drill} index={idx % filteredDrills.length} onClick={() => setSelectedDrill(drill)} />
+              </div>
             ))}
           </div>
         </div>
@@ -290,10 +234,7 @@ export default function DrillsUnlocked() {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         gap: "1rem", flexWrap: "wrap",
       }}>
-        <p style={{
-          fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 300,
-          color: "rgba(255,255,255,0.75)", margin: 0,
-        }}>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 300, color: "rgba(255,255,255,0.75)", margin: 0 }}>
           Want feedback on your swings as you work through the drills?
         </p>
         <a
