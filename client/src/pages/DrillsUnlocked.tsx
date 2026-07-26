@@ -253,7 +253,7 @@ export default function DrillsUnlocked() {
         gap: "0.5rem", flexWrap: "wrap",
       }}>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 300, color: "rgba(255,255,255,0.75)", margin: 0 }}>
-          Want feedback on your swings as you work through the drills?
+            Want a plan built around your specific flaws?
         </p>
         <a
           href="/apply"

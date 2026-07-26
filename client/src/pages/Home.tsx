@@ -391,7 +391,7 @@ export default function Home() {
             {/* Transitional CTA — for the buyer who's already sold */}
             <div style={{ marginTop: "1.75rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", fontWeight: 300, color: "rgba(255,255,255,0.45)", marginBottom: "0.6rem" }}>
-                Want feedback on your swings as you work through the drills?
+                Want a plan built around your specific flaws?
               </p>
               <a
                 href="/apply"

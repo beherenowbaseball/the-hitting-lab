@@ -91,7 +91,7 @@ export default function ThankYou() {
         <div style={{ maxWidth: "860px", margin: "0 auto" }}>
           <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden" }}>
             <iframe
-              src="https://www.youtube.com/embed/DXRYhj2T09Y?autoplay=1&rel=0&modestbranding=1"
+              src="https://www.youtube.com/embed/DXRYhj2T09Y?rel=0&modestbranding=1"
               title="Watch Before Your Strategy Session"
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

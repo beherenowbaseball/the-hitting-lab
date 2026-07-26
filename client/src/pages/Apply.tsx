@@ -20,10 +20,12 @@ declare global {
 }
 
 export default function Apply() {
-  // Track VSL page view
+  // Track VSL page view + set page title
   useEffect(() => {
+    document.title = "Apply for a Strategy Session — Be The Best Baseball";
     window.trackEvent?.("vsl_page_view", { page: "/apply" });
     window.scrollTo(0, 0);
+    return () => { document.title = "Be The Best Baseball — 32-Drill Framework for Serious Hitters"; };
   }, []);
 
   const handleBookingClick = () => {
