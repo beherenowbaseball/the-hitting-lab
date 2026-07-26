@@ -2,58 +2,24 @@
    BE THE BEST BASEBALL — Post Opt-In Drills Page
    ============================================================ */
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { drills, standardDrills, waterbagDrills } from "@/lib/drills";
 import DrillCard from "@/components/DrillCard";
 import DrillModal from "@/components/DrillModal";
 import type { Drill } from "@/lib/drills";
 
-const CARD_WIDTH_MOBILE = 260;
-const CARD_WIDTH_DESKTOP = 320;
-const CARD_GAP = 1;
-const SCROLL_SPEED = 0.6;
-
 const GHL_BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/jantzen";
-// ▼ Replace with your YouTube welcome video ID when recorded
 const WELCOME_VIDEO_ID = ""; // Set to YouTube video ID when ready
 
 export default function DrillsUnlocked() {
   const [activeFilter, setActiveFilter] = useState<"all" | "standard" | "waterbag">("all");
   const [selectedDrill, setSelectedDrill] = useState<Drill | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const animFrameRef = useRef<number>(0);
-  const posRef = useRef(0);
 
   const filteredDrills =
     activeFilter === "all" ? drills :
     activeFilter === "standard" ? standardDrills :
     waterbagDrills;
-
-  const duplicatedDrills = [...filteredDrills, ...filteredDrills, ...filteredDrills];
-
-  const getCardWidth = useCallback(() => {
-    if (typeof window === "undefined") return CARD_WIDTH_DESKTOP + CARD_GAP;
-    return (window.innerWidth < 640 ? CARD_WIDTH_MOBILE : CARD_WIDTH_DESKTOP) + CARD_GAP;
-  }, []);
-
-  const animate = useCallback(() => {
-    const el = carouselRef.current;
-    if (!el || isPaused) { animFrameRef.current = requestAnimationFrame(animate); return; }
-    posRef.current += SCROLL_SPEED;
-    const totalWidth = filteredDrills.length * getCardWidth();
-    if (posRef.current >= totalWidth) posRef.current -= totalWidth;
-    el.style.transform = `translateX(-${posRef.current}px)`;
-    animFrameRef.current = requestAnimationFrame(animate);
-  }, [isPaused, filteredDrills.length, getCardWidth]);
-
-  useEffect(() => {
-    posRef.current = 0;
-    animFrameRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animFrameRef.current);
-  }, [animate, activeFilter]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -135,7 +101,7 @@ export default function DrillsUnlocked() {
 
           {/* Short copy + CTA */}
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.65)", marginBottom: "1.5rem", textAlign: "center" }}>
-            Want us to watch your swings and build a plan around your specific flaws?
+            Want a plan built around your specific flaws?
           </p>
           <div style={{ textAlign: "center", marginBottom: "0.75rem" }}>
             <a
@@ -158,7 +124,7 @@ export default function DrillsUnlocked() {
         </div>
       </section>
 
-      {/* ── Drills Section ───────────────────────────────────── */}
+      {/* ── Drills Grid ─────────────────────────────────────── */}
       <section style={{ paddingTop: "4rem", paddingBottom: "6rem", backgroundColor: "white" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem" }}>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.5rem" }}>
@@ -167,6 +133,8 @@ export default function DrillsUnlocked() {
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.1, marginBottom: "2rem" }}>
             32 Drills. Designed to bring out your natural swing.
           </h2>
+
+          {/* Filter tabs */}
           <div style={{ display: "flex", gap: "0.5rem", marginBottom: "2.5rem", flexWrap: "wrap" }}>
             {(["all", "standard", "waterbag"] as const).map(f => (
               <button key={f} style={filterBtnStyle(activeFilter === f)} onClick={() => setActiveFilter(f)}>
@@ -174,41 +142,30 @@ export default function DrillsUnlocked() {
               </button>
             ))}
           </div>
-          <div style={{ borderTop: "1px solid oklch(0.92 0.005 80)", marginBottom: "1.5rem" }} />
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "oklch(0.65 0.008 65)", marginBottom: "1rem" }}>
-            Hold to pause · Tap any drill to watch the video
-          </p>
-        </div>
 
-        {/* Carousel */}
-        <div
-          style={{ overflow: "hidden", cursor: "grab" }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setTimeout(() => setIsPaused(false), 1500)}
-        >
-          <div ref={carouselRef} style={{ display: "flex", gap: `${CARD_GAP}px`, willChange: "transform" }}>
-            {duplicatedDrills.map((drill, idx) => (
+          <div style={{ borderTop: "1px solid oklch(0.92 0.005 80)", marginBottom: "2rem" }} />
+
+          {/* Drill count */}
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "oklch(0.65 0.008 65)", marginBottom: "2rem" }}>
+            {filteredDrills.length} drills · Tap any drill to watch the video
+          </p>
+
+          {/* Scrollable grid */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+            gap: "1px",
+            backgroundColor: "oklch(0.92 0.005 80)",
+          }}>
+            {filteredDrills.map((drill) => (
               <div
-                key={`${drill.id}-${idx}`}
-                style={{
-                  minWidth: `${CARD_WIDTH_MOBILE}px`,
-                  width: `${CARD_WIDTH_MOBILE}px`,
-                  flexShrink: 0,
-                }}
-                className="sm:min-w-[320px] sm:w-[320px]"
+                key={drill.id}
+                style={{ backgroundColor: "white" }}
               >
                 <DrillCard drill={drill} onClick={() => setSelectedDrill(drill)} />
               </div>
             ))}
           </div>
-        </div>
-
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "1.5rem 1.5rem 0" }}>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "oklch(0.65 0.008 65)", textAlign: "center" }}>
-            Showing {filteredDrills.length} drills
-          </p>
         </div>
       </section>
 
@@ -253,7 +210,7 @@ export default function DrillsUnlocked() {
         gap: "0.5rem", flexWrap: "wrap",
       }}>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 300, color: "rgba(255,255,255,0.75)", margin: 0 }}>
-            Want a plan built around your specific flaws?
+          Want a plan built around your specific flaws?
         </p>
         <a
           href="/apply"
