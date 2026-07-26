@@ -77,25 +77,118 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── 2. EMPATHY — "I was you" ────────────────────────── */}
+      {/* ── 2. STORY ─────────────────────────────────────────── */}
       <section style={{ padding: "clamp(3rem, 8vw, 5rem) 0", backgroundColor: "#ffffff" }}>
         <div className="container">
           <div style={{ maxWidth: "680px", margin: "0 auto" }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: crimsonLight, marginBottom: "1rem" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: crimsonLight, marginBottom: "1.5rem" }}>
               About Jantzen
             </p>
-            <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 700, fontSize: "clamp(2rem, 5vw, 3.2rem)", lineHeight: 1.1, color: "#111111", marginBottom: "1.75rem" }}>
-              I was the most overcoached hitter you've ever seen.
+
+            <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 700, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", lineHeight: 1.15, color: "#111111", marginBottom: "2rem" }}>
+              I got voted MVP of my Triple-A team. The next year I hit .192.
             </h1>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.1rem)", fontWeight: 300, lineHeight: 1.85, color: "#444444", marginBottom: "1.25rem" }}>
-              I grew up doing everything right. Perfect Game tournaments. Elite travel ball. Every camp, every clinic, every YouTube video. By the time I got to TCU I had so many swing thoughts I couldn't turn my brain off in the box.
+
+            {[
+              "That's the whole reason this exists, so I'll start there.",
+              "Nobody recruited me.",
+              "I was overlooked in high school. No offers, no letters, nothing.",
+              "I walked on at TCU and stayed five years. Made it to the College World Series. Got drafted in the 24th round by the Red Sox, which is baseball's way of telling you you're organizational filler and you should be grateful for the plane ticket.",
+              "So I ground.",
+              "Level by level, year by year. I was almost always the oldest guy at whatever level I was at. I made All-Star teams at basically every stop.",
+              "And it never mattered. No matter what I put up, I never got a real look.",
+              "I could feel myself falling out of love with the only thing I'd ever wanted to do.",
+              "Then it almost happened.",
+              "In 2020 Alex Cora called me and invited me to major league spring training.",
+              "I'm getting dressed in a clubhouse with David Ortiz and Dustin Pedroia walking around. Guys on the big league roster are pulling me aside telling me to keep doing what I'm doing, that I have a real chance to make this team.",
+              "Making the team wasn't even on my radar until somebody said it out loud.",
+              "I remember thinking, okay. This is finally my time.",
+              "Then COVID hit and spring training shut down.",
+              "I went from fifteen thousand dollars a month to four hundred dollars a month in about a week.",
+              "I kept training anyway, because I was sure this was my year.",
+              "Then I got the call telling me they weren't bringing me back. I wasn't in their top sixty players.",
+              "So I quit.",
+              "Got a normal job. Told my family I was done.",
+              "People were surprised. They hadn't spent ten years being told their numbers weren't the point.",
+              "I hated the job. And I missed baseball so much it was embarrassing.",
+            ].map((para, i) => (
+              <p key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.05rem)", fontWeight: 300, lineHeight: 1.9, color: "#444444", marginBottom: "1.1rem" }}>
+                {para}
+              </p>
+            ))}
+
+            <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 700, fontSize: "clamp(1.2rem, 3vw, 1.6rem)", lineHeight: 1.3, color: "#111111", margin: "2rem 0", borderLeft: `3px solid ${crimson}`, paddingLeft: "1.5rem" }}>
+              One FaceTime call.
             </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.1rem)", fontWeight: 300, lineHeight: 1.85, color: "#444444", marginBottom: "1.25rem" }}>
-              Stay back. Stay inside. Get a good pitch. Be on time. Stay closed. Stay through. Seven things — in a half-second window. It's a miracle I hit anything.
+
+            {[
+              "The Mariners called out of nowhere and I signed. I wasn't in shape, I wasn't myself, and I started slow.",
+              "Then I got on a FaceTime call with a coach named Brady North.",
+              "He had never seen me hit in person. He'd watched video of my swings, that's it.",
+              "He didn't tell me what was wrong with me. He just told me what to do — get my bat a little more vertical in my stance, and throw my top hand at my hip.",
+              "And then he said the thing that actually mattered.",
+              "He told me: you're going to be early. You're going to hit balls off the end of the bat. Don't freak out. That's what it feels like when you're quicker to it.",
+              "He was right. I hit a bunch of balls off the end.",
+              "And because he'd warned me, I didn't quit on it.",
+              "That same day I hit two of the most solid doubles I've ever hit in my life. I'd never hit a ball that high or that far. I knew right away it was working.",
+              "What I understood later was that my bat path had been way too steep. My whole career I was thinking low line drive, line drive up the middle. What he gave me let me slot my path a lot sooner.",
+              "That season I hit .299 with 19 home runs and got voted our team MVP.",
+              "Then I signed with a team in Japan.",
+              "And then it fell apart.",
+              "I hit .192 in Japan.",
+              "Same swing. Same cue. I'd taken the one thing that saved my career and turned it into my identity. I thought that was just who I was as a hitter now.",
+              "What I didn't understand at the time is that the swing is on a spectrum, and it's possible to go too far in one direction.",
+              "My whole early career I was too far one way — stay back, stay inside the ball. Brady moved me the other way, and it worked, and then I kept going that direction for about a year past the point where it was helping me.",
+              "But that wasn't even the real problem.",
+              "The real problem was that I was alone.",
+              "Every adjustment I'd ever made in twelve years, somebody in that dugout made with me. I was always super dependent on whatever coaches I had around me, and I didn't realize it until there was nobody there.",
+              "In Japan I found out I had no idea how to read my own swing.",
+              "I came home. The Padres gave me a spring training invite in 2023 and I was so bad in camp they moved me to the development list before the season even started.",
+              "I put together a great first half in Triple-A that year — Player of the Week in June, led the team in home runs.",
+              "And then I completely fell apart in the second half. By September I was on the inactive list. By November I was a free agent, thirty-three years old, and totally lost.",
+              "That's when I got help from 108.",
+              "They changed everything for me, and they're the reason I coach today.",
+              "They trained me on the opposite of everything I had ever tried before.",
+              "We didn't think about the legs at all. We only worked the upper half. I needed to get around the baseball. I swung a whiffle ball bat. We did drills with movement in them instead of standing still.",
+              "They brought out my natural tennis positions. I was a really good tennis player growing up and I could never replicate that move in the batter's box — because my feet were always still, and I'd spent my whole career being told that was correct. The guys at 108 let me have fun and basically pretend I was playing tennis, which is the exact thing I'd spent years trying to avoid because I thought it was bad for my swing.",
+              "The Rangers signed me the next April, a week after the season had already started. No spring training. Thrown straight into games cold.",
+              "I started slow, and then I felt better in the box than I had in years.",
+            ].map((para, i) => (
+              <p key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.05rem)", fontWeight: 300, lineHeight: 1.9, color: "#444444", marginBottom: "1.1rem" }}>
+                {para}
+              </p>
+            ))}
+
+            <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 700, fontSize: "clamp(1.2rem, 3vw, 1.6rem)", lineHeight: 1.3, color: "#111111", margin: "2rem 0", borderLeft: `3px solid ${crimson}`, paddingLeft: "1.5rem" }}>
+              I never made it to the big leagues. Twelve years, two real chances, and I never got there.
             </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.1rem)", fontWeight: 300, lineHeight: 1.85, color: "#444444" }}>
-              The thing that changed everything wasn't a new drill. It was learning how to get out of my own way — and let my natural swing show up.
+
+            {[
+              "But I learned two things that took me way too long to learn.",
+              "The first is that mechanical adjustments matter. They're real. The right one at the right time gave me the best season of my life.",
+              "The second is that no adjustment is permanent, because the swing is on a spectrum and you can train one thing too much. The cue that saves you will eventually be the thing holding you back, and you won't feel it happening.",
+              "And underneath both of those is the one that actually stings:",
+            ].map((para, i) => (
+              <p key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.05rem)", fontWeight: 300, lineHeight: 1.9, color: "#444444", marginBottom: "1.1rem" }}>
+                {para}
+              </p>
+            ))}
+
+            <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 700, fontSize: "clamp(1.2rem, 3vw, 1.6rem)", lineHeight: 1.3, color: "#111111", margin: "2rem 0", borderLeft: `3px solid ${crimson}`, paddingLeft: "1.5rem" }}>
+              I was never a hitter with a broken swing. I was a hitter who couldn't see his own swing — and nobody ever taught me how.
             </p>
+
+            {[
+              "So when a college guy tells me he's lost and he can't figure it out on his own, I know he isn't weak. Nobody can do it alone. I had a Triple-A MVP on my résumé and I couldn't do it either.",
+              "If I'd had remote training that year in Japan, I think it would have worked wonders for me. I didn't have anybody. I just had a swing I couldn't read and a season slipping away.",
+              "That's why I built this the way I did.",
+              "This is what I wish I'd had when I was in Japan.",
+            ].map((para, i) => (
+              <p key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.05rem)", fontWeight: 300, lineHeight: 1.9, color: "#444444", marginBottom: "1.1rem" }}>
+                {para}
+              </p>
+            ))}
+
           </div>
         </div>
       </section>
