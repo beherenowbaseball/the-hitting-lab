@@ -450,7 +450,7 @@ export default function Apply() {
               This isn't a sales pitch. It's an honest look at what's happening with your swing and exactly what we need to do to fix it. No pressure. Just a plan.
             </p>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", fontWeight: 600, color: "oklch(0.42 0.18 25)", letterSpacing: "0.08em", marginBottom: "2.5rem" }}>
-              I only open 5 new spots per month to ensure every athlete gets my full attention.
+              I only open a few spots each month to new athletes to ensure everyone gets my full attention.
             </p>
 
             {/* GHL Booking Embed */}
