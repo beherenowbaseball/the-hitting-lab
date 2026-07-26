@@ -172,7 +172,7 @@ export default function Home() {
             {["Drills", "About"].map((label) => (
               <button
                 key={label}
-                onClick={() => { if (label === "Drills") scrollToDrills(); }}
+                onClick={() => { if (label === "Drills") scrollToDrills(); else if (label === "About") window.location.href = '/about'; }}
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: "0.65rem",
@@ -236,7 +236,7 @@ export default function Home() {
               {["Drills", "About", "Work With Me"].map((item) => (
                 <button
                   key={item}
-                  onClick={() => { setMenuOpen(false); if (item === "Drills") scrollToDrills(); else if (item === "Work With Me") window.location.href = '/apply'; }}
+                  onClick={() => { setMenuOpen(false); if (item === "Drills") scrollToDrills(); else if (item === "About") window.location.href = '/about'; else if (item === "Work With Me") window.location.href = '/apply'; }}
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "0.65rem",
