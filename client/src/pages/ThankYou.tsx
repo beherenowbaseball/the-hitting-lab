@@ -164,10 +164,7 @@ export default function ThankYou() {
                   </p>
                   <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                     <a href={buildGoogleCalendarLink()} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", backgroundColor: crimson, color: "white", padding: "0.7rem 1.25rem", textDecoration: "none" }}>
-                      📅 Google Calendar
-                    </a>
-                    <a href={buildAppleCalendarLink()} download="hitting-strategy-session.ics" style={{ display: "inline-block", fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", backgroundColor: "#111111", color: "white", padding: "0.7rem 1.25rem", textDecoration: "none" }}>
-                      🍎 Apple Calendar
+                      📅 Add to Google Calendar
                     </a>
                   </div>
                 </div>

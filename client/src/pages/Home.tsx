@@ -416,7 +416,7 @@ export default function Home() {
               {              [
                 { name: "Parker Sobiesiak", result: "JUCO → 4-Year Scholarship", stat: ".209 → .421 AVG in Conference" },
                 { name: "Brady Lester", result: "NAIA → Ohio State University", stat: ".337 AVG · 10 HR · 49 RBI" },
-                { name: "Dominic", result: "Cal → Arizona State (D1)", stat: ".220/4 HR → .275/10 HR" },
+                { name: "Dom", result: "Cal → Arizona State (D1)", stat: ".220/4 HR → .275/10 HR" },
                 { name: "Hudson Sharp", result: "High School", stat: ".385 Season · .550 District · 39 Hits" },
                 { name: "Saul Trevino", result: "JUCO → Oklahoma Wesleyan University", stat: ".407 AVG · 1.140 OPS · LD% 41→57" },
                 { name: "Sam Campin", result: "JUCO", stat: "91 → 94 EV · +4-6 MPH" },
@@ -427,6 +427,15 @@ export default function Home() {
                 { name: "Chase Wells", result: "Indy Ball → Detroit Tigers", stat: "" },
                 { name: "Daunte Stuart", result: "Indy Ball → Philadelphia Phillies", stat: "4 HR in 6 Games" },
                 { name: "Teddy Stephenson", result: "HS → University of the Holy Cross", stat: "" },
+                { name: "Julian Mercado", result: "High School", stat: "All-Star & Home Run Derby" },
+                { name: "Ethan Ketterer", result: "College · Eastern University", stat: "Went from robotic to natural" },
+                { name: "Ryan Foster", result: "D2 · University of Jamestown", stat: "2 Hits All Last Spring → Barreling Every Game" },
+                { name: "Brady Greene", result: "High School", stat: "Best Swing of His Life" },
+                { name: "Caden Niederhaus", result: "High School", stat: ".220 → .400+ AVG" },
+                { name: "Ryan Duffy", result: "High School", stat: "Batting 3-4 Hole Playing Up a Level at 14" },
+                { name: "Anthony Della Rosa", result: "College", stat: "Trusted the Process" },
+                { name: "Benjamin Wallace", result: "College", stat: "One of His Best Hitting Seasons" },
+                { name: "Alex Martinez", result: "High School", stat: ".497 AVG · 8 2B · 4 HR · 24 RBI in 16 Games" },
               ].map(({ name, result, stat }) => (
                 <div key={name} style={{ display: "flex", alignItems: "center", gap: "2rem", padding: "0.85rem 2.5rem" }}>
                   <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>{name}</span>

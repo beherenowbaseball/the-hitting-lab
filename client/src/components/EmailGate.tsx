@@ -163,7 +163,7 @@ export default function EmailGate({ onUnlock }: Props) {
             marginBottom: "0.75rem",
           }}
         >
-          The same drill library<br />our 90 Day athletes use.
+          Hit the ball harder<br />without thinking about your swing.
         </h2>
         <p
           style={{
@@ -175,7 +175,7 @@ export default function EmailGate({ onUnlock }: Props) {
             marginBottom: "1.75rem",
           }}
         >
-          Doing the drills will help you build a better swing. But the real growth comes from getting feedback from us as you do them. Enter your name and email to unlock the full 32-drill framework — free.
+          Enter your name and email to unlock the full 32-drill framework — free.
         </p>
 
         {/* Form */}
