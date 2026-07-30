@@ -17,7 +17,7 @@ interface Props {
   onUnlock: () => void;
 }
 
-const OPTIN_ENDPOINT = "/api/optin";
+const OPTIN_ENDPOINT = "/.netlify/functions/optin";
 
 function isValidEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
