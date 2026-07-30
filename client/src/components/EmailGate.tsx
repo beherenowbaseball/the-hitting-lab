@@ -163,7 +163,7 @@ export default function EmailGate({ onUnlock }: Props) {
             marginBottom: "0.75rem",
           }}
         >
-          Hit the ball harder<br />without thinking about your swing.
+          Hit the ball harder<br />without overthinking mechanics.
         </h2>
         <p
           style={{
