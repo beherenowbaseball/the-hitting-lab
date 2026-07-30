@@ -17,7 +17,7 @@ interface Props {
   onUnlock: () => void;
 }
 
-const GHL_WEBHOOK = "https://services.leadconnectorhq.com/hooks/UtNl0ujIXlsH5AXSkQYf/webhook-trigger/948f86f0-14b1-475c-a92d-f38771abd33e";
+const OPTIN_ENDPOINT = "/api/optin";
 
 function isValidEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
@@ -51,10 +51,10 @@ export default function EmailGate({ onUnlock }: Props) {
     setLoading(true);
     setError("");
 
-    // POST to GHL webhook — check response status
+    // POST to secure backend endpoint — creates contact in GHL
     let webhookOk = false;
     try {
-      const res = await fetch(GHL_WEBHOOK, {
+      const res = await fetch(OPTIN_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -68,11 +68,11 @@ export default function EmailGate({ onUnlock }: Props) {
       webhookOk = res.ok;
       if (!res.ok) {
         // Log for debugging but don't block the user
-        console.warn("GHL webhook returned", res.status);
+        console.warn("Optin endpoint returned", res.status);
       }
     } catch (err) {
       // Network error — still unlock so we never lose a lead
-      console.warn("GHL webhook network error:", err);
+      console.warn("Optin endpoint network error:", err);
     }
 
     // Always unlock regardless of webhook status — never lose a lead
