@@ -25,6 +25,7 @@ function isValidEmail(v: string) {
 
 export default function EmailGate({ onUnlock }: Props) {
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -36,6 +37,10 @@ export default function EmailGate({ onUnlock }: Props) {
     // Client-side validation
     if (!firstName.trim()) {
       setError("Please enter your first name.");
+      return;
+    }
+    if (!lastName.trim()) {
+      setError("Please enter your last name.");
       return;
     }
     if (!isValidEmail(email)) {
@@ -54,6 +59,7 @@ export default function EmailGate({ onUnlock }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           firstName: firstName.trim(),
+          lastName: lastName.trim(),
           email: email.trim(),
           source: "Be The Best Baseball — Drill Library Gate",
           tags: ["hitting-lab-lead"],
@@ -72,6 +78,7 @@ export default function EmailGate({ onUnlock }: Props) {
     // Always unlock regardless of webhook status — never lose a lead
     localStorage.setItem("thl_unlocked", "1");
     localStorage.setItem("thl_name", firstName.trim());
+    localStorage.setItem("thl_last_name", lastName.trim());
     localStorage.setItem("thl_email", email.trim());
 
     // Fire GA4 email opt-in event
@@ -180,7 +187,8 @@ export default function EmailGate({ onUnlock }: Props) {
 
         {/* Form */}
         <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          <div>
+          <div style={{ display: "flex", gap: "0.75rem" }}>
+            <div style={{ flex: 1 }}>
             <label
               htmlFor="gate-name"
               style={{
@@ -222,6 +230,50 @@ export default function EmailGate({ onUnlock }: Props) {
               onFocus={(e) => (e.currentTarget.style.borderColor = "oklch(0.42 0.18 25)")}
               onBlur={(e) => (e.currentTarget.style.borderColor = "oklch(0.88 0.005 80)")}
             />
+            </div>
+            <div style={{ flex: 1 }}>
+            <label
+              htmlFor="gate-last-name"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.6rem",
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "oklch(0.52 0.01 65)",
+                display: "block",
+                marginBottom: "0.4rem",
+              }}
+            >
+              Last Name
+            </label>
+            <input
+              id="gate-last-name"
+              name="lastName"
+              type="text"
+              required
+              placeholder="Foster"
+              value={lastName}
+              onChange={(e) => { setLastName(e.target.value); if (error) setError(""); }}
+              autoComplete="family-name"
+              style={{
+                width: "100%",
+                padding: "0.75rem 1rem",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.9rem",
+                fontWeight: 300,
+                color: "oklch(0.12 0.005 65)",
+                backgroundColor: "oklch(0.97 0.003 80)",
+                border: "1px solid oklch(0.88 0.005 80)",
+                borderRadius: 0,
+                outline: "none",
+                boxSizing: "border-box",
+                transition: "border-color 0.15s",
+              }}
+              onFocus={(e) => (e.currentTarget.style.borderColor = "oklch(0.42 0.18 25)")}
+              onBlur={(e) => (e.currentTarget.style.borderColor = "oklch(0.88 0.005 80)")}
+            />
+            </div>
           </div>
 
           <div>
