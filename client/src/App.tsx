@@ -9,6 +9,8 @@ import Apply from "./pages/Apply";
 import ThankYou from "./pages/ThankYou";
 import DrillsUnlocked from "./pages/DrillsUnlocked";
 import About from "./pages/About";
+import NaturalSwing from "./pages/NaturalSwing";
+import NaturalSwingUnlocked from "./pages/NaturalSwingUnlocked";
 
 
 function Router() {
@@ -19,6 +21,8 @@ function Router() {
       <Route path={"/drills"} component={DrillsUnlocked} />
       <Route path={"/thank-you"} component={ThankYou} />
       <Route path={"/about"} component={About} />
+      <Route path={"/natural-swing"} component={NaturalSwing} />
+      <Route path={"/natural-swing/unlocked"} component={NaturalSwingUnlocked} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
