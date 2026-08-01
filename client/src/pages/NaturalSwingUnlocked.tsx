@@ -109,7 +109,7 @@ export default function NaturalSwingUnlocked() {
               {firstName ? `You're in, ${firstName}.` : "You're in."} The framework is yours.
             </p>
             <h1 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, color: "white", marginBottom: "1.5rem" }}>
-              32 drills is too many.<br />Let's find your three.
+              32 drills is too many.<br />Let's find the ones best for you.
             </h1>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.1rem)", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.7)", marginBottom: "1.25rem" }}>
               The framework gives you everything. But having 32 drills without knowing which ones are yours is the same problem you already had — too much to think about.
@@ -127,6 +127,18 @@ export default function NaturalSwingUnlocked() {
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 300, color: "rgba(255,255,255,0.3)", marginTop: "0.75rem" }}>
               No pitch. No pressure. Just an honest look at your swing.
             </p>
+          </div>
+          {/* YouTube video embed */}
+          <div style={{ marginTop: "3.5rem", maxWidth: "640px" }}>
+            <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "4px", backgroundColor: "oklch(0.08 0.005 65)" }}>
+              <iframe
+                src="https://www.youtube.com/embed/3kOn_Nmbmpk?rel=0&modestbranding=1"
+                title="The Natural Swing Framework — How It Works"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+              />
+            </div>
           </div>
         </div>
       </section>
