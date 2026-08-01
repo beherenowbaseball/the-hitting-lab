@@ -193,7 +193,7 @@ export default function NaturalSwing() {
               You had a good swing once.<br />Let's get it back.
             </h1>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.95rem, 2vw, 1.1rem)", fontWeight: 300, lineHeight: 1.7, color: "rgba(255,255,255,0.75)", marginBottom: "2rem" }}>
-              The Natural Swing Framework — a free guide to becoming athletic in the box again, built from 12 years of pro ball and 200+ players coached back to themselves.
+              The Natural Swing Framework — a free guide to becoming athletic in the box again, built from 12 years of pro ball and 75+ players coached back to themselves.
             </p>
             <button
               onClick={() => setShowGate(true)}
@@ -266,7 +266,7 @@ export default function NaturalSwing() {
                 The hitters I watched who made it look easy weren't thinking about mechanics. They were athletes reacting to a ball. That's what I had been before the coaches got to me. That's what every one of my players was before the coaches got to them.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.85, color: "oklch(0.35 0.01 65)", marginBottom: "1.5rem" }}>
-                The Natural Swing Framework is what I built to get back to that. It's what I've used with 200+ players — JUCO guys, indy ball guys, high school guys who were good enough but got buried under bad coaching. Every single one of them had a good swing before someone took it away.
+                The Natural Swing Framework is what I built to get back to that. It's what I've used with 75+ players — JUCO guys, indy ball guys, high school guys who were good enough but got buried under over-coaching. Every single one of them had a good swing before someone took it away.
               </p>
               <div style={{ backgroundColor: "oklch(0.96 0.005 80)", padding: "1.75rem" }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", lineHeight: 0.8, color: "oklch(0.82 0.005 80)", fontStyle: "italic", marginBottom: "1rem" }}>&ldquo;</div>
@@ -465,7 +465,7 @@ export default function NaturalSwing() {
                 Get the Free Natural Swing Framework →
               </button>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", fontWeight: 300, color: "rgba(255,255,255,0.3)", margin: 0 }}>
-                No spam. No credit card. Join 200+ players who've already used this.
+              No spam. No credit card. Join 75+ players who've already used this.
               </p>
             </div>
           </div>
@@ -588,7 +588,7 @@ function NaturalSwingGate({ onUnlock }: { onUnlock: () => void }) {
           </button>
         </form>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.62rem", fontWeight: 300, color: "oklch(0.65 0.008 65)", marginTop: "1rem", textAlign: "center" }}>
-          No spam. Unsubscribe anytime. Used by 200+ players.
+        No spam. Unsubscribe anytime. Used by 75+ players.
         </p>
       </div>
     </div>
