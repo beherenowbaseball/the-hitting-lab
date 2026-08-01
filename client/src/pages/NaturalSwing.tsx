@@ -74,13 +74,13 @@ const FRAMEWORK_PILLARS = [
   {
     number: "03",
     title: "The Three Things That Actually Matter",
-    body: "After 12 years and 5 organizations, it comes down to three things: getting to your launch position, trusting your timing, and finishing through the ball. Everything else is noise. The 32 drills in this framework are organized around these three principles. Not 32 different things to think about — 32 ways to feel the same three things.",
+    body: "After 12 years and 5 organizations, it comes down to three things: getting to your launch position, trusting your timing, and getting to your best finish. Everything else is noise. The 32 drills in this framework are organized around these three principles. Not 32 different things to think about — 32 ways to feel the same three things.",
     quote: null,
   },
   {
     number: "04",
     title: "The Drills Are the Practice, Not the Swing",
-    body: "This is the part most players miss. The drills don't go with you into the box. They go in the cage, in practice, in your warmup. They're the reps that rewire your body so that when you step in the box, you don't have to think. You just hit. That's the whole system.",
+    body: "This is the part most players miss. The drills don't go with you into the box. They go in the cage, in practice, in your warmup. They're the reps that rewire your body so that when you step in the box, you don't have to think. You just hit. That's the whole system. We want the work in the cage to blend into your natural swing.",
     quote: null,
   },
 ];
