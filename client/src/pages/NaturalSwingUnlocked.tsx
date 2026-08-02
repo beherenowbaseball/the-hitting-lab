@@ -357,6 +357,70 @@ export default function NaturalSwingUnlocked() {
         />
       ))}
 
+      {/* ── WALL OF PROOF ────────────────────────────────────── */}
+      <section style={{ backgroundColor: "white", padding: "6rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
+        <div className="container">
+          <div style={{ marginBottom: "3rem", textAlign: "center" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.75rem" }}>
+              Results
+            </p>
+            <h2 className="reveal" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.1 }}>
+              75+ players. One system.
+            </h2>
+          </div>
+
+          {/* Masonry-style proof wall */}
+          <div style={{ columns: "repeat(auto-fill, minmax(280px, 1fr))", columnGap: "1px", backgroundColor: "oklch(0.90 0.005 80)" }}>
+            {[
+              { name: "Brady Lester", tag: "NAIA → Ohio State University", quote: null, stat: ".337 AVG · 10 HR · 49 RBI" },
+              { name: "Julian Mercado", tag: "JUCO All-Star · Home Run Derby", quote: "I stopped being a technician and started being an athlete. My swing hasn't felt like this ever before.", stat: null },
+              { name: "Parker Sobiesiak", tag: "JUCO → 4-Year Scholarship", quote: null, stat: ".209 → .421 AVG" },
+              { name: "Saul Trevino", tag: "JUCO → Oklahoma Wesleyan University", quote: null, stat: ".407 AVG · 1.140 OPS" },
+              { name: "Spencer Dailey", tag: "D3 P.O. → Upper Iowa University", quote: "Swing confidence went from a 4/10 to an 8/10 in three weeks. I can self-correct now without needing a coach every time.", stat: "+5 MPH Bat Speed" },
+              { name: "Luke Hargis", tag: "High School", quote: "Every round I take, it just feels more natural, and I can just go up there with no doubt in my head.", stat: "Low 80s → 91 MPH Exit Velo" },
+              { name: "Tony Woodie", tag: "Pitcher-Only → Position Player", quote: null, stat: "3 HR → 10 HR · Single Season Record" },
+              { name: "Chase Wells", tag: "Indy Ball → Detroit Tigers", quote: null, stat: null },
+              { name: "Daunte Stuart", tag: "Indy Ball → Philadelphia Phillies", quote: null, stat: "4 HR in 6 Games" },
+              { name: "Ryan Foster", tag: "D2 · University of Jamestown", quote: "I went from 2 hits all last spring to barreling the ball every game. The confidence is different now.", stat: null },
+              { name: "Alex Martinez", tag: "High School", quote: "In game I'm hitting .497 with 8 doubles, 4 HRs, and 24 RBIs in just 16 games.", stat: ".497 AVG · 8 2B · 4 HR · 24 RBI in 16 Games" },
+              { name: "Brooks Burdine", tag: "Zero Offers → Air Force Academy (D1)", quote: null, stat: null },
+              { name: "Caden Niederhaus", tag: "High School", quote: null, stat: ".220 → .400+ AVG" },
+              { name: "Sam Campin", tag: "JUCO", quote: null, stat: "91 → 94 EV · +4-6 MPH" },
+              { name: "Dom", tag: "Cal → Arizona State (D1)", quote: null, stat: ".220/4 HR → .275/10 HR" },
+              { name: "Brady Greene", tag: "High School", quote: "Best swing of his life.", stat: null },
+              { name: "Benjamin Wallace", tag: "College Player", quote: "He doesn't change you — he just makes you better. After working with him I had one of my best hitting seasons.", stat: null },
+              { name: "Mike Francis", tag: "3M Natural Swing Builder", quote: null, stat: null },
+              { name: "Trace Hoover", tag: "3M Natural Swing Builder", quote: null, stat: null },
+              { name: "Dante Stewart", tag: "Indy Ball", quote: null, stat: null },
+              { name: "Mikey Mendoza", tag: "30D Test Drive", quote: null, stat: null },
+              { name: "Seve Fernandez", tag: "3M Natural Swing Builder", quote: null, stat: null },
+            ].map(({ name, tag, quote, stat }) => (
+              <div key={name} style={{ breakInside: "avoid", backgroundColor: "white", padding: "1.75rem 2rem", marginBottom: "1px", display: "block" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: quote ? "1rem" : "0.5rem" }}>
+                  <div style={{ width: "32px", height: "32px", backgroundColor: "oklch(0.42 0.18 25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, borderRadius: "50%" }}>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "0.8rem", color: "white" }}>{name[0]}</span>
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", fontWeight: 700, color: "oklch(0.12 0.005 65)", margin: 0 }}>{name}</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 400, letterSpacing: "0.1em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", margin: 0 }}>{tag}</p>
+                  </div>
+                </div>
+                {quote && (
+                  <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "0.95rem", color: "oklch(0.25 0.01 65)", lineHeight: 1.65, marginBottom: stat ? "0.75rem" : 0 }}>
+                    "{quote}"
+                  </p>
+                )}
+                {stat && (
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.08em", color: "oklch(0.42 0.18 25)", margin: 0, borderTop: quote ? "1px solid oklch(0.93 0.003 80)" : "none", paddingTop: quote ? "0.75rem" : 0 }}>
+                    {stat}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FINAL CTA ────────────────────────────────────────── */}
       <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "7rem 0" }}>
         <div className="container">
