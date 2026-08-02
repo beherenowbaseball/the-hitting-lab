@@ -433,17 +433,17 @@ export default function NaturalSwing() {
               What You're Getting
             </p>
             <h2 className="reveal" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.15, marginBottom: "1.5rem" }}>
-              The Natural Swing Framework — free, complete, and built for players who are serious.
+              A 4-week program. Free. Built for players who are serious.
             </h2>
             <p className="reveal" style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.85, color: "oklch(0.35 0.01 65)", marginBottom: "2.5rem" }}>
-              This isn't a highlight reel of drills. It's a system — the same one I use with every player I work with privately. The four-pillar framework above, plus 32 drills organized by what they fix, with video walkthroughs and coaching cues for each one. You get the whole thing, free, the moment you enter your email.
+              This isn't a highlight reel of drills. It's a 4-week system — the same one I use with every player I work with privately. Week 1 is free. Weeks 2, 3, and 4 unlock the moment you enter your email.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: "1.5rem", marginBottom: "3rem" }}>
               {[
-                { label: "32 Drills", sub: "Standard + Water Bag — organized by what they fix" },
-                { label: "Video Walkthroughs", sub: "Every drill has a YouTube video so you can see it in action" },
-                { label: "Coaching Cues", sub: "The exact language I use with pro players — not generic tips" },
-                { label: "The 4-Pillar Framework", sub: "The philosophy behind the drills so you understand why they work" },
+                { label: "Week 1 — Free", sub: "Find Your Launch Position. The 4 foundation drills everyone starts with." },
+                { label: "Week 2 — Bat Path", sub: "Build the bat path that gets you to your launch position consistently." },
+                { label: "Week 3 — Brain Off", sub: "Stop thinking. Start reacting. The drills that get your brain out of the way." },
+                { label: "Week 4 — Put It Together", sub: "Integration. Take what you've built in the cage and make it yours in the box." },
               ].map(({ label, sub }) => (
                 <div key={label} style={{ borderTop: "3px solid oklch(0.42 0.18 25)", paddingTop: "1.25rem" }}>
                   <p style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.1rem", color: "oklch(0.12 0.005 65)", marginBottom: "0.5rem" }}>{label}</p>
@@ -454,7 +454,7 @@ export default function NaturalSwing() {
             {/* Email gate CTA */}
             <div style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "2.5rem", textAlign: "center" }}>
               <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", color: "white", lineHeight: 1.4, marginBottom: "1.5rem" }}>
-                Enter your email. Get the full framework — free.
+                Enter your email. Unlock Weeks 2, 3 &amp; 4 — free.
               </p>
               <button
                 onClick={() => setShowGate(true)}

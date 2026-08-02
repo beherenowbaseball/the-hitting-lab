@@ -12,6 +12,120 @@ import DrillModal from "@/components/DrillModal";
 import { drills } from "@/lib/drills";
 import type { Drill } from "@/lib/drills";
 
+// ── 4-WEEK PROGRAM STRUCTURE ────────────────────────────────
+const WEEK_PROGRAM = [
+  {
+    week: 2,
+    title: "Bat Path Builder",
+    emoji: "💪",
+    intro: "Now that you've found your launch position, it's time to build the bat path that gets you there consistently. These four drills train your hands and barrel to work together — not fight each other. The goal this week is to feel the barrel staying through the zone longer.",
+    drillSlugs: ["self-toss-fungo", "top-hand-drill", "recoil-drill", "step-back-drill"],
+  },
+  {
+    week: 3,
+    title: "Brain Off / Swing Natural",
+    emoji: "🧠",
+    intro: "This is the week most players skip — and it's the most important one. These drills are designed to get your brain out of the way. You've been thinking too much. These reps are about reacting, not processing. Do them fast. Don't overthink them. That's the whole point.",
+    drillSlugs: ["rapid-fire-side-toss", "tracer-drill", "mcgwire-drill", "bat-drop-drill"],
+  },
+  {
+    week: 4,
+    title: "Put It Together",
+    emoji: "🎯",
+    intro: "Everything you've built over the last three weeks comes together here. These drills are about integration — taking what you've trained in the cage and making it feel like yours in the box. By the end of this week, your swing should feel like it belongs to you again.",
+    drillSlugs: ["turn-the-corner-drill", "bottom-hand-drill", "step-back-drill-variation", "start-at-release-drill", "silent-swings"],
+  },
+];
+
+// Helper: extract YouTube video ID from any YouTube URL
+function getYouTubeId(url: string): string | null {
+  const m = url.match(/(?:youtu\.be\/|v=|embed\/)([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+function WeekSection({ week, title, emoji, intro, drillSlugs, onDrillClick }: {
+  week: number; title: string; emoji: string; intro: string;
+  drillSlugs: string[]; onDrillClick: (d: Drill) => void;
+}) {
+  const weekDrills = drillSlugs
+    .map((slug) => drills.find((d) => d.slug === slug))
+    .filter(Boolean) as Drill[];
+
+  return (
+    <section style={{ padding: "5rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
+      <div className="container">
+        {/* Week header */}
+        <div style={{ marginBottom: "2.5rem" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.5rem" }}>
+            Week {week}
+          </p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.1, marginBottom: "1rem" }}>
+            {emoji} {title}
+          </h2>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.85, color: "oklch(0.35 0.01 65)", maxWidth: "640px" }}>
+            {intro}
+          </p>
+        </div>
+
+        {/* Drills */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
+          {weekDrills.map((drill, i) => {
+            const vidId = getYouTubeId(drill.videoUrl);
+            return (
+              <div key={drill.id} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: "2rem", alignItems: "start", paddingTop: i > 0 ? "2rem" : 0, borderTop: i > 0 ? "1px solid oklch(0.93 0.003 80)" : "none" }}>
+                {/* Video */}
+                <div>
+                  {vidId ? (
+                    <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", backgroundColor: "oklch(0.08 0.005 65)", borderRadius: "2px" }}>
+                      <iframe
+                        src={`https://www.youtube.com/embed/${vidId}?rel=0&modestbranding=1`}
+                        title={drill.name}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <div style={{ aspectRatio: "16/9", backgroundColor: "oklch(0.93 0.003 80)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ color: "oklch(0.55 0.01 65)", fontSize: "0.8rem" }}>Video coming soon</span>
+                    </div>
+                  )}
+                </div>
+                {/* Copy */}
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", fontWeight: 700, color: "oklch(0.92 0.003 80)", lineHeight: 1 }}>0{i + 1}</span>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.2, margin: 0 }}>{drill.name}</h3>
+                  </div>
+                  {drill.tagline && (
+                    <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "0.95rem", color: "oklch(0.42 0.18 25)", marginBottom: "0.75rem" }}>{drill.tagline}</p>
+                  )}
+                  {drill.whatItIs && (
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, color: "oklch(0.35 0.01 65)", marginBottom: "0.75rem" }}>{drill.whatItIs}</p>
+                  )}
+                  {drill.coachingCues && (
+                    <div style={{ borderLeft: "3px solid oklch(0.42 0.18 25)", paddingLeft: "1rem", marginTop: "1rem" }}>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.4rem" }}>Coaching Cue</p>
+                      <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: "0.9rem", color: "oklch(0.35 0.01 65)", margin: 0 }}>{drill.coachingCues}</p>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => onDrillClick(drill)}
+                    style={{ marginTop: "1.25rem", fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", background: "none", border: "1px solid oklch(0.42 0.18 25)", padding: "0.5rem 1rem", cursor: "pointer" }}
+                  >
+                    Full Drill Details →
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
@@ -212,26 +326,36 @@ export default function NaturalSwingUnlocked() {
       </section>
 
       {/* ── THE DRILL LIBRARY (full 32) ──────────────────────── */}
-      <section style={{ padding: "6rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
-        <div className="container" style={{ marginBottom: "2.5rem" }}>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.75rem" }}>
-            Your Framework
+      {/* ── WEEK 1 REMINDER ─────────────────────────────────── */}
+      <section style={{ backgroundColor: "oklch(0.97 0.003 80)", padding: "3rem 0", borderBottom: "1px solid oklch(0.90 0.005 80)" }}>
+        <div className="container">
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", marginBottom: "0.5rem" }}>
+            Start Here
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.1, marginBottom: "0.75rem" }}>
-            All 32 drills — unlocked.
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1.4rem, 3vw, 2rem)", color: "oklch(0.12 0.005 65)", lineHeight: 1.1, marginBottom: "0.75rem" }}>
+            Week 1 — Find Your Launch Position
           </h2>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "oklch(0.45 0.01 65)", lineHeight: 1.7 }}>
-            Browse the full library. Tap any drill to watch the video and read the coaching cues. Then book the call — I'll tell you which 3 are yours.
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "oklch(0.45 0.01 65)", lineHeight: 1.7, maxWidth: "600px", marginBottom: "1.5rem" }}>
+            Everyone starts with the same four drills. Piggyback, Wiffle Ball, Happy Gilmore, and the Ali Drill. These are your foundation. Don't skip ahead until these feel natural.
           </p>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))", gap: "1px", backgroundColor: "oklch(0.90 0.005 80)", padding: "0 max(1rem, calc((100vw - 1400px) / 2 + 1rem))" }}>
-          {drills.map((drill) => (
-            <div key={drill.id} style={{ backgroundColor: "white" }}>
-              <DrillCard drill={drill} onClick={() => setSelectedDrill(drill)} locked={false} onUnlockClick={() => {}} />
-            </div>
-          ))}
+          <a href="/natural-swing#week1" style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "oklch(0.42 0.18 25)", textDecoration: "none", borderBottom: "1px solid oklch(0.42 0.18 25)", paddingBottom: "2px" }}>
+            ← Back to Week 1 drills
+          </a>
         </div>
       </section>
+
+      {/* ── WEEKS 2, 3, 4 ───────────────────────────────────── */}
+      {WEEK_PROGRAM.map((w) => (
+        <WeekSection
+          key={w.week}
+          week={w.week}
+          title={w.title}
+          emoji={w.emoji}
+          intro={w.intro}
+          drillSlugs={w.drillSlugs}
+          onDrillClick={setSelectedDrill}
+        />
+      ))}
 
       {/* ── FINAL CTA ────────────────────────────────────────── */}
       <section style={{ backgroundColor: "oklch(0.10 0.005 65)", padding: "7rem 0" }}>
