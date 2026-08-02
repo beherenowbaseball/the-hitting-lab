@@ -416,6 +416,38 @@ export default function NaturalSwing() {
       <section style={{ position: "relative", overflow: "hidden" }}>
         <img src="/jantzen-ichiro.jpg" alt="Jantzen Witte with Ichiro Suzuki at T-Mobile Park" style={{ width: "100%", display: "block", maxHeight: "480px", objectFit: "cover", objectPosition: "center 20%" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.3) 50%, rgba(8,8,8,0.1) 100%)", display: "flex", alignItems: "flex-end" }}>
+          {/* Ichiro label — positioned above his head (right side of photo) */}
+          <div style={{
+            position: "absolute",
+            top: "clamp(6%, 10%, 14%)",
+            right: "clamp(8%, 22%, 30%)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "4px",
+            pointerEvents: "none",
+          }}>
+            <div style={{
+              backgroundColor: "white",
+              color: "oklch(0.12 0.005 65)",
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(0.55rem, 1.2vw, 0.7rem)",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              padding: "0.3rem 0.65rem",
+              borderRadius: "2px",
+              whiteSpace: "nowrap",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
+            }}>
+              Ichiro
+            </div>
+            {/* Arrow pointing down */}
+            <svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="6" y1="0" x2="6" y2="14" stroke="white" strokeWidth="2"/>
+              <polyline points="2,10 6,16 10,10" stroke="white" strokeWidth="2" fill="none"/>
+            </svg>
+          </div>
           <div className="container" style={{ paddingBottom: "3rem" }}>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "oklch(0.72 0.12 25)", marginBottom: "0.5rem" }}>T-Mobile Park · Seattle Mariners</p>
             <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400, fontSize: "clamp(1rem, 2.5vw, 1.5rem)", color: "white", lineHeight: 1.4, maxWidth: "480px", margin: 0 }}>
