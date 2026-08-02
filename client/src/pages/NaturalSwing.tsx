@@ -294,7 +294,7 @@ export default function NaturalSwing() {
               Every hitter I've ever worked with was already putting in the reps. The problem wasn't effort. It was that the reps were reinforcing the wrong patterns — patterns that came from a coach who meant well, or a YouTube video that looked good, or a cue that worked for someone else's body.
             </p>
             <p className="reveal" style={{ fontFamily: "'Inter', sans-serif", fontSize: "1rem", fontWeight: 300, lineHeight: 1.85, color: "rgba(255,255,255,0.65)", marginBottom: "1.25rem" }}>
-              JUCO guys. Indy ball guys. High school guys who were all-conference two years ago and can't figure out what happened. They all have the same story: somewhere between 14 and now, someone convinced them that hitting was complicated. It's not.
+              No matter how lost you feel, we can get your swing back and help you simplify hitting. Most guys I've worked with, something changed around the age of 12-15 and their swing hasn't felt as smooth since. Your swing doesn't need to feel like it's 7 different pieces. This framework will help you understand your swing, find your positions, and get back to hitting the way you used to.
             </p>
             <p className="reveal" style={{ fontFamily: "'Inter', sans-serif", fontSize: "1rem", fontWeight: 400, lineHeight: 1.85, color: "rgba(255,255,255,0.85)" }}>
               The Natural Swing Framework is built around one idea: the fastest path back to being athletic in the box is removing what doesn't belong — not adding more.

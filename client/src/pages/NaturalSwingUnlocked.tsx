@@ -144,7 +144,7 @@ const CALL_STEPS = [
   {
     number: "01",
     title: "You send me a swing video",
-    body: "Before the call, you send me one swing — cage, game, whatever you have. I watch it before we get on.",
+    body: "Before the call, I look at your swings. Cage or game.",
   },
   {
     number: "02",
